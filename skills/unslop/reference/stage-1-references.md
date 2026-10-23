@@ -8,7 +8,8 @@
   different visual languages, so grouping has something to work with. Prefer shots that show a full
   screen or page.
 - Capture with the browser tools available in the session (screenshot of the shot's image, or
-  download the image itself). Name files `<site>-<nn>-<slug>.<ext>`.
+  download the image itself). Name files `<site>-<nn>-<slug>.<ext>` using only lowercase letters, digits and hyphens (rename
+  user-supplied files the same way; log the original name in SOURCES.md).
 - Log every file in `design/references/SOURCES.md` (file, site, URL, date).
 - If a site blocks capture or needs login, say which and continue with the rest; do not work around
   logins.
@@ -40,12 +41,13 @@ window.DS_GALLERY = {
 ```
 
 `gallery.html` (already copied by scaffold) renders it: groups, click to enlarge, a "Pick this
-style" box per group and **Copy my picks**, which copies `Picks: <name>, <name>, …`.
+style" box per group and **Copy my picks**, which copies `Picks:` followed by one `- <name>` per line.
 
 ## Stop
 
 Start the server in the background if not running (`serve.py . --port 8000`) and give the user the
-gallery URL (`http://localhost:<port>/references/gallery.html`). Ask them to pick N styles (default
-5) and paste the copied picks back, or name them.
+gallery URL using the address serve.py printed (`<server>/references/gallery.html`). Ask them to
+pick N styles (default 5) and paste the copied picks back, or name them.
 
-Update `decisions.md`: log the picks in the user's words; `stage: 2`, `waiting on: direction approval`.
+Set `decisions.md` to `stage: 1 · references`, `waiting on: user's style picks from the gallery`,
+then stop. When the user answers, log the picks in their words and only then move to Stage 2.

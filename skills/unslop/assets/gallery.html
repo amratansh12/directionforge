@@ -58,6 +58,9 @@
   .lb-img img { display: block; max-width: 100%; margin: 0 auto; }
   .lb-cap { padding: 10px 14px; font-size: 13px; color: var(--muted); border-top: 1px solid var(--line); }
   .lb-cap a { color: var(--accent); }
+  .fallback { max-width: 1400px; margin: 12px auto 0; padding: 0 24px; display: grid; gap: 6px; }
+  .fallback[hidden] { display: none; }
+  .fallback textarea { font: 13px ui-monospace, Menlo, monospace; padding: 8px; border: 1px solid var(--accent); border-radius: 6px; background: var(--surface); color: var(--ink); }
   .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
   @media (max-width: 600px) { header, main { padding-left: 16px; padding-right: 16px; } .pick { margin-left: 0; } }
   @media (prefers-reduced-motion: no-preference) { .thumb { transition: border-color .15s; } .thumb:hover { border-color: var(--muted); } }
@@ -71,6 +74,10 @@
   <button class="btn primary" id="copy" type="button">Copy my picks</button>
   <button class="btn" id="theme" type="button" aria-label="Switch colour theme">Theme</button>
 </header>
+<div class="fallback" id="fallback" hidden>
+  <label for="fallback-text">Copying failed. Select this text and copy it:</label>
+  <textarea id="fallback-text" rows="4" readonly></textarea>
+</div>
 <main id="main"></main>
 <dialog id="lb" aria-label="Reference preview">
   <div class="lb">
@@ -85,13 +92,19 @@
   </div>
 </dialog>
 <p class="sr" id="status" aria-live="polite"></p>
-<script src="gallery-data.js" onerror="window.DS_GALLERY = window.DS_GALLERY || null"></script>
+<script>
+  // A syntax error in gallery-data.js does not fire onerror, so catch it here.
+  window.addEventListener('error', (e) => { if (/gallery-data\.js/.test(e.filename || '')) window.DS_GALLERY_ERROR = true; });
+</script>
+<script src="gallery-data.js" onerror="window.DS_GALLERY_ERROR = true"></script>
 <script>
 (function () {
   const data = window.DS_GALLERY;
   const main = document.getElementById('main');
   const countEl = document.getElementById('count');
   const status = document.getElementById('status');
+  const fallback = document.getElementById('fallback');
+  const url = (p) => String(p == null ? '' : p).split('/').map(encodeURIComponent).join('/');
   const esc = (s) => String(s == null ? '' : s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
   // Theme: per-viewer convenience only.
@@ -104,7 +117,9 @@
   });
 
   if (!data || !Array.isArray(data.groups) || !data.groups.length) {
-    main.innerHTML = '<p class="empty">No references yet. unslop writes <code>gallery-data.js</code> next to this page once the references are grouped.</p>';
+    main.innerHTML = window.DS_GALLERY_ERROR
+      ? '<p class="empty"><code>gallery-data.js</code> failed to load or parse. Check the browser console for the error.</p>'
+      : '<p class="empty">No references yet. unslop writes <code>gallery-data.js</code> next to this page once the references are grouped.</p>';
     document.getElementById('copy').disabled = true;
     return;
   }
@@ -115,7 +130,7 @@
   main.innerHTML = (data.intro ? `<p class="intro">${esc(data.intro)}</p>` : '') + data.groups.map((g, gi) => {
     const imgs = (g.images || []).map((im) => {
       const i = flat.push({ ...im, group: g.name }) - 1;
-      return `<button class="thumb" type="button" data-i="${i}" aria-label="Open ${esc(im.note || im.file)} (${esc(g.name)})"><img src="${esc(im.file)}" alt="" loading="lazy"></button>`;
+      return `<button class="thumb" type="button" data-i="${i}" aria-label="Open ${esc(im.note || im.file)} (${esc(g.name)})"><img src="${esc(url(im.file))}" data-file="${esc(im.file)}" alt="" loading="lazy"></button>`;
     }).join('');
     return `<section class="group" aria-labelledby="g${gi}">
       <div class="group-head">
@@ -129,7 +144,7 @@
   }).join('');
 
   function missing(img) {
-    const file = img.getAttribute('src');
+    const file = img.dataset.file;
     img.replaceWith(Object.assign(document.createElement('span'), { className: 'missing', textContent: `missing: ${file}` }));
   }
   main.querySelectorAll('img').forEach((img) => {
@@ -149,7 +164,8 @@
   document.getElementById('copy').addEventListener('click', async () => {
     const p = picks();
     if (!p.length) { status.textContent = 'Pick at least one style first.'; countEl.textContent = 'Pick at least one style'; countEl.classList.add('off'); return; }
-    const text = `Picks: ${p.join(', ')}`;
+    // One per line, so names that contain commas stay unambiguous.
+    const text = `Picks:\n${p.map((n) => `- ${n}`).join('\n')}`;
     let ok = false;
     try { await navigator.clipboard.writeText(text); ok = true; } catch (e) {
       const ta = Object.assign(document.createElement('textarea'), { value: text });
@@ -157,9 +173,17 @@
       try { ok = document.execCommand('copy'); } catch (e2) {}
       ta.remove();
     }
-    status.textContent = ok ? `Copied: ${text}` : `Copy failed. Your picks: ${text}`;
-    countEl.textContent = ok ? 'Copied. Paste it back to Claude.' : text;
-    setTimeout(updateCount, 2500);
+    if (ok) {
+      status.textContent = `Copied: ${text}`;
+      countEl.textContent = 'Copied. Paste it back to Claude.';
+      setTimeout(updateCount, 2500);
+    } else {
+      // Leave the text where the user can select and copy it by hand.
+      fallback.hidden = false;
+      fallback.querySelector('textarea').value = text;
+      fallback.querySelector('textarea').select();
+      status.textContent = 'Copy failed. Your picks are in the box below the header; copy them by hand.';
+    }
   });
 
   // Lightbox
@@ -171,7 +195,7 @@
     document.getElementById('lb-title').textContent = `${it.group} · ${cur + 1}/${flat.length}`;
     const box = document.getElementById('lb-img');
     box.innerHTML = '';
-    const img = Object.assign(document.createElement('img'), { src: it.file, alt: it.note || it.file });
+    const img = Object.assign(document.createElement('img'), { src: url(it.file), alt: it.note || it.file });
     img.addEventListener('error', () => { box.innerHTML = `<p class="missing">missing: ${esc(it.file)}</p>`; }, { once: true });
     box.appendChild(img);
     const src = it.source ? (/^https?:\/\//.test(it.source) ? `<a href="${esc(it.source)}" target="_blank" rel="noopener">${esc(it.source)}</a>` : esc(it.source)) : '';

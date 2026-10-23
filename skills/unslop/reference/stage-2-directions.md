@@ -9,8 +9,9 @@ brand/design system, the palette line uses its tokens and directions differ in e
 Make the directions **far apart**: each `Must not` line names what it must avoid from the others.
 If two picked groups are close, say so and show how the blocks keep them apart.
 
+Set `decisions.md` to `stage: 2 · directions`, `waiting on: user approval of direction blocks`.
 Show all blocks to the user. Build nothing until they approve or edit them. Save the approved blocks
-to `design/stage-2/DIRECTIONS.md`.
+to `design/stage-2/DIRECTIONS.md` and log the approval.
 
 ## 2. Build
 
@@ -21,6 +22,7 @@ Builds per direction:
 Folder: `design/stage-2/<nn>-<style-slug>-<impeccable|taste>/` with `index.html`, any CSS/JS it
 needs, and `meta.json` (`title`, `direction`, `skill`, `thesis`).
 
+Before dispatching, set `decisions.md` to `waiting on: nothing (builds dispatched: <folders>)`.
 Dispatch one subagent per build, in parallel (one message, many Agent calls). Each gets the filled
 `reference/build-prompt.md`: the brief's intent and guardrails verbatim, its one direction block,
 its skill and its folder. **The approved direction overrides the skill's own direction step**:
@@ -35,8 +37,9 @@ When all return:
 
 ## Stop
 
-Give the switcher URL (`http://localhost:<port>/#stage-2/0`). Ask which build wins, and whether to
-borrow anything from the others (name the build and the feature).
+Set `decisions.md` to `waiting on: user's winner (+ features to borrow)`. Give the switcher URL
+(`<server>/#stage-2/0`, using the address serve.py printed). Ask which build wins, and whether to
+borrow anything from the others (name the build and the feature). Stop.
 
-Update `decisions.md` with the winner, its skill and borrowed features, in the user's words;
-`stage: 3`, `waiting on: synthesis approval`.
+When the user answers, log the winner, its skill and borrowed features in their words, and only
+then move to Stage 3.

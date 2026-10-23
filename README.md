@@ -42,29 +42,26 @@ claude plugin install unslop@unslop
 Restart Claude Code after installing. To update, run `claude plugin marketplace update unslop`
 and then `claude plugin update unslop@unslop`.
 
-To install from a local clone instead, pass its path: `claude plugin marketplace add /path/to/unslop`.
-
-## Credits
-
-unslop orchestrates two independent skills, which you install separately:
-[impeccable](https://impeccable.style) ([pbakaus/impeccable](https://github.com/pbakaus/impeccable)) and
-[tasteskill](https://github.com/Leonxlnx/taste-skill) (MIT). It does not bundle either one.
-
-## License
-
-MIT. See [LICENSE](LICENSE).
+To install from a local clone instead, run `claude plugin marketplace add /path/to/unslop` and then
+`claude plugin install unslop@unslop`.
 
 ## Use
 
-In any project, ask Claude to "run unslop" or describe the page you want designed. On first run
-the plugin checks for impeccable and tasteskill. If one is missing, it shows you the install command and
-asks before running it.
+In any project, ask Claude to "run unslop" or describe the page you want designed. On first run the
+plugin checks for impeccable and tasteskill. If one is missing, it shows you the install command and
+asks before running it:
 
-All output goes into `design/` in that project:
+```sh
+npx -y impeccable install --project --providers=claude -y
+npx -y skills add https://github.com/Leonxlnx/taste-skill --skill design-taste-frontend --agent claude-code --copy -y
+```
+
+All output goes into `design/` in that project. Nothing is written at the project root except what the
+two skills' own installers add (`.claude/`, `skills-lock.json`) and tasteskill's `.taste-skill/` working folder.
 
 ```
 design/
-  brief.md · decisions.md · index.html (switcher) · manifest.js
+  brief.md · decisions.md · PRODUCT.md · index.html (switcher) · manifest.js
   references/   gallery.html, screenshots, SOURCES.md
   stage-2/      one folder per direction × skill
   stage-3/      iter-1 … iter-3
@@ -72,14 +69,21 @@ design/
   DESIGN.md
 ```
 
-`design/decisions.md` records the current stage, so a new session carries on where the last one stopped.
+`design/decisions.md` records the current stage and what you still need to answer, so a new session
+carries on where the last one stopped.
 
 ## Requirements
 
 - Python 3.9+ to run the scripts and the local server.
-- Node.js to run the two skills' installers and scripts. impeccable needs 18.19 or later; check
-  tasteskill's README for its minimum.
-- A Chromium-family browser, which tasteskill's inspector uses.
+- Node.js to run the two skills' installers and scripts: 18.19+ for impeccable, 22+ for tasteskill's
+  browser inspector.
+- A Chromium-family browser (Chrome, Edge or Chromium), which tasteskill's inspector uses.
+
+## Credits
+
+unslop orchestrates two independent skills, which you install separately:
+[impeccable](https://impeccable.style) ([pbakaus/impeccable](https://github.com/pbakaus/impeccable)) and
+[tasteskill](https://github.com/Leonxlnx/taste-skill) (MIT). It does not bundle either one.
 
 ## Develop
 
@@ -91,3 +95,7 @@ claude plugin validate skills
 ```
 
 The design spec is in `docs/specs/` and the implementation plan is in `docs/plans/`.
+
+## License
+
+MIT. See [LICENSE](LICENSE).

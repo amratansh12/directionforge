@@ -46,8 +46,8 @@ The plugin relies on two skills:
 
 | Skill | Source | Install |
 |---|---|---|
-| impeccable | https://impeccable.style/tutorials/getting-started/ (repo github.com/pbakaus/impeccable) | `npx impeccable install` from the project folder (Node ≥ 18.19), choose Claude Code. Team option: `git submodule add https://github.com/pbakaus/impeccable vendor/impeccable` then `npx impeccable link --source=vendor/impeccable --providers=claude` |
-| tasteskill (`design-taste-frontend`) | github.com/Leonxlnx/taste-skill, path `skills/taste-skill/` (MIT) | Per its README (checked 2026-10-23): `npx skills add https://github.com/Leonxlnx/taste-skill --skill "design-taste-frontend"`, or inside Claude Code `/plugin marketplace add Leonxlnx/taste-skill` then `/plugin install taste-skill@taste-skill` |
+| impeccable | https://impeccable.style/tutorials/getting-started/ (repo github.com/pbakaus/impeccable) | `npx impeccable install` from the project folder (Node ≥ 18.19); unslop runs the non-interactive form `npx -y impeccable install --project --providers=claude -y`. Team option: `git submodule add https://github.com/pbakaus/impeccable vendor/impeccable` then `npx impeccable link --source=vendor/impeccable --providers=claude` |
+| tasteskill (`design-taste-frontend`) | github.com/Leonxlnx/taste-skill, path `skills/taste-skill/` (MIT) | Per its README (checked 2026-10-23): `npx skills add https://github.com/Leonxlnx/taste-skill --skill "design-taste-frontend"` (unslop adds `--agent claude-code --copy -y` to run without prompts), or inside Claude Code `/plugin marketplace add Leonxlnx/taste-skill` then `/plugin install taste-skill@taste-skill` |
 
 Setup behaviour:
 1. Check whether the needed skills are available (project `.claude/skills/`, user `~/.claude/skills/`, or
@@ -139,7 +139,12 @@ clear question. Nothing advances without the user's answer.
   must not read the project's root DESIGN.md/PRODUCT.md as the look to keep (they would pull every
   direction toward the existing UI) unless the user supplied them as the brand in §5, and must
   never create or overwrite files at the project root. Skill working folders (e.g. `.taste-skill/`)
-  are allowed and listed in the final summary. `design/DESIGN.md` uses the format of impeccable's
+  are allowed and listed in the final summary.
+  impeccable reads product context from a PRODUCT.md and sends new builds through an interview
+  (`init`) when there is none. So at intake unslop writes `design/PRODUCT.md` from the approved brief
+  and every impeccable build runs its context step with `--target` inside `design/`, which resolves
+  to that file (verified with impeccable 4.7.0). Builds are code-led (`buildPath: code`, no image
+  comps), and build subagents never ask the user anything; they report gaps. `design/DESIGN.md` uses the format of impeccable's
   documenter, written from the shipped final build.
 - **Content**: realistic synthetic content, labelled as synthetic. Never reference content.
 - **Accessibility**: WCAG 2.2 AA contrast, visible focus, keyboard reachable controls.

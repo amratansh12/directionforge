@@ -1,8 +1,10 @@
 # Stage 4 · Final
 
 1. **Composition list**: turn the user's picks into a numbered list, each line naming the piece and
-   its source iteration, plus where pieces conflict and how you propose to resolve it. Get a yes.
-2. **Build** `design/final/` with the winner's skill, using `build-prompt.md` with the composition
+   its source iteration, plus where pieces conflict and how you propose to resolve it. Set
+   `decisions.md` to `stage: 4 · final`, `waiting on: user approval of composition list`, and wait
+   for a yes; log it.
+2. Set `waiting on: nothing (final build dispatched)`. **Build** `design/final/` with the winner's skill, using `build-prompt.md` with the composition
    list in place of a direction block (keep the direction block for the overall world). Include
    `meta.json`.
 3. Run `manifest.py .`; screenshot desktop and mobile in light and dark (if the design has both);
@@ -18,6 +20,6 @@
 
 ## Hand over
 
-Give the final URL (`#final/0`), the paths to `design/DESIGN.md` and `design/decisions.md`, and a
+Give the final URL (`<server>/#final/0`, the address serve.py printed), the paths to `design/DESIGN.md` and `design/decisions.md`, and a
 list of every file or folder written outside `design/` by the skills (e.g. `.taste-skill/`,
 `.impeccable/`) so the user can keep or remove them.

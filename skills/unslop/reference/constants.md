@@ -23,8 +23,11 @@ data with a small "sample data" label where a reader could mistake it for real d
   build's folder, never edit `design/index.html`, `manifest.js` or the gallery.
 - Do not treat the project's root DESIGN.md or PRODUCT.md as the look to keep, unless the brief
   names them as the brand.
-- Skill working folders the skills create on their own (e.g. `.taste-skill/`, `.impeccable/`) are
-  allowed; list them in your report.
+- Never write or edit any PRODUCT.md or DESIGN.md; `design/PRODUCT.md` is written by the
+  orchestrator, `design/DESIGN.md` only in Stage 4.
+- Skill working folders the skills create on their own (e.g. `.taste-skill/`, `design/.impeccable/`)
+  are allowed; list them in your report.
+- Never ask the user anything; report gaps instead.
 
 ## Tech
 

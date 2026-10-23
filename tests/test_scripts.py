@@ -100,7 +100,56 @@ class ManifestTests(unittest.TestCase):
             self.assertEqual(stages['final']['builds'][0]['path'], 'final/index.html')
 
 
+    def test_manifest_ignores_meta_that_is_not_an_object(self):
+        with tempfile.TemporaryDirectory() as d:
+            project = pathlib.Path(d)
+            make_build(project / 'design' / 'stage-2' / '01-a-impeccable', [1, 2])
+            manifest.build_manifest(project)
+            build = read_manifest(project)['stages'][0]['builds'][0]
+            self.assertEqual(build['title'], '01-a-impeccable')
+
+    def test_manifest_natural_sort(self):
+        with tempfile.TemporaryDirectory() as d:
+            project = pathlib.Path(d)
+            for name in ('iter-10', 'iter-2', 'iter-1'):
+                make_build(project / 'design' / 'stage-3' / name)
+            manifest.build_manifest(project)
+            titles = [b['title'] for b in read_manifest(project)['stages'][1]['builds']]
+            self.assertEqual(titles, ['iter-1', 'iter-2', 'iter-10'])
+
+    def test_manifest_cli_without_design_folder(self):
+        with tempfile.TemporaryDirectory() as d:
+            self.assertEqual(manifest.main(['manifest.py', d]), 1)
+
+
 class CheckDepsTests(unittest.TestCase):
+    def test_installed_plugin_wins_over_stale_cache(self):
+        with tempfile.TemporaryDirectory() as p, tempfile.TemporaryDirectory() as h:
+            project, home = pathlib.Path(p), pathlib.Path(h)
+            plugins = home / '.claude' / 'plugins'
+            for version in ('aaa-old', 'zzz-new'):
+                skill = plugins / 'cache' / 'mkt' / 'taste-skill' / version / 'skills' / 'taste-skill'
+                skill.mkdir(parents=True)
+                (skill / 'SKILL.md').write_text(f'---\nname: design-taste-frontend\nversion: {version}\n---\n')
+            (plugins / 'installed_plugins.json').write_text(json.dumps({'version': 2, 'plugins': {
+                'taste-skill@mkt': [{'scope': 'user', 'version': 'zzz-new',
+                                     'installPath': str(plugins / 'cache' / 'mkt' / 'taste-skill' / 'zzz-new')}]}}))
+            found = check_deps.find_skill('design-taste-frontend', project, home)
+            self.assertEqual(found['version'], 'zzz-new')
+
+    def test_cache_only_skill_is_not_reported_when_plugin_index_exists(self):
+        with tempfile.TemporaryDirectory() as p, tempfile.TemporaryDirectory() as h:
+            project, home = pathlib.Path(p), pathlib.Path(h)
+            plugins = home / '.claude' / 'plugins'
+            skill = plugins / 'cache' / 'mkt' / 'gone' / 'v1' / 'skills' / 'impeccable'
+            skill.mkdir(parents=True)
+            (skill / 'SKILL.md').write_text('---\nname: impeccable\n---\n')
+            (plugins / 'installed_plugins.json').write_text(json.dumps({'version': 2, 'plugins': {}}))
+            self.assertFalse(check_deps.find_skill('impeccable', project, home)['found'])
+
+    def test_cli_rejects_missing_option_value(self):
+        self.assertEqual(check_deps.main(['check_deps.py', '--project']), 2)
+
     def test_find_skill_in_project_then_home(self):
         with tempfile.TemporaryDirectory() as p, tempfile.TemporaryDirectory() as h:
             project, home = pathlib.Path(p), pathlib.Path(h)
@@ -143,6 +192,27 @@ class ServeTests(unittest.TestCase):
             self.assertGreater(serve.free_port(port), port)
         finally:
             busy.close()
+
+    def test_free_port_skips_port_busy_only_on_ipv6(self):
+        if not socket.has_ipv6:
+            self.skipTest('no IPv6')
+        busy = socket.socket(socket.AF_INET6)
+        try:
+            busy.bind(('::1', 0))
+        except OSError:
+            busy.close()
+            self.skipTest('::1 not bindable')
+        busy.listen()
+        port = busy.getsockname()[1]
+        try:
+            self.assertNotEqual(serve.free_port(port), port)
+        finally:
+            busy.close()
+
+    def test_cli_rejects_missing_port_value(self):
+        with tempfile.TemporaryDirectory() as d:
+            (pathlib.Path(d) / 'design').mkdir()
+            self.assertEqual(serve.main(['serve.py', d, '--port']), 2)
 
 
 if __name__ == '__main__':

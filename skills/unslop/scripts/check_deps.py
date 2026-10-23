@@ -19,9 +19,8 @@ BROWSERS = (
     '/Applications/Chromium.app/Contents/MacOS/Chromium',
 )
 INSTALL = {
-    'impeccable': 'npx impeccable install   (run from the project folder; needs Node >= 18.19)',
-    'design-taste-frontend': 'npx skills add https://github.com/Leonxlnx/taste-skill --skill "design-taste-frontend"\n'
-                             '      or in Claude Code: /plugin marketplace add Leonxlnx/taste-skill, then /plugin install taste-skill@taste-skill',
+    'impeccable': 'npx -y impeccable install --project --providers=claude -y   (from the project folder; Node >= 18.19)',
+    'design-taste-frontend': 'npx -y skills add https://github.com/Leonxlnx/taste-skill --skill design-taste-frontend --agent claude-code --copy -y',
 }
 
 
@@ -45,15 +44,43 @@ def result(name, folder):
     return {'name': name, 'found': True, 'where': str(folder), 'version': version}
 
 
+def matching_skill(root, name):
+    for skill_md in sorted(pathlib.Path(root).glob('**/skills/*/SKILL.md')):
+        if skill_md.parent.name == name or frontmatter(skill_md).get('name') == name:
+            return skill_md.parent
+    return None
+
+
+def plugin_install_paths(plugins_dir):
+    """installPath of every installed plugin, or None when there is no plugin index to read."""
+    index = plugins_dir / 'installed_plugins.json'
+    if not index.is_file():
+        return None
+    try:
+        data = json.loads(index.read_text())
+    except ValueError:
+        return None
+    paths = []
+    entries = data.get('plugins', {}) if isinstance(data, dict) else {}
+    for installs in entries.values():
+        for install in installs if isinstance(installs, list) else [installs]:
+            if isinstance(install, dict) and install.get('installPath'):
+                paths.append(install['installPath'])
+    return paths
+
+
 def find_skill(name, project, home):
     for base in (pathlib.Path(project) / '.claude' / 'skills', pathlib.Path(home) / '.claude' / 'skills'):
         if (base / name / 'SKILL.md').is_file():
             return result(name, base / name)
-    cache = pathlib.Path(home) / '.claude' / 'plugins' / 'cache'
-    if cache.is_dir():
-        for skill_md in sorted(cache.glob('**/skills/*/SKILL.md')):
-            if skill_md.parent.name == name or frontmatter(skill_md).get('name') == name:
-                return result(name, skill_md.parent)
+    plugins = pathlib.Path(home) / '.claude' / 'plugins'
+    installed = plugin_install_paths(plugins)
+    # The cache keeps old and uninstalled versions, so only fall back to it without an index.
+    roots = installed if installed is not None else [plugins / 'cache']
+    for root in roots:
+        found = matching_skill(root, name) if pathlib.Path(root).is_dir() else None
+        if found:
+            return result(name, found)
     return result(name, None)
 
 
@@ -88,7 +115,11 @@ def check(project, home):
 def main(argv):
     project = pathlib.Path.cwd()
     if '--project' in argv:
-        project = pathlib.Path(argv[argv.index('--project') + 1])
+        i = argv.index('--project') + 1
+        if i >= len(argv) or argv[i].startswith('--'):
+            print('usage: check_deps.py [--project DIR] [--json]', file=sys.stderr)
+            return 2
+        project = pathlib.Path(argv[i])
     deps = check(project, pathlib.Path.home())
     if '--json' in argv:
         print(json.dumps(deps, indent=2))

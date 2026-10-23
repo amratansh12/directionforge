@@ -74,6 +74,7 @@
     try { localStorage.setItem('ds-theme', root.dataset.theme); } catch (e) {}
   });
 
+  const url = (p) => String(p == null ? '' : p).split('/').map(encodeURIComponent).join('/');
   const esc = (s) => String(s == null ? '' : s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const stages = (window.DS_MANIFEST && window.DS_MANIFEST.stages) || [];
   const stageEl = document.getElementById('stage');
@@ -88,9 +89,14 @@
 
   // State lives in the URL hash (#stage-2/3) so a link opens the same build.
   const state = { stage: null, build: 0 };
-  const m = location.hash.match(/^#([\w-]+)\/(\d+)$/);
-  if (m && stages.some((s) => s.key === m[1] && s.builds[+m[2]])) { state.stage = m[1]; state.build = +m[2]; }
-  if (!state.stage) {
+  function fromHash() {
+    const m = location.hash.match(/^#([\w-]+)\/(\d+)$/);
+    if (m && stages.some((s) => s.key === m[1] && s.builds[+m[2]])) { state.stage = m[1]; state.build = +m[2]; return true; }
+    return false;
+  }
+  // Stage links (#stage-3/0) must work when the page is already open.
+  window.addEventListener('hashchange', () => { if (fromHash()) render(); });
+  if (!fromHash()) {
     // Default to the latest stage that has builds.
     const latest = [...stages].reverse().find((s) => s.builds.length);
     state.stage = latest ? latest.key : (stages[0] && stages[0].key);
@@ -125,10 +131,10 @@
     document.getElementById('thesis').textContent = b.thesis || '';
     let frame = stageEl.querySelector('iframe');
     if (!frame) { stageEl.innerHTML = ''; frame = document.createElement('iframe'); stageEl.appendChild(frame); }
-    if (frame.getAttribute('src') !== b.path) frame.setAttribute('src', b.path);
+    if (frame.getAttribute('src') !== url(b.path)) frame.setAttribute('src', url(b.path));
     frame.title = b.title;
-    openEl.hidden = false; openEl.href = b.path;
-    history.replaceState(null, '', `#${stage.key}/${state.build}`);
+    openEl.hidden = false; openEl.href = url(b.path);
+    if (location.hash !== `#${stage.key}/${state.build}`) history.replaceState(null, '', `#${stage.key}/${state.build}`);
     if (focusHost) { const sel = document.getElementById(focusHost).querySelector('[aria-selected="true"]'); if (sel) sel.focus(); }
   }
   render();

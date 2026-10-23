@@ -14,17 +14,23 @@ and **Never** guardrails bind every build.
 
 1. **Stop after every stage.** End with the switcher link and one clear question. Never start the
    next stage until the user has answered. Silence or "looks good" on one stage is not a pick.
+   `decisions.md` records the stage you are *in* and what the user owes; it moves on only after
+   their answer is logged.
 2. **The user writes the guardrails.** Claude may ask follow-ups but never drafts or rewords the
    Always/Never lists.
 3. **Directions never blend.** Each build commits fully to its own direction block.
 4. **No imagery is generated or sourced.** Image slots are reserved (see `reference/constants.md`).
 5. **Stay inside `design/`.** Never create or overwrite files at the project root.
 6. **Keep `design/decisions.md` current** after every decision, including the `Current stage` block.
+7. **Build subagents never ask the user anything.** They work from the approved brief and report
+   gaps. All questions come from you, in the main conversation.
 
 ## Resume first
 
 If `design/decisions.md` exists, read it before anything else. Its `Current stage` block says where
-the run stopped and what the user owes. Continue from there; do not repeat finished stages.
+the run stopped and what the user owes (the template lists every state). If the user owes an
+answer, ask for it again; if builds were dispatched, check which build folders have `index.html` and
+`meta.json` and dispatch only the missing ones. Do not repeat finished stages.
 
 ## The stages
 
@@ -49,13 +55,13 @@ is dispatched with `reference/build-prompt.md` and obeys `reference/constants.md
 | `python3 -I <skill-dir>/scripts/check_deps.py --project .` | finds impeccable, tasteskill, node, python3, a Chromium browser; prints install commands for missing skills |
 | `python3 -I <skill-dir>/scripts/scaffold.py .` | creates `design/` (brief, decisions, switcher, gallery); never overwrites |
 | `python3 -I <skill-dir>/scripts/manifest.py .` | rebuilds `design/manifest.js` from build folders + `meta.json` |
-| `python3 -I <skill-dir>/scripts/serve.py . --port 8000` | serves `design/` on the first free port ≥ 8000 (run in background) |
+| `python3 -I <skill-dir>/scripts/serve.py . --port 8000` | serves `design/` on the first free port ≥ 8000 (run in background); give the user the address it prints |
 
 ## Output layout
 
 ```
 design/
-  brief.md · decisions.md · index.html (switcher) · manifest.js
+  brief.md · decisions.md · PRODUCT.md (for impeccable) · index.html (switcher) · manifest.js
   references/   screenshots, SOURCES.md, gallery.html, gallery-data.js
   stage-2/      <nn>-<style-slug>-<impeccable|taste>/index.html + meta.json
   stage-3/      iter-<n>/index.html + meta.json
@@ -73,4 +79,5 @@ impeccable **only** for app screens (tasteskill states it is not for dashboards 
 ## Templates
 
 `templates/brief.md`, `templates/decisions.md`, `templates/SOURCES.md` (copied by scaffold),
+`templates/PRODUCT.md` (written at intake to `design/PRODUCT.md` for impeccable),
 `templates/direction-block.md` (Stage 2), `templates/meta.json` (every build).
