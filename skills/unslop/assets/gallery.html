@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:,">
+<title>Reference gallery</title>
+<style>
+  :root {
+    --bg: #f6f6f4; --surface: #ffffff; --ink: #18181b; --muted: #5f5f66; --line: #e2e2de;
+    --accent: #1d3fe0; --accent-ink: #ffffff; --warn: #8a5a00; --chip: #efefeb; --shade: rgba(10,10,12,.86);
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #111113; --surface: #19191c; --ink: #ececee; --muted: #a0a0a8; --line: #2c2c31;
+      --accent: #7f9bff; --accent-ink: #0b0d18; --warn: #e3b55c; --chip: #232327; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #111113; --surface: #19191c; --ink: #ececee; --muted: #a0a0a8; --line: #2c2c31;
+    --accent: #7f9bff; --accent-ink: #0b0d18; --warn: #e3b55c; --chip: #232327; color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.5 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; }
+  header { position: sticky; top: 0; z-index: 2; display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center; padding: 14px 24px; background: var(--bg); border-bottom: 1px solid var(--line); }
+  header h1 { margin: 0; font-size: 17px; font-weight: 600; }
+  .spacer { flex: 1; }
+  .count { font: 13px ui-monospace, "SF Mono", Menlo, monospace; color: var(--muted); }
+  .count.off { color: var(--warn); }
+  button { font: inherit; color: inherit; cursor: pointer; }
+  .btn { padding: 7px 14px; border-radius: 6px; border: 1px solid var(--line); background: var(--surface); }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); font-weight: 600; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  main { max-width: 1400px; margin: 0 auto; padding: 8px 24px 64px; }
+  .intro { color: var(--muted); max-width: 70ch; }
+  section.group { margin: 32px 0; padding-top: 24px; border-top: 1px solid var(--line); }
+  .group-head { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: baseline; }
+  .group-head h2 { margin: 0; font-size: 22px; font-weight: 600; letter-spacing: -.01em; }
+  .group-head .n { font: 12px ui-monospace, Menlo, monospace; color: var(--muted); }
+  .pick { display: inline-flex; gap: 8px; align-items: center; margin-left: auto; padding: 6px 12px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); cursor: pointer; user-select: none; min-height: 32px; }
+  .pick input { width: 16px; height: 16px; accent-color: var(--accent); margin: 0; }
+  .pick:has(input:checked) { border-color: var(--accent); }
+  .feel { margin: 6px 0 10px; max-width: 75ch; color: var(--muted); }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 14px; padding: 0; list-style: none; }
+  .chips li { padding: 2px 8px; border-radius: 4px; background: var(--chip); font-size: 12px; color: var(--muted); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
+  .thumb { display: block; padding: 0; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); overflow: hidden; aspect-ratio: 4 / 3; width: 100%; }
+  .thumb img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; }
+  .missing { display: grid; place-items: center; height: 100%; padding: 12px; font: 12px ui-monospace, Menlo, monospace; color: var(--muted); text-align: center; word-break: break-all; }
+  .empty { margin: 64px auto; max-width: 60ch; color: var(--muted); text-align: center; }
+  dialog { width: min(1200px, 96vw); max-height: 94vh; padding: 0; border: 0; border-radius: 8px; background: var(--surface); color: var(--ink); }
+  dialog::backdrop { background: var(--shade); }
+  .lb { display: grid; grid-template-rows: auto 1fr auto; max-height: 94vh; }
+  .lb-bar { display: flex; gap: 8px; align-items: center; padding: 10px 14px; border-bottom: 1px solid var(--line); }
+  .lb-bar strong { font-weight: 600; }
+  .lb-img { overflow: auto; background: var(--bg); }
+  .lb-img img { display: block; max-width: 100%; margin: 0 auto; }
+  .lb-cap { padding: 10px 14px; font-size: 13px; color: var(--muted); border-top: 1px solid var(--line); }
+  .lb-cap a { color: var(--accent); }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  @media (max-width: 600px) { header, main { padding-left: 16px; padding-right: 16px; } .pick { margin-left: 0; } }
+  @media (prefers-reduced-motion: no-preference) { .thumb { transition: border-color .15s; } .thumb:hover { border-color: var(--muted); } }
+</style>
+</head>
+<body>
+<header>
+  <h1 id="title">Reference gallery</h1>
+  <span class="spacer"></span>
+  <span class="count" id="count" aria-live="polite"></span>
+  <button class="btn primary" id="copy" type="button">Copy my picks</button>
+  <button class="btn" id="theme" type="button" aria-label="Switch colour theme">Theme</button>
+</header>
+<main id="main"></main>
+<dialog id="lb" aria-label="Reference preview">
+  <div class="lb">
+    <div class="lb-bar">
+      <strong id="lb-title"></strong><span class="spacer"></span>
+      <button class="btn" type="button" id="lb-prev" aria-label="Previous reference">←</button>
+      <button class="btn" type="button" id="lb-next" aria-label="Next reference">→</button>
+      <button class="btn" type="button" id="lb-close">Close</button>
+    </div>
+    <div class="lb-img" id="lb-img"></div>
+    <div class="lb-cap" id="lb-cap"></div>
+  </div>
+</dialog>
+<p class="sr" id="status" aria-live="polite"></p>
+<script src="gallery-data.js" onerror="window.DS_GALLERY = window.DS_GALLERY || null"></script>
+<script>
+(function () {
+  const data = window.DS_GALLERY;
+  const main = document.getElementById('main');
+  const countEl = document.getElementById('count');
+  const status = document.getElementById('status');
+  const esc = (s) => String(s == null ? '' : s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+  // Theme: per-viewer convenience only.
+  const root = document.documentElement;
+  try { const t = localStorage.getItem('ds-theme'); if (t) root.dataset.theme = t; } catch (e) {}
+  document.getElementById('theme').addEventListener('click', () => {
+    const dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    root.dataset.theme = dark ? 'light' : 'dark';
+    try { localStorage.setItem('ds-theme', root.dataset.theme); } catch (e) {}
+  });
+
+  if (!data || !Array.isArray(data.groups) || !data.groups.length) {
+    main.innerHTML = '<p class="empty">No references yet. unslop writes <code>gallery-data.js</code> next to this page once the references are grouped.</p>';
+    document.getElementById('copy').disabled = true;
+    return;
+  }
+
+  const target = data.pick || 5;
+  if (data.title) { document.getElementById('title').textContent = data.title; document.title = data.title; }
+  const flat = [];
+  main.innerHTML = (data.intro ? `<p class="intro">${esc(data.intro)}</p>` : '') + data.groups.map((g, gi) => {
+    const imgs = (g.images || []).map((im) => {
+      const i = flat.push({ ...im, group: g.name }) - 1;
+      return `<button class="thumb" type="button" data-i="${i}" aria-label="Open ${esc(im.note || im.file)} (${esc(g.name)})"><img src="${esc(im.file)}" alt="" loading="lazy"></button>`;
+    }).join('');
+    return `<section class="group" aria-labelledby="g${gi}">
+      <div class="group-head">
+        <h2 id="g${gi}">${esc(g.name)}</h2><span class="n">${(g.images || []).length} refs</span>
+        <label class="pick"><input type="checkbox" data-name="${esc(g.name)}"> Pick this style</label>
+      </div>
+      ${g.feel ? `<p class="feel">${esc(g.feel)}</p>` : ''}
+      ${(g.vocabulary || []).length ? `<ul class="chips" aria-label="Visual vocabulary">${g.vocabulary.map((v) => `<li>${esc(v)}</li>`).join('')}</ul>` : ''}
+      <div class="grid">${imgs}</div>
+    </section>`;
+  }).join('');
+
+  function missing(img) {
+    const file = img.getAttribute('src');
+    img.replaceWith(Object.assign(document.createElement('span'), { className: 'missing', textContent: `missing: ${file}` }));
+  }
+  main.querySelectorAll('img').forEach((img) => {
+    img.addEventListener('error', () => missing(img), { once: true });
+    if (img.complete && img.naturalWidth === 0 && img.getAttribute('src')) missing(img);
+  });
+
+  const picks = () => [...main.querySelectorAll('.pick input:checked')].map((i) => i.dataset.name);
+  function updateCount() {
+    const n = picks().length;
+    countEl.textContent = `${n} of ${target} picked`;
+    countEl.classList.toggle('off', n !== target && n > 0);
+  }
+  main.addEventListener('change', updateCount);
+  updateCount();
+
+  document.getElementById('copy').addEventListener('click', async () => {
+    const p = picks();
+    if (!p.length) { status.textContent = 'Pick at least one style first.'; countEl.textContent = 'Pick at least one style'; countEl.classList.add('off'); return; }
+    const text = `Picks: ${p.join(', ')}`;
+    let ok = false;
+    try { await navigator.clipboard.writeText(text); ok = true; } catch (e) {
+      const ta = Object.assign(document.createElement('textarea'), { value: text });
+      document.body.appendChild(ta); ta.select();
+      try { ok = document.execCommand('copy'); } catch (e2) {}
+      ta.remove();
+    }
+    status.textContent = ok ? `Copied: ${text}` : `Copy failed. Your picks: ${text}`;
+    countEl.textContent = ok ? 'Copied. Paste it back to Claude.' : text;
+    setTimeout(updateCount, 2500);
+  });
+
+  // Lightbox
+  const lb = document.getElementById('lb');
+  let cur = 0, opener = null;
+  function show(i) {
+    cur = (i + flat.length) % flat.length;
+    const it = flat[cur];
+    document.getElementById('lb-title').textContent = `${it.group} · ${cur + 1}/${flat.length}`;
+    const box = document.getElementById('lb-img');
+    box.innerHTML = '';
+    const img = Object.assign(document.createElement('img'), { src: it.file, alt: it.note || it.file });
+    img.addEventListener('error', () => { box.innerHTML = `<p class="missing">missing: ${esc(it.file)}</p>`; }, { once: true });
+    box.appendChild(img);
+    const src = it.source ? (/^https?:\/\//.test(it.source) ? `<a href="${esc(it.source)}" target="_blank" rel="noopener">${esc(it.source)}</a>` : esc(it.source)) : '';
+    document.getElementById('lb-cap').innerHTML = [esc(it.note), src].filter(Boolean).join(' · ') || esc(it.file);
+  }
+  main.addEventListener('click', (e) => {
+    const t = e.target.closest('.thumb');
+    if (!t) return;
+    opener = t; show(+t.dataset.i); lb.showModal();
+  });
+  document.getElementById('lb-prev').addEventListener('click', () => show(cur - 1));
+  document.getElementById('lb-next').addEventListener('click', () => show(cur + 1));
+  document.getElementById('lb-close').addEventListener('click', () => lb.close());
+  lb.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') { e.preventDefault(); show(cur - 1); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); show(cur + 1); }
+  });
+  lb.addEventListener('click', (e) => { if (e.target === lb) lb.close(); });
+  lb.addEventListener('close', () => { if (opener) opener.focus(); });
+})();
+</script>
+</body>
+</html>

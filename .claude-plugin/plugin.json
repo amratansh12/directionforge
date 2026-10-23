@@ -1,0 +1,20 @@
+{
+  "name": "unslop",
+  "description": "Make AI-built UI look designed, not AI-made. A reference-led process for Claude Code: a style-grouped reference gallery, distinct directions built with impeccable and tasteskill, iterations on your pick, and a final build with DESIGN.md.",
+  "version": "0.1.0",
+  "author": {
+    "name": "amratansh12"
+  },
+  "homepage": "https://github.com/amratansh12/unslop",
+  "repository": "https://github.com/amratansh12/unslop",
+  "license": "MIT",
+  "keywords": [
+    "design",
+    "ui",
+    "ai-slop",
+    "anti-slop",
+    "prototypes",
+    "impeccable",
+    "tasteskill"
+  ]
+}

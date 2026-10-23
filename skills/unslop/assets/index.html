@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:,">
+<title>unslop</title>
+<style>
+  :root {
+    --bg: #f6f6f4; --surface: #ffffff; --ink: #18181b; --muted: #5f5f66; --line: #e2e2de;
+    --accent: #1d3fe0; --accent-ink: #ffffff; --chip: #efefeb;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #111113; --surface: #19191c; --ink: #ececee; --muted: #a0a0a8; --line: #2c2c31;
+      --accent: #7f9bff; --accent-ink: #0b0d18; --chip: #232327; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #111113; --surface: #19191c; --ink: #ececee; --muted: #a0a0a8; --line: #2c2c31;
+    --accent: #7f9bff; --accent-ink: #0b0d18; --chip: #232327; color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body { margin: 0; display: grid; grid-template-rows: auto auto 1fr; background: var(--bg); color: var(--ink); font: 14px/1.45 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; }
+  header { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; padding: 10px 16px; border-bottom: 1px solid var(--line); }
+  header h1 { margin: 0 8px 0 0; font-size: 15px; font-weight: 600; }
+  .spacer { flex: 1; }
+  a { color: var(--accent); }
+  button { font: inherit; color: inherit; cursor: pointer; }
+  .btn { padding: 6px 12px; border-radius: 6px; border: 1px solid var(--line); background: var(--surface); text-decoration: none; color: var(--ink); display: inline-block; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .row { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; padding: 8px 16px; border-bottom: 1px solid var(--line); }
+  .label { font-size: 12px; color: var(--muted); min-width: 56px; }
+  [role="tablist"] { display: flex; flex-wrap: wrap; gap: 4px; }
+  [role="tab"] { padding: 5px 10px; min-height: 30px; border: 1px solid transparent; border-radius: 6px; background: transparent; }
+  [role="tab"]:hover { background: var(--chip); }
+  [role="tab"][aria-selected="true"] { background: var(--accent); color: var(--accent-ink); }
+  [role="tab"][disabled] { opacity: .45; cursor: default; }
+  [role="tab"] .n { font: 11px ui-monospace, Menlo, monospace; opacity: .75; margin-left: 4px; }
+  .skill { font: 11px ui-monospace, Menlo, monospace; padding: 1px 6px; border-radius: 4px; background: var(--chip); color: var(--muted); margin-left: 6px; }
+  [aria-selected="true"] .skill { background: transparent; color: inherit; }
+  .thesis { color: var(--muted); max-width: 90ch; }
+  .stage { position: relative; min-height: 0; }
+  iframe { display: block; width: 100%; height: 100%; border: 0; background: #fff; }
+  .empty { display: grid; place-items: center; height: 100%; padding: 24px; color: var(--muted); text-align: center; }
+  .empty code { font: 12px ui-monospace, Menlo, monospace; }
+  @media (max-width: 600px) { .label { min-width: 0; } }
+</style>
+</head>
+<body>
+<header>
+  <h1 id="title">unslop</h1>
+  <a class="btn" href="references/gallery.html">Reference gallery</a>
+  <span class="spacer"></span>
+  <a class="btn" id="open" href="#" target="_blank" rel="noopener" hidden>Open in new tab</a>
+  <button class="btn" id="theme" type="button" aria-label="Switch colour theme">Theme</button>
+</header>
+<div>
+  <div class="row"><span class="label" id="l-stage">Stage</span><div role="tablist" aria-labelledby="l-stage" id="stages"></div></div>
+  <div class="row" id="row-builds"><span class="label" id="l-build">Build</span><div role="tablist" aria-labelledby="l-build" id="builds"></div></div>
+  <div class="row" id="row-thesis" hidden><span class="thesis" id="thesis"></span></div>
+</div>
+<div class="stage" id="stage"></div>
+<script src="manifest.js" onerror="window.DS_MANIFEST = window.DS_MANIFEST || null"></script>
+<script>
+(function () {
+  const root = document.documentElement;
+  try { const t = localStorage.getItem('ds-theme'); if (t) root.dataset.theme = t; } catch (e) {}
+  document.getElementById('theme').addEventListener('click', () => {
+    const dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    root.dataset.theme = dark ? 'light' : 'dark';
+    try { localStorage.setItem('ds-theme', root.dataset.theme); } catch (e) {}
+  });
+
+  const esc = (s) => String(s == null ? '' : s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const stages = (window.DS_MANIFEST && window.DS_MANIFEST.stages) || [];
+  const stageEl = document.getElementById('stage');
+  const openEl = document.getElementById('open');
+  const thesisRow = document.getElementById('row-thesis');
+  const total = stages.reduce((n, s) => n + s.builds.length, 0);
+
+  if (!total) {
+    document.getElementById('row-builds').hidden = true;
+    stageEl.innerHTML = '<div class="empty"><p>No builds yet.<br>After a stage, unslop runs <code>scripts/manifest.py</code> and they appear here.</p></div>';
+  }
+
+  // State lives in the URL hash (#stage-2/3) so a link opens the same build.
+  const state = { stage: null, build: 0 };
+  const m = location.hash.match(/^#([\w-]+)\/(\d+)$/);
+  if (m && stages.some((s) => s.key === m[1] && s.builds[+m[2]])) { state.stage = m[1]; state.build = +m[2]; }
+  if (!state.stage) {
+    // Default to the latest stage that has builds.
+    const latest = [...stages].reverse().find((s) => s.builds.length);
+    state.stage = latest ? latest.key : (stages[0] && stages[0].key);
+  }
+
+  function tabs(host, items, selected, onPick) {
+    host.innerHTML = items.map((it, i) => `<button type="button" role="tab" aria-selected="${i === selected}" tabindex="${i === selected ? 0 : -1}" ${it.disabled ? 'disabled' : ''} data-i="${i}">${it.html}</button>`).join('');
+    host.onclick = (e) => { const b = e.target.closest('[role="tab"]'); if (b && !b.disabled) onPick(+b.dataset.i, true); };
+    host.onkeydown = (e) => {
+      if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(e.key)) return;
+      e.preventDefault();
+      const enabled = items.map((it, i) => (it.disabled ? -1 : i)).filter((i) => i >= 0);
+      const at = enabled.indexOf(selected);
+      const next = e.key === 'Home' ? enabled[0] : e.key === 'End' ? enabled[enabled.length - 1]
+        : enabled[(at + (e.key === 'ArrowRight' ? 1 : -1) + enabled.length) % enabled.length];
+      onPick(next, true);
+    };
+  }
+
+  function render(focusHost) {
+    const si = Math.max(0, stages.findIndex((s) => s.key === state.stage));
+    const stage = stages[si];
+    tabs(document.getElementById('stages'), stages.map((s) => ({ html: `${esc(s.label)}<span class="n">${s.builds.length}</span>`, disabled: !s.builds.length })), si, (i, user) => {
+      state.stage = stages[i].key; state.build = 0; render(user && 'stages');
+    });
+    if (!stage || !stage.builds.length) return;
+    const b = stage.builds[state.build] || stage.builds[0];
+    tabs(document.getElementById('builds'), stage.builds.map((x) => ({ html: `${esc(x.title)}${x.skill ? `<span class="skill">${esc(x.skill)}</span>` : ''}` })), state.build, (i, user) => {
+      state.build = i; render(user && 'builds');
+    });
+    thesisRow.hidden = !b.thesis;
+    document.getElementById('thesis').textContent = b.thesis || '';
+    let frame = stageEl.querySelector('iframe');
+    if (!frame) { stageEl.innerHTML = ''; frame = document.createElement('iframe'); stageEl.appendChild(frame); }
+    if (frame.getAttribute('src') !== b.path) frame.setAttribute('src', b.path);
+    frame.title = b.title;
+    openEl.hidden = false; openEl.href = b.path;
+    history.replaceState(null, '', `#${stage.key}/${state.build}`);
+    if (focusHost) { const sel = document.getElementById(focusHost).querySelector('[aria-selected="true"]'); if (sel) sel.focus(); }
+  }
+  render();
+})();
+</script>
+</body>
+</html>
