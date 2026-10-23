@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kilnward · Bookings, firings and shelves for small ceramic studios</title>
+<meta name="description" content="Kilnward keeps open-studio bookings, classes, kiln loads and members' shelves together for small ceramic studios.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&family=Literata:opsz,wght@7..72,400;7..72,500&display=swap">
+<link rel="stylesheet" href="styles.css">
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="bar">
+  <a class="wordmark" href="#top" aria-label="Kilnward, home">Kilnward</a>
+  <nav aria-label="Main">
+    <ul>
+      <li><a href="#bookings">Bookings</a></li>
+      <li><a href="#kilns">Kilns</a></li>
+      <li><a href="#shelves">Shelves</a></li>
+    </ul>
+  </nav>
+  <a class="btn btn-small" href="#start-trial">Start free trial</a>
+</header>
+
+<main id="main">
+
+<!-- HERO: full-viewport scene with the booking panel floating over it -->
+<section class="hero" id="top" aria-labelledby="hero-title">
+  <div class="hero-scene" data-slot="The studio at dusk: wheels and shelves of drying pots in warm light. Full-bleed 16:9, cover, centred bottom." role="img" aria-label="The studio at dusk, wheels and shelves in warm light"></div>
+  <div class="hero-scrim" aria-hidden="true"></div>
+
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <h1 id="hero-title" class="rise">The studio week, in&nbsp;one&nbsp;place</h1>
+      <p class="lead rise">Kilnward keeps open-studio bookings, classes, kiln loads and members’ shelves together for small studios, so the timetable, the firing log and the whiteboard by the kiln finally agree.</p>
+      <p class="hint rise">Try the panel: pick a day and a session, and watch the next firing fill.</p>
+    </div>
+
+    <form class="booker rise" data-ui id="booker" aria-labelledby="booker-title" onsubmit="return false">
+      <div class="booker-head">
+        <p id="booker-title" class="booker-title">Book a place</p>
+        <p class="sample">Sample data · week of 26 Oct</p>
+      </div>
+
+      <fieldset class="days">
+        <legend>Day</legend>
+        <div class="day-row" id="day-row">
+          <label class="day"><input type="radio" name="day" value="mon"><span><b>Mon</b> 26</span></label>
+          <label class="day"><input type="radio" name="day" value="tue"><span><b>Tue</b> 27</span></label>
+          <label class="day"><input type="radio" name="day" value="wed"><span><b>Wed</b> 28</span></label>
+          <label class="day"><input type="radio" name="day" value="thu" checked><span><b>Thu</b> 29</span></label>
+          <label class="day"><input type="radio" name="day" value="fri"><span><b>Fri</b> 30</span></label>
+          <label class="day"><input type="radio" name="day" value="sat"><span><b>Sat</b> 31</span></label>
+          <label class="day"><input type="radio" name="day" value="sun"><span><b>Sun</b> 1</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="slots">
+        <legend>Session</legend>
+        <div id="slot-list">
+          <label class="slot"><input type="radio" name="slot" value="0" checked>
+            <span class="slot-main"><span class="slot-name">Open studio</span><span class="slot-time">10:00–13:00</span></span>
+            <span class="slot-cap"><span class="cap-text">5 of 10 wheels taken</span><span class="cap-bar" aria-hidden="true"><i style="width:50%"></i></span></span>
+          </label>
+          <label class="slot"><input type="radio" name="slot" value="1">
+            <span class="slot-main"><span class="slot-name">Open studio</span><span class="slot-time">18:00–21:00</span></span>
+            <span class="slot-cap"><span class="cap-text">9 of 10 wheels taken</span><span class="cap-bar" aria-hidden="true"><i style="width:90%"></i></span></span>
+          </label>
+        </div>
+      </fieldset>
+
+      <div class="pieces">
+        <span class="pieces-label" id="pieces-label">Pieces going to the kiln</span>
+        <div class="stepper" role="group" aria-labelledby="pieces-label">
+          <button type="button" class="step" id="pieces-down" aria-label="One piece fewer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10" /></svg></button>
+          <output id="pieces-out" aria-live="polite">3</output>
+          <button type="button" class="step" id="pieces-up" aria-label="One piece more"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M8 3v10" /></svg></button>
+        </div>
+      </div>
+
+      <div class="kiln-meter">
+        <p class="kiln-line" id="kiln-line"><b>Kiln 2</b> · bisque to cone 04 · fires Fri 30, 19:00</p>
+        <div class="meter" aria-hidden="true"><i class="meter-base" id="meter-base" style="width:61.1%"></i><i class="meter-add" id="meter-add" style="width:3.3%"></i></div>
+        <p class="kiln-sum" id="kiln-sum" aria-live="polite">58 of 90 piece spaces with this booking (was 55)</p>
+      </div>
+
+      <p class="booker-summary" id="booker-summary" aria-live="polite">Thu 29, open studio 10:00–13:00: your place makes it 6 of 10 wheels.</p>
+
+      <a class="btn btn-block" href="#start-trial">Start free trial</a>
+      <p class="booker-foot">In Kilnward your members book from a link like this one.</p>
+    </form>
+  </div>
+</section>
+
+<!-- BOOKINGS: light band -->
+<section class="band light" id="bookings" aria-labelledby="bookings-title">
+  <div class="wrap split-head">
+    <h2 id="bookings-title" class="h2 rise">Members book, you stop&nbsp;counting</h2>
+    <div class="copy rise">
+      <p>Open studio, classes and glaze nights share the same wheels and tables. Members book their own place from a link, see what is full and join the waitlist when Saturday goes, which it always does.</p>
+      <p>You see the whole week at once, firings included, instead of scrolling back through the group chat.</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="panel week rise" data-ui aria-label="Booking week, sample data">
+      <div class="panel-head">
+        <p class="panel-title">Week of 26 October</p>
+        <p class="sample">Sample data</p>
+      </div>
+      <div class="week-grid">
+        <div class="wday"><p class="wday-name">Mon 26</p>
+          <div class="sess"><span class="s-name">Open studio</span><span class="s-time">10:00–13:00</span><span class="s-cap">6 of 10 wheels</span><span class="cap-bar"><i style="width:60%"></i></span></div>
+          <div class="sess"><span class="s-name">Beginners’ wheel, week 3</span><span class="s-time">18:30–20:30</span><span class="s-cap">8 of 8 seats · full</span><span class="cap-bar"><i style="width:100%"></i></span></div>
+        </div>
+        <div class="wday"><p class="wday-name">Tue 27</p>
+          <div class="sess"><span class="s-name">Open studio</span><span class="s-time">10:00–13:00</span><span class="s-cap">4 of 10 wheels</span><span class="cap-bar"><i style="width:40%"></i></span></div>
+          <div class="sess"><span class="s-name">Handbuilding</span><span class="s-time">18:30–20:30</span><span class="s-cap">5 of 8 seats</span><span class="cap-bar"><i style="width:62.5%"></i></span></div>
+          <div class="sess fire"><span class="s-name">Kiln 1 glaze, cone 6</span><span class="s-time">fires 20:00</span><span class="s-cap">52 of 60 spaces</span></div>
+        </div>
+        <div class="wday"><p class="wday-name">Wed 28</p>
+          <div class="sess"><span class="s-name">Open studio</span><span class="s-time">13:00–16:00</span><span class="s-cap">7 of 10 wheels</span><span class="cap-bar"><i style="width:70%"></i></span></div>
+          <div class="sess"><span class="s-name">Glaze night</span><span class="s-time">19:00–21:30</span><span class="s-cap">9 of 12 seats</span><span class="cap-bar"><i style="width:75%"></i></span></div>
+          <div class="sess fire"><span class="s-name">Kiln 2 bisque, cone 04</span><span class="s-time">fires 19:00</span><span class="s-cap">81 of 90 spaces</span></div>
+        </div>
+        <div class="wday"><p class="wday-name">Thu 29</p>
+          <div class="sess"><span class="s-name">Open studio</span><span class="s-time">10:00–13:00</span><span class="s-cap">5 of 10 wheels</span><span class="cap-bar"><i style="width:50%"></i></span></div>
+          <div class="sess"><span class="s-name">Open studio</span><span class="s-time">18:00–21:00</span><span class="s-cap">9 of 10 wheels</span><span class="cap-bar"><i style="width:90%"></i></span></div>
+        </div>
+        <div class="wday"><p class="wday-name">Fri 30</p>
+          <div class="sess"><span class="s-name">Kids’ clay</span><span class="s-time">16:00–17:30</span><span class="s-cap">6 of 8 seats</span><span class="cap-bar"><i style="width:75%"></i></span></div>
+          <div class="sess fire"><span class="s-name">Kiln 2 bisque, cone 04</span><span class="s-time">fires 19:00</span><span class="s-cap">55 of 90 spaces</span></div>
+        </div>
+        <div class="wday"><p class="wday-name">Sat 31</p>
+          <div class="sess"><span class="s-name">Taster session</span><span class="s-time">10:00–12:00</span><span class="s-cap">8 of 8 seats · full</span><span class="cap-bar"><i style="width:100%"></i></span></div>
+          <div class="sess"><span class="s-name">Open studio</span><span class="s-time">13:00–17:00</span><span class="s-cap">10 of 10 · 2 waiting</span><span class="cap-bar"><i style="width:100%"></i></span></div>
+          <div class="sess fire"><span class="s-name">Kiln 3 glaze tests</span><span class="s-time">fires 09:00</span><span class="s-cap">14 of 20 tiles</span></div>
+        </div>
+        <div class="wday"><p class="wday-name">Sun 1</p>
+          <div class="sess"><span class="s-name">Open studio</span><span class="s-time">11:00–15:00</span><span class="s-cap">3 of 10 wheels</span><span class="cap-bar"><i style="width:30%"></i></span></div>
+          <div class="sess task"><span class="s-name">Unload Kiln 2</span><span class="s-time">10:00</span><span class="s-cap">Marco</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KILNS: dark band -->
+<section class="band dark" id="kilns" aria-labelledby="kilns-title">
+  <div class="wrap kiln-top">
+    <div class="kiln-copy">
+      <h2 id="kilns-title" class="h2 rise">Know the load before you&nbsp;load</h2>
+      <div class="copy rise">
+        <p>Each booking carries its pieces to the firing they will go into, so on Tuesday you can see whether Friday’s bisque is half empty or already spoken for.</p>
+        <p>Cone, program, who loaded it and when it is cool enough to open sit on one line, where the next person on shift will find them.</p>
+      </div>
+    </div>
+    <figure class="kiln-figure rise">
+      <img class="slot-img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="1200" height="900" alt="A kiln being unloaded, bisqued bowls lifted from the top shelf" data-slot="A kiln being unloaded: hands lifting bisqued bowls from the top shelf. 4:3 photograph.">
+      <figcaption>Kiln 2 coming out of a bisque, Sunday morning.</figcaption>
+    </figure>
+  </div>
+
+  <div class="wrap">
+    <div class="panel panel-dark rise" data-ui aria-label="Firing schedule, sample data">
+      <div class="panel-head">
+        <p class="panel-title">Firing schedule</p>
+        <p class="sample">Sample data</p>
+      </div>
+      <div class="table-scroll">
+        <table class="firings">
+          <thead>
+            <tr><th scope="col">Kiln</th><th scope="col">Firing</th><th scope="col">Starts</th><th scope="col">Load</th><th scope="col">Safe to open</th><th scope="col">Loaded by</th><th scope="col">Status</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Kiln 1</td><td>Glaze, cone 6</td><td>Tue 27, 20:00</td><td><span class="load"><span class="cap-bar"><i style="width:86.7%"></i></span>52 of 60</span></td><td>Thu 29, 09:00</td><td>Ines</td><td>Unloaded</td></tr>
+            <tr><td>Kiln 2</td><td>Bisque, cone 04</td><td>Wed 28, 19:00</td><td><span class="load"><span class="cap-bar"><i style="width:90%"></i></span>81 of 90</span></td><td>Fri 30, 08:00</td><td>Marco</td><td>Cooling</td></tr>
+            <tr class="is-next"><td>Kiln 2</td><td>Bisque, cone 04</td><td>Fri 30, 19:00</td><td><span class="load"><span class="cap-bar"><i style="width:61.1%"></i></span>55 of 90</span></td><td>Sun 1, 10:00</td><td>Ines</td><td>Taking bookings</td></tr>
+            <tr><td>Kiln 3</td><td>Glaze tests, cone 6</td><td>Sat 31, 09:00</td><td><span class="load"><span class="cap-bar"><i style="width:70%"></i></span>14 of 20</span></td><td>Sat 31, 18:00</td><td>Priya</td><td>Planned</td></tr>
+            <tr><td>Kiln 1</td><td>Glaze, cone 6</td><td>Tue 3, 20:00</td><td><span class="load"><span class="cap-bar"><i style="width:40%"></i></span>24 of 60</span></td><td>Thu 5, 09:00</td><td>Unassigned</td><td>Planned</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SHELVES: light band -->
+<section class="band light" id="shelves" aria-labelledby="shelves-title">
+  <div class="wrap shelf-layout">
+    <div class="panel shelf-panel rise" data-ui aria-label="Member shelves, sample data">
+      <div class="panel-head">
+        <p class="panel-title">Member shelves</p>
+        <p class="sample">Sample data</p>
+      </div>
+      <div class="table-scroll">
+        <table class="shelf-table">
+          <thead>
+            <tr><th scope="col">Member</th><th scope="col">Shelf</th><th scope="col">Work</th><th scope="col">Stage</th><th scope="col">Since</th></tr>
+          </thead>
+          <tbody>
+            <tr class="is-late"><td>Ama Boateng</td><td>B3</td><td>4 mugs</td><td>Ready to collect <span class="flag">over 6 weeks, reminder sent</span></td><td>12 Sep</td></tr>
+            <tr><td>Declan Murray</td><td>C4</td><td>2 vases</td><td>Bisqued, waiting for glaze</td><td>9 Oct</td></tr>
+            <tr><td>Mei Lin Ho</td><td>A4</td><td>6 tiles</td><td>Bisqued, waiting for glaze</td><td>15 Oct</td></tr>
+            <tr><td>Hana Sato</td><td>A2</td><td>5 cups</td><td>Booked into Kiln 2, Fri 30</td><td>21 Oct</td></tr>
+            <tr><td>Sam Whitcombe</td><td>B1</td><td>3 plates</td><td>Ready to collect</td><td>22 Oct</td></tr>
+            <tr><td>Joel Pietersen</td><td>A1</td><td>2 bowls</td><td>Greenware, drying</td><td>24 Oct</td></tr>
+            <tr><td>Rosa Delgado</td><td>C2</td><td>1 planter</td><td>In Kiln 1, glaze</td><td>27 Oct</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="shelf-copy">
+      <h2 id="shelves-title" class="h2 rise">Every pot has an&nbsp;owner</h2>
+      <div class="copy rise">
+        <p>Members see where their work is, from greenware drying on the rack to ready to collect. You see who has had four mugs on shelf B3 since September.</p>
+        <p>Kilnward sends the polite reminder, so the shelf clears and you never have to write that message yourself.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSE: dark band -->
+<section class="band dark close" id="start-trial" aria-labelledby="close-title">
+  <div class="wrap close-grid">
+    <h2 id="close-title" class="h2 h2-big rise">Retire the whiteboard</h2>
+    <div class="close-copy rise">
+      <p>Clear the board by the kiln for good. Bring your member list and this week’s timetable. Set up your kilns and shelves, share the booking link, and run next week from one page.</p>
+      <a class="btn btn-large" href="#start-trial">Start free trial</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-row">
+    <ul class="foot-links">
+      <li><a href="#bookings">Bookings</a></li>
+      <li><a href="#kilns">Kilns</a></li>
+      <li><a href="#shelves">Shelves</a></li>
+      <li><a href="#top">Back to top</a></li>
+    </ul>
+    <p class="foot-note">Kilnward is a design prototype. Every name, date and figure on this page is sample data.</p>
+  </div>
+  <svg class="foot-mark" viewBox="0 0 1000 196" aria-hidden="true" focusable="false"><text x="0" y="192" textLength="1000" lengthAdjust="spacing">Kilnward</text></svg>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

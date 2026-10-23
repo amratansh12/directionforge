@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kilnward · The studio week on one board</title>
+<meta name="description" content="Kilnward puts class and open-studio bookings, kiln loads, firing schedules and member shelves for small ceramic studios on one board.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="masthead">
+  <a class="wordmark reg" href="#top" aria-label="Kilnward, back to top">Kilnward</a>
+  <nav aria-label="Page sections">
+    <ul>
+      <li><a href="#timetable">Timetable</a></li>
+      <li><a href="#kiln">Kiln</a></li>
+      <li><a href="#shelves">Shelves</a></li>
+    </ul>
+  </nav>
+  <a class="btn btn-small" href="#start"><span>Start free trial</span></a>
+</header>
+
+<main id="main">
+
+  <!-- Hero flyer -->
+  <section class="flyer flyer-hero" id="top" aria-labelledby="hero-title">
+    <svg class="pin" viewBox="0 0 28 28" aria-hidden="true"><circle cx="15" cy="15" r="9" fill="#E5482F"/><circle cx="13" cy="13" r="9" fill="none" stroke="#1C1B1A" stroke-width="2"/><circle cx="10" cy="10" r="2.2" fill="#1C1B1A"/></svg>
+    <div class="hero-copy">
+      <h1 id="hero-title" class="display reg reg-settle">The whole studio week, on one&nbsp;board.</h1>
+      <p class="hero-list">Classes · open studio · kiln loads · firings · shelves</p>
+      <p class="lede">Kilnward replaces the booking spreadsheet, the group chat and the whiteboard by the kiln. Members book their own wheel time, you plan each load before it’s packed, and everyone hears when their pots come out.</p>
+      <div class="actions">
+        <a class="btn" href="#start"><span>Start free trial</span></a>
+        <a class="textlink" href="#timetable">See a sample week</a>
+      </div>
+    </div>
+    <figure class="hero-print">
+      <img data-slot="hands centring clay on a wheel, printed as a two-tone halftone (ink + red-orange)"
+           src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 4'%3E%3Crect width='3' height='4' fill='%23F6BFB3'/%3E%3C/svg%3E"
+           width="600" height="800" alt="Hands centring a lump of clay on a potter’s wheel.">
+    </figure>
+  </section>
+
+  <!-- Timetable flyer -->
+  <section class="flyer flyer-timetable" id="timetable" aria-labelledby="tt-title">
+    <svg class="pin pin-left" viewBox="0 0 28 28" aria-hidden="true"><circle cx="15" cy="15" r="9" fill="#E5482F"/><circle cx="13" cy="13" r="9" fill="none" stroke="#1C1B1A" stroke-width="2"/><circle cx="10" cy="10" r="2.2" fill="#1C1B1A"/></svg>
+    <svg class="pin pin-right" viewBox="0 0 28 28" aria-hidden="true"><circle cx="15" cy="15" r="9" fill="#E5482F"/><circle cx="13" cy="13" r="9" fill="none" stroke="#1C1B1A" stroke-width="2"/><circle cx="10" cy="10" r="2.2" fill="#1C1B1A"/></svg>
+    <p class="stamp">Sample data</p>
+    <div class="tt-head">
+      <h2 id="tt-title" class="display-2 reg">This week at the studio</h2>
+      <p class="tt-meta">Northside Clay (sample studio)<br>Week of 9 November · 2 kilns · 10 wheels</p>
+    </div>
+    <p class="tt-intro">Members book open studio and classes from their phone. Kiln days block the room automatically, so nobody turns up to a wheel next to a bisque load.</p>
+
+    <ol class="week" aria-label="Sample timetable, Monday to Sunday">
+      <li class="day"><h3>Mon</h3>
+        <ul>
+          <li class="slot"><time>10:00–13:00</time><b>Open studio</b><span class="who">Desk: Ines</span><span class="seats">6 of 10 wheels booked</span></li>
+          <li class="slot is-full"><time>18:30–21:00</time><b>Wheel I · week 3</b><span class="who">Dara</span><span class="seats">Full · 8 of 8</span></li>
+        </ul>
+      </li>
+      <li class="day"><h3>Tue</h3>
+        <ul>
+          <li class="slot is-kiln"><time>09:00–12:00</time><b>Kiln A · bisque load</b><span class="who">Tomasz</span><span class="seats">Kiln room closed</span></li>
+          <li class="slot"><time>18:30–21:00</time><b>Handbuilding</b><span class="who">Priya</span><span class="seats">5 of 8 places</span></li>
+        </ul>
+      </li>
+      <li class="day"><h3>Wed</h3>
+        <ul>
+          <li class="slot"><time>14:00–18:00</time><b>Open studio</b><span class="who">Desk: Ines</span><span class="seats">3 of 10 wheels booked</span></li>
+          <li class="slot"><time>19:00–21:30</time><b>Wheel II · trimming</b><span class="who">Dara</span><span class="seats">7 of 8 places</span></li>
+        </ul>
+      </li>
+      <li class="day"><h3>Thu</h3>
+        <ul>
+          <li class="slot"><time>10:00–11:30</time><b>Kids clay</b><span class="who">Priya</span><span class="seats">6 of 10 places</span></li>
+          <li class="slot is-full"><time>18:30–21:00</time><b>Wheel I · week 3</b><span class="who">Dara</span><span class="seats">Full · 2 waiting</span></li>
+        </ul>
+      </li>
+      <li class="day"><h3>Fri</h3>
+        <ul>
+          <li class="slot is-kiln"><time>10:00–12:00</time><b>Kiln B · glaze load</b><span class="who">Tomasz</span><span class="seats">Cone 6</span></li>
+          <li class="slot"><time>18:00–21:00</time><b>Glaze night</b><span class="who">Tomasz</span><span class="seats">9 of 12 places</span></li>
+        </ul>
+      </li>
+      <li class="day"><h3>Sat</h3>
+        <ul>
+          <li class="slot"><time>10:00–12:00</time><b>Taster: the wheel</b><span class="who">Ines</span><span class="seats">4 of 6 places</span></li>
+          <li class="slot"><time>13:00–17:00</time><b>Open studio</b><span class="who">Desk: Dara</span><span class="seats">8 of 10 wheels booked</span></li>
+        </ul>
+      </li>
+      <li class="day"><h3>Sun</h3>
+        <ul>
+          <li class="slot is-kiln"><time>11:00</time><b>Unload Kiln B</b><span class="who">Tomasz</span><span class="seats">Members notified</span></li>
+          <li class="slot"><time>14:00–16:00</time><b>Clean-up &amp; reclaim</b><span class="who">Everyone</span><span class="seats">Sign-up sheet</span></li>
+        </ul>
+      </li>
+    </ol>
+    <p class="legend"><span class="key key-full">Full</span> class full, waitlist open <span class="key key-kiln">Kiln</span> kiln room booked</p>
+
+    <div class="tabs" role="group" aria-label="Tear-off tabs">
+      <a class="tab" href="#start"><span>Start free trial</span><small>kilnward</small></a>
+      <a class="tab" href="#start" tabindex="-1" aria-hidden="true"><span>Start free trial</span><small>kilnward</small></a>
+      <a class="tab is-torn" href="#start" tabindex="-1" aria-hidden="true"><span>Start free trial</span><small>kilnward</small></a>
+      <a class="tab" href="#start" tabindex="-1" aria-hidden="true"><span>Start free trial</span><small>kilnward</small></a>
+      <a class="tab" href="#start" tabindex="-1" aria-hidden="true"><span>Start free trial</span><small>kilnward</small></a>
+      <a class="tab is-torn" href="#start" tabindex="-1" aria-hidden="true"><span>Start free trial</span><small>kilnward</small></a>
+      <a class="tab" href="#start" tabindex="-1" aria-hidden="true"><span>Start free trial</span><small>kilnward</small></a>
+      <a class="tab" href="#start" tabindex="-1" aria-hidden="true"><span>Start free trial</span><small>kilnward</small></a>
+      <a class="tab" href="#start" tabindex="-1" aria-hidden="true"><span>Start free trial</span><small>kilnward</small></a>
+      <a class="tab" href="#start" tabindex="-1" aria-hidden="true"><span>Start free trial</span><small>kilnward</small></a>
+    </div>
+  </section>
+
+  <!-- Kiln flyer -->
+  <section class="flyer flyer-kiln" id="kiln" aria-labelledby="kiln-title">
+    <svg class="pin" viewBox="0 0 28 28" aria-hidden="true"><circle cx="15" cy="15" r="9" fill="#E5482F"/><circle cx="13" cy="13" r="9" fill="none" stroke="#1C1B1A" stroke-width="2"/><circle cx="10" cy="10" r="2.2" fill="#1C1B1A"/></svg>
+    <p class="stamp">Sample data</p>
+    <div class="kiln-copy">
+      <h2 id="kiln-title" class="display-2 reg">Plan the load before you pack&nbsp;it.</h2>
+      <p>Pieces go onto the plan as members finish them, shelf by shelf. You see what fits in Tuesday’s bisque before anyone opens the lid, and what has to wait for the next firing.</p>
+    </div>
+
+      <div class="load" aria-label="Kiln A load plan, bisque, sample data">
+        <h3 class="mono-h">Kiln A · bisque · cone 04 · load plan</h3>
+        <ol class="shelves-plan">
+          <li><span class="sh">Shelf 4</span><span class="cells" aria-hidden="true"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i><i></i></span><span class="sh-note">9 of 12 · bowls</span></li>
+          <li><span class="sh">Shelf 3</span><span class="cells" aria-hidden="true"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span><span class="sh-note">11 of 12 · cups, plates</span></li>
+          <li><span class="sh">Shelf 2</span><span class="cells" aria-hidden="true"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i><i></i><i></i><i></i></span><span class="sh-note">7 of 12 · two tall vases</span></li>
+          <li><span class="sh">Shelf 1</span><span class="cells" aria-hidden="true"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span><span class="sh-note">12 of 12 · mugs</span></li>
+        </ol>
+        <p class="load-foot">39 pieces from 11 members · 3 pieces moved to Friday</p>
+      </div>
+
+    <div class="schedule">
+      <h3 class="schedule-head"><span>Firing schedule</span><span class="schedule-sub">for the kiln room door</span></h3>
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Firing schedule, sample data">
+      <table>
+        <thead>
+          <tr><th scope="col">Kiln</th><th scope="col">Firing</th><th scope="col">Load</th><th scope="col">Fire</th><th scope="col">Unload</th><th scope="col">Status</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">A · 7 cu ft</th><td>Bisque, cone 04</td><td>Tue 09:00</td><td>Tue 13:00</td><td>Thu 09:00</td><td><span class="status s-now">Loading</span></td></tr>
+          <tr><th scope="row">B · 2.5 cu ft</th><td>Glaze, cone 6</td><td>Fri 10:00</td><td>Fri 14:00</td><td>Sun 11:00</td><td><span class="status">Booked</span></td></tr>
+          <tr><th scope="row">A · 7 cu ft</th><td>Glaze, cone 6</td><td>Sat 17:00</td><td>Sat 19:00</td><td>Mon 10:00</td><td><span class="status">Filling · 60%</span></td></tr>
+          <tr><th scope="row">B · 2.5 cu ft</th><td>Test tiles, cone 6</td><td>Mon 16:00</td><td>Mon 17:00</td><td>Wed 09:00</td><td><span class="status">Open</span></td></tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Members / shelves flyer -->
+  <section class="flyer flyer-shelves" id="shelves" aria-labelledby="shelf-title">
+    <svg class="pin" viewBox="0 0 28 28" aria-hidden="true"><circle cx="15" cy="15" r="9" fill="#E5482F"/><circle cx="13" cy="13" r="9" fill="none" stroke="#1C1B1A" stroke-width="2"/><circle cx="10" cy="10" r="2.2" fill="#1C1B1A"/></svg>
+    <figure class="shelf-print">
+      <img data-slot="a row of labelled member shelves holding drying and fired pots"
+           src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3Crect width='1' height='1' fill='%23F6BFB3'/%3E%3C/svg%3E"
+           width="640" height="640" alt="A row of member shelves, each with a name label, holding drying and fired pots.">
+    </figure>
+    <div class="shelf-copy">
+      <h2 id="shelf-title" class="display-2 reg">Every shelf, and whose it&nbsp;is.</h2>
+      <p>Each member has a shelf with their name on it in Kilnward. Their pieces move from drying to bisque to glaze, and when a kiln is unloaded, they get a message telling them where to look.</p>
+      <p class="stamp stamp-inline">Sample data</p>
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Member shelves, sample data">
+      <table class="shelf-table">
+        <thead><tr><th scope="col">Shelf</th><th scope="col">Member</th><th scope="col">Pieces</th><th scope="col">Stage</th><th scope="col">Waiting</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">07</th><td>Marta O.</td><td>4</td><td>Bisqued, needs glaze</td><td>6 days</td></tr>
+          <tr><th scope="row">12</th><td>Jun K.</td><td>2</td><td>Greenware, drying</td><td>2 days</td></tr>
+          <tr><th scope="row">14</th><td>Rafi L.</td><td>3</td><td><strong>Ready to collect</strong></td><td>1 day</td></tr>
+          <tr><th scope="row">19</th><td>Sam W.</td><td>6</td><td>In Kiln A, bisque</td><td>—</td></tr>
+          <tr><th scope="row">23</th><td>Noor A.</td><td>1</td><td><strong>Ready to collect</strong></td><td>15 days · reminded</td></tr>
+          <tr><th scope="row">31</th><td>Ellis P.</td><td>0</td><td>Empty</td><td>—</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <div class="slip" aria-label="Sample message to a member">
+        <p class="slip-meta">Text message · Sun 11:42 · sample</p>
+        <p class="slip-body">Kiln B is unloaded. Your 3 glazed pieces are on shelf 14. Pick up any time the studio’s open. Northside Clay</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Group chat flyer -->
+  <section class="flyer flyer-chat" aria-labelledby="chat-title">
+    <svg class="pin" viewBox="0 0 28 28" aria-hidden="true"><circle cx="15" cy="15" r="9" fill="#E5482F"/><circle cx="13" cy="13" r="9" fill="none" stroke="#1C1B1A" stroke-width="2"/><circle cx="10" cy="10" r="2.2" fill="#1C1B1A"/></svg>
+    <h2 id="chat-title" class="display-2">Questions the group chat can stop&nbsp;asking</h2>
+    <dl class="qa">
+      <div><dt>“Is there a wheel free Thursday?”</dt><dd>Members see open wheels and book one themselves.</dd></div>
+      <div><dt>“Did my mug make Friday’s glaze?”</dt><dd>Their shelf shows which firing each piece is in.</dd></div>
+      <div><dt>“Whose bowls are on shelf 23?”</dt><dd>Every shelf has a name and the date things went on it.</dd></div>
+      <div><dt>“When can I pick up?”</dt><dd>They get a message when the kiln is unloaded.</dd></div>
+    </dl>
+  </section>
+
+  <!-- Closing flyer -->
+  <section class="flyer flyer-end" id="start" aria-labelledby="end-title">
+    <h2 id="end-title" class="display">Wipe the whiteboard.</h2>
+    <div class="end-slip">
+      <svg class="pin" viewBox="0 0 28 28" aria-hidden="true"><circle cx="15" cy="15" r="9" fill="#E5482F"/><circle cx="13" cy="13" r="9" fill="none" stroke="#1C1B1A" stroke-width="2"/><circle cx="10" cy="10" r="2.2" fill="#1C1B1A"/></svg>
+      <p>Add your kilns, your classes and your shelves. Invite members when the board looks right.</p>
+      <a class="btn" href="#start"><span>Start free trial</span></a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <p><b class="reg">Kilnward</b> Bookings, kilns and shelves for small ceramic studios.</p>
+  <p class="foot-note">Kilnward is a fictional product. Every studio, person, class and figure on this page is sample data.</p>
+</footer>
+</body>
+</html>

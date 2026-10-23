@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kilnward · The control sheet</title>
+<meta name="description" content="Kilnward runs bookings, kiln loads, firing schedules and member shelves for small ceramic studios, read off the kiln log.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="sheet top-in">
+    <a class="mark" href="#main" aria-label="Kilnward, top of page">
+      <svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><path d="M4 17 L10 3 L16 17" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M2 17.2 H18" stroke="currentColor" stroke-width="1.6"/></svg>
+      <span>Kilnward</span>
+    </a>
+    <p class="mono-s top-meta">Sheet KW-01 · Rev 4 · Wk 42 · 12–18 Oct</p>
+    <nav class="nav" aria-label="Sections">
+      <a href="#week">Week</a>
+      <a href="#kilns">Kilns</a>
+      <a href="#shelves">Shelves</a>
+      <a href="#notices">Notices</a>
+    </nav>
+    <a class="btn btn-sm" href="#start-trial">Start free trial</a>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- 01 · Control sheet (hero) -->
+<section class="sec hero" aria-labelledby="h-hero">
+  <div class="sheet row">
+    <p class="num" aria-hidden="true">01</p>
+    <h1 id="h-hero" class="display hero-h">The week, read off the&nbsp;kiln.</h1>
+    <div class="hero-side">
+      <p class="lede">Bookings, kiln loads, firing schedules and member shelves for small ceramic studios, kept as one working log.</p>
+      <div class="actions">
+        <a class="btn" href="#start-trial">Start free trial</a>
+        <a class="link" href="#week">Read the sample week</a>
+      </div>
+    </div>
+
+    <!-- instrument A: firing curve -->
+    <figure class="inst inst-curve" aria-labelledby="log-cap">
+      <figcaption id="log-cap" class="strip">
+        <span class="strip-t">Firing log · K2 · glaze ^6</span>
+        <span class="strip-r">Thu 15 18:00 → Fri 16 06:00</span>
+        <span class="tag">Sample data</span>
+      </figcaption>
+      <div class="plot-wrap">
+<svg class="axis" viewBox="0 0 44 340" aria-hidden="true" focusable="false">
+<text x="40" y="300" text-anchor="end">0</text>
+<text x="40" y="258.8" text-anchor="end">200</text>
+<text x="40" y="217.5" text-anchor="end">400</text>
+<text x="40" y="176.3" text-anchor="end">600</text>
+<text x="40" y="135.1" text-anchor="end">800</text>
+<text x="40" y="93.8" text-anchor="end">1000</text>
+<text x="40" y="52.6" text-anchor="end">1200</text>
+<text x="40" y="16" text-anchor="end" class="unit">°C</text>
+</svg>
+        <div class="plot" tabindex="0" aria-describedby="plot-help">
+<svg class="curve" viewBox="44 0 616 340" role="img" aria-labelledby="curve-title curve-desc">
+<title id="curve-title">Sample firing log, kiln K2, glaze firing to cone 6</title>
+<desc id="curve-desc">Sample data, temperatures approximate. Twelve hours from Thursday 18:00 to Friday 06:00. The program climbs at 100 degrees an hour to 220, at 180 an hour to 1100, then at 60 an hour to 1222 at 02:55, holds 10 minutes, falls to 1000 and slow-cools at 80 an hour. The logged trace has followed the program to now, 02:40, at 1207 degrees.</desc>
+<g class="grid">
+<line x1="56" x2="644" y1="275.4" y2="275.4"/>
+<line x1="56" x2="644" y1="254.8" y2="254.8"/>
+<line x1="56" x2="644" y1="234.2" y2="234.2"/>
+<line x1="56" x2="644" y1="213.5" y2="213.5"/>
+<line x1="56" x2="644" y1="192.9" y2="192.9"/>
+<line x1="56" x2="644" y1="172.3" y2="172.3"/>
+<line x1="56" x2="644" y1="151.7" y2="151.7"/>
+<line x1="56" x2="644" y1="131.1" y2="131.1"/>
+<line x1="56" x2="644" y1="110.5" y2="110.5"/>
+<line x1="56" x2="644" y1="89.8" y2="89.8"/>
+<line x1="56" x2="644" y1="69.2" y2="69.2"/>
+<line x1="56" x2="644" y1="48.6" y2="48.6"/>
+<line x1="105" x2="105" y1="28" y2="296"/>
+<line x1="154" x2="154" y1="28" y2="296"/>
+<line x1="203" x2="203" y1="28" y2="296"/>
+<line x1="252" x2="252" y1="28" y2="296"/>
+<line x1="301" x2="301" y1="28" y2="296"/>
+<line x1="350" x2="350" y1="28" y2="296"/>
+<line x1="399" x2="399" y1="28" y2="296"/>
+<line x1="448" x2="448" y1="28" y2="296"/>
+<line x1="497" x2="497" y1="28" y2="296"/>
+<line x1="546" x2="546" y1="28" y2="296"/>
+<line x1="595" x2="595" y1="28" y2="296"/>
+</g><g class="ruler">
+<rect x="56" y="28" width="588" height="268" fill="none"/>
+<line x1="48" x2="56" y1="296" y2="296"/><line x1="644" x2="652" y1="296" y2="296"/>
+<line x1="52" x2="56" y1="285.7" y2="285.7"/><line x1="644" x2="648" y1="285.7" y2="285.7"/>
+<line x1="52" x2="56" y1="275.4" y2="275.4"/><line x1="644" x2="648" y1="275.4" y2="275.4"/>
+<line x1="52" x2="56" y1="265.1" y2="265.1"/><line x1="644" x2="648" y1="265.1" y2="265.1"/>
+<line x1="48" x2="56" y1="254.8" y2="254.8"/><line x1="644" x2="652" y1="254.8" y2="254.8"/>
+<line x1="52" x2="56" y1="244.5" y2="244.5"/><line x1="644" x2="648" y1="244.5" y2="244.5"/>
+<line x1="52" x2="56" y1="234.2" y2="234.2"/><line x1="644" x2="648" y1="234.2" y2="234.2"/>
+<line x1="52" x2="56" y1="223.8" y2="223.8"/><line x1="644" x2="648" y1="223.8" y2="223.8"/>
+<line x1="48" x2="56" y1="213.5" y2="213.5"/><line x1="644" x2="652" y1="213.5" y2="213.5"/>
+<line x1="52" x2="56" y1="203.2" y2="203.2"/><line x1="644" x2="648" y1="203.2" y2="203.2"/>
+<line x1="52" x2="56" y1="192.9" y2="192.9"/><line x1="644" x2="648" y1="192.9" y2="192.9"/>
+<line x1="52" x2="56" y1="182.6" y2="182.6"/><line x1="644" x2="648" y1="182.6" y2="182.6"/>
+<line x1="48" x2="56" y1="172.3" y2="172.3"/><line x1="644" x2="652" y1="172.3" y2="172.3"/>
+<line x1="52" x2="56" y1="162" y2="162"/><line x1="644" x2="648" y1="162" y2="162"/>
+<line x1="52" x2="56" y1="151.7" y2="151.7"/><line x1="644" x2="648" y1="151.7" y2="151.7"/>
+<line x1="52" x2="56" y1="141.4" y2="141.4"/><line x1="644" x2="648" y1="141.4" y2="141.4"/>
+<line x1="48" x2="56" y1="131.1" y2="131.1"/><line x1="644" x2="652" y1="131.1" y2="131.1"/>
+<line x1="52" x2="56" y1="120.8" y2="120.8"/><line x1="644" x2="648" y1="120.8" y2="120.8"/>
+<line x1="52" x2="56" y1="110.5" y2="110.5"/><line x1="644" x2="648" y1="110.5" y2="110.5"/>
+<line x1="52" x2="56" y1="100.2" y2="100.2"/><line x1="644" x2="648" y1="100.2" y2="100.2"/>
+<line x1="48" x2="56" y1="89.8" y2="89.8"/><line x1="644" x2="652" y1="89.8" y2="89.8"/>
+<line x1="52" x2="56" y1="79.5" y2="79.5"/><line x1="644" x2="648" y1="79.5" y2="79.5"/>
+<line x1="52" x2="56" y1="69.2" y2="69.2"/><line x1="644" x2="648" y1="69.2" y2="69.2"/>
+<line x1="52" x2="56" y1="58.9" y2="58.9"/><line x1="644" x2="648" y1="58.9" y2="58.9"/>
+<line x1="48" x2="56" y1="48.6" y2="48.6"/><line x1="644" x2="652" y1="48.6" y2="48.6"/>
+<line x1="52" x2="56" y1="38.3" y2="38.3"/><line x1="644" x2="648" y1="38.3" y2="38.3"/>
+<line x1="52" x2="56" y1="28" y2="28"/><line x1="644" x2="648" y1="28" y2="28"/>
+<line x1="56" x2="56" y1="296" y2="304"/>
+<line x1="68.2" x2="68.2" y1="296" y2="299"/>
+<line x1="80.5" x2="80.5" y1="296" y2="299"/>
+<line x1="92.8" x2="92.8" y1="296" y2="299"/>
+<line x1="105" x2="105" y1="296" y2="301"/>
+<line x1="117.2" x2="117.2" y1="296" y2="299"/>
+<line x1="129.5" x2="129.5" y1="296" y2="299"/>
+<line x1="141.8" x2="141.8" y1="296" y2="299"/>
+<line x1="154" x2="154" y1="296" y2="304"/>
+<line x1="166.2" x2="166.2" y1="296" y2="299"/>
+<line x1="178.5" x2="178.5" y1="296" y2="299"/>
+<line x1="190.8" x2="190.8" y1="296" y2="299"/>
+<line x1="203" x2="203" y1="296" y2="301"/>
+<line x1="215.2" x2="215.2" y1="296" y2="299"/>
+<line x1="227.5" x2="227.5" y1="296" y2="299"/>
+<line x1="239.8" x2="239.8" y1="296" y2="299"/>
+<line x1="252" x2="252" y1="296" y2="304"/>
+<line x1="264.2" x2="264.2" y1="296" y2="299"/>
+<line x1="276.5" x2="276.5" y1="296" y2="299"/>
+<line x1="288.8" x2="288.8" y1="296" y2="299"/>
+<line x1="301" x2="301" y1="296" y2="301"/>
+<line x1="313.2" x2="313.2" y1="296" y2="299"/>
+<line x1="325.5" x2="325.5" y1="296" y2="299"/>
+<line x1="337.8" x2="337.8" y1="296" y2="299"/>
+<line x1="350" x2="350" y1="296" y2="304"/>
+<line x1="362.2" x2="362.2" y1="296" y2="299"/>
+<line x1="374.5" x2="374.5" y1="296" y2="299"/>
+<line x1="386.8" x2="386.8" y1="296" y2="299"/>
+<line x1="399" x2="399" y1="296" y2="301"/>
+<line x1="411.2" x2="411.2" y1="296" y2="299"/>
+<line x1="423.5" x2="423.5" y1="296" y2="299"/>
+<line x1="435.8" x2="435.8" y1="296" y2="299"/>
+<line x1="448" x2="448" y1="296" y2="304"/>
+<line x1="460.2" x2="460.2" y1="296" y2="299"/>
+<line x1="472.5" x2="472.5" y1="296" y2="299"/>
+<line x1="484.8" x2="484.8" y1="296" y2="299"/>
+<line x1="497" x2="497" y1="296" y2="301"/>
+<line x1="509.2" x2="509.2" y1="296" y2="299"/>
+<line x1="521.5" x2="521.5" y1="296" y2="299"/>
+<line x1="533.8" x2="533.8" y1="296" y2="299"/>
+<line x1="546" x2="546" y1="296" y2="304"/>
+<line x1="558.2" x2="558.2" y1="296" y2="299"/>
+<line x1="570.5" x2="570.5" y1="296" y2="299"/>
+<line x1="582.8" x2="582.8" y1="296" y2="299"/>
+<line x1="595" x2="595" y1="296" y2="301"/>
+<line x1="607.2" x2="607.2" y1="296" y2="299"/>
+<line x1="619.5" x2="619.5" y1="296" y2="299"/>
+<line x1="631.8" x2="631.8" y1="296" y2="299"/>
+<line x1="644" x2="644" y1="296" y2="304"/>
+</g><g class="lbl lbl-time">
+<text x="56" y="318" text-anchor="start">18:00</text>
+<text x="154" y="318" text-anchor="middle">20:00</text>
+<text x="252" y="318" text-anchor="middle">22:00</text>
+<text x="350" y="318" text-anchor="middle">00:00</text>
+<text x="448" y="318" text-anchor="middle">02:00</text>
+<text x="546" y="318" text-anchor="middle">04:00</text>
+<text x="644" y="318" text-anchor="end">06:00</text>
+<text x="56" y="334" text-anchor="start" class="day">THU 15 OCT</text>
+<text x="350" y="334" text-anchor="middle" class="day">FRI 16 OCT</text>
+</g>
+<line class="refline" x1="56" x2="644" y1="177.9" y2="177.9"/>
+<text class="lbl reflbl" x="638" y="171.9" text-anchor="end">573 °C · QUARTZ</text>
+<text class="lbl seg" x="112" y="289" text-anchor="start">S1 · 100 °C/h</text>
+<text class="lbl seg" x="262" y="150" text-anchor="end">S2 · 180 °C/h</text>
+<text class="lbl seg" x="398" y="112" text-anchor="start">S3 · 60 °C/h</text>
+<text class="lbl seg" x="507" y="39" text-anchor="start">HOLD 10 MIN</text>
+<text class="lbl seg" x="538" y="72" text-anchor="start">S4 · FALL</text>
+<text class="lbl seg" x="560" y="136" text-anchor="start">S5 · 80 °C/h</text>
+<polyline class="program" points="56,291.9 154,250.6 393.6,69.2 493.2,44.1 501.4,44.1 550.4,89.8 644,121.4"/>
+<polyline class="logged" pathLength="1" points="56,291.9 62.1,288.1 68.2,286.5 74.4,284.5 80.5,280.7 86.6,278 92.8,277.1 98.9,274.7 105,270.9 111.1,268.8 117.2,267.4 123.4,263.9 129.5,260 135.6,258.2 141.8,256.2 147.9,252.4 154,249.4 160.1,246.3 166.2,242.1 172.4,236.3 178.5,232.1 184.6,228.8 190.8,223.5 196.9,217.5 203,213.4 209.1,209.5 215.2,203.6 221.4,198.2 227.5,195 233.6,190.9 239.8,185.2 245.9,180.8 252,177.7 258.1,172.7 264.2,166.7 270.4,162.5 276.5,158.7 282.6,152.8 288.8,147.2 294.9,143.8 301,139.8 307.1,134 313.2,129.5 319.4,126.5 325.5,121.8 331.6,115.8 337.8,111.5 343.9,107.9 350,102.1 356.1,96.3 362.2,92.6 368.4,88.7 374.5,82.9 380.6,78.1 386.8,75.2 392.9,70.8 399,67.6 405.1,66.4 411.2,66 417.4,63.5 423.5,60.6 429.6,59.7 435.8,59 441.9,56.3 448,54.3 454.1,54.4 460.2,53.3 466.4,50.6 472.5,49.3 478.6,49 480.7,47.2"/>
+<g class="cone" transform="translate(463.8 51.5)"><line x1="0" x2="0" y1="5" y2="20"/><path d="M-4 30 L0 20 L4 30 Z"/><text class="lbl" x="0" y="44" text-anchor="middle">^5</text></g>
+<g class="cone" transform="translate(493.2 44.1)"><line x1="0" x2="0" y1="5" y2="48"/><path d="M-4 58 L0 48 L4 58 Z"/><text class="lbl" x="7" y="72" text-anchor="start">^6 · 1222 °C</text></g>
+<g class="now"><line x1="480.7" x2="480.7" y1="28" y2="296"/><circle cx="480.7" cy="47.2" r="4.5"/><text class="lbl nowlbl" x="487.7" y="286" text-anchor="start">NOW 02:40 · 1207 °C</text></g>
+<g class="cursor" aria-hidden="true"><line class="cursor-line" x1="0" x2="0" y1="28" y2="296"/><circle class="cursor-dot" r="4" cx="0" cy="0"/></g>
+<rect class="hit" x="56" y="28" width="588" height="268"/>
+</svg>
+        </div>
+      </div>
+      <p id="plot-help" class="sr">Use the left and right arrow keys to read the schedule in 15 minute steps. Home and End jump to the start and end.</p>
+      <dl class="readout" aria-live="polite">
+        <div><dt>Time</dt><dd data-r="time">02:40 Fri · now</dd></div>
+        <div><dt>Program</dt><dd data-r="prog">1207 °C</dd></div>
+        <div><dt>Logged</dt><dd data-r="log">1207 °C</dd></div>
+        <div><dt>Segment</dt><dd data-r="seg">S3 · 60 °C/h</dd></div>
+      </dl>
+      <p class="fine">Temperatures approximate. Cone values assume a 60 °C/h final ramp. Drag or use arrow keys on the log to read it.</p>
+
+      <div class="spec" aria-label="Firing specification, sample data">
+        <figure class="slot-fig">
+          <img data-slot="Cone pack after firing: witness cones 5, 6 and 7 set in a clay pad, ^5 flat, ^6 bent to three o'clock, ^7 standing" class="slot slot-sq" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="600" height="600" alt="Witness cone pack after firing: cone 5 flat, cone 6 bent, cone 7 standing">
+          <figcaption class="mono-s cap">Fig. 1 · Cone pack, K2, Mon 5 Oct</figcaption>
+        </figure>
+        <dl class="specs">
+          <div><dt>Kiln</dt><dd>K2 · electric · <span class="m">7 cu ft</span></dd></div>
+          <div><dt>Program</dt><dd>Glaze <span class="m">^6</span>, slow cool</dd></div>
+          <div><dt>Load</dt><dd><span class="m">38</span> pieces · <span class="m">11</span> members</dd></div>
+          <div><dt>Loaded by</dt><dd>Ines · <span class="m">Thu 15 17:30</span></dd></div>
+          <div><dt>Peak, set</dt><dd><span class="m">1222 °C · 02:55</span></dd></div>
+          <div><dt>Safe to open</dt><dd>below <span class="m">65 °C</span> · est. <span class="m">Sat 17 08:30</span></dd></div>
+        </dl>
+      </div>
+    </figure>
+
+    <!-- instrument B: kiln capacity meter -->
+    <form class="inst inst-meter" id="meter" aria-labelledby="meter-cap" onsubmit="return false">
+      <p id="meter-cap" class="strip">
+        <span class="strip-t">Next load · K1 bisque ^04</span>
+        <span class="tag">Sample data</span>
+      </p>
+      <p class="meter-kiln"><span class="m">Sun 18 · 17:00</span> · <span class="m">60</span> piece spaces</p>
+      <div class="cells" aria-hidden="true">
+        <div class="cell-grid" id="cells"><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="a"></i><i class="a"></i><i class="a"></i><i class="a"></i><i class="a"></i><i class="a"></i><i class="a"></i><i class="a"></i><i class="a"></i><i class="a"></i><i class="a"></i><i class="a"></i><i class="a"></i><i class="a"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <ol class="cell-scale"><li>12</li><li>24</li><li>36</li><li>48</li><li>60</li></ol>
+      </div>
+      <dl class="tally">
+        <div><dt><span class="k k-b"></span>Booked</dt><dd id="t-booked">34</dd></div>
+        <div><dt><span class="k k-a"></span>This session</dt><dd id="t-add">14</dd></div>
+        <div><dt><span class="k k-f"></span>Free</dt><dd id="t-free">12</dd></div>
+      </dl>
+
+      <fieldset class="sessions">
+        <legend>Add dry work from</legend>
+        <label class="sess"><input type="radio" name="sess" value="w1" checked><span class="sess-n">Wheel I · wk 3</span><span class="sess-w m">Tue 13</span></label>
+        <label class="sess"><input type="radio" name="sess" value="os"><span class="sess-n">Open studio</span><span class="sess-w m">Tue 13</span></label>
+        <label class="sess"><input type="radio" name="sess" value="w2"><span class="sess-n">Wheel II · wk 5</span><span class="sess-w m">Wed 14</span></label>
+        <label class="sess"><input type="radio" name="sess" value="ow"><span class="sess-n">Open studio</span><span class="sess-w m">Wed 14</span></label>
+      </fieldset>
+
+      <div class="stepper">
+        <span class="step-l" id="step-l">Pieces</span>
+        <button type="button" class="step" id="p-down" aria-label="One piece fewer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10"/></svg></button>
+        <output id="p-out" aria-labelledby="step-l" class="m">14</output>
+        <button type="button" class="step" id="p-up" aria-label="One piece more"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M8 3v10"/></svg></button>
+      </div>
+      <p class="meter-status" id="m-status" aria-live="polite">Wheel I · wk 3, 8 members: <span class="m">48 / 60</span>. Fits, with <span class="m">12</span> spaces left.</p>
+    </form>
+
+    <!-- instrument C: week index -->
+    <nav class="inst inst-index" aria-labelledby="idx-cap">
+      <p id="idx-cap" class="strip">
+        <span class="strip-t">Week 42 · index</span>
+        <span class="tag">Sample data</span>
+      </p>
+      <ol class="index">
+        <li><a href="#week"><span class="d m">Mon 12</span><span class="e">Glaze mixing, staff only</span><span class="to m">02</span></a></li>
+        <li><a href="#week"><span class="d m">Tue 13</span><span class="e">Wheel I full, <span class="m">8 / 8</span></span><span class="to m">02</span></a></li>
+        <li><a href="#shelves"><span class="d m">Wed 14</span><span class="e">K1 bisque out to B-shelves</span><span class="to m">04</span></a></li>
+        <li class="is-fire"><a href="#kilns"><span class="d m">Thu 15</span><span class="e">K2 glaze load, fires <span class="m">18:00</span></span><span class="to m">03</span></a></li>
+        <li class="is-now"><a href="#week" aria-current="date"><span class="d m">Fri 16</span><span class="e">K2 cooling, kiln room shut</span><span class="to m">02</span></a></li>
+        <li><a href="#notices"><span class="d m">Sat 17</span><span class="e">K2 unload, <span class="m">11</span> members told</span><span class="to m">05</span></a></li>
+        <li><a href="#kilns"><span class="d m">Sun 18</span><span class="e">K1 bisque load, <span class="m">34 / 60</span></span><span class="to m">03</span></a></li>
+      </ol>
+      <p class="fine">Now: <span class="m">Fri 16 · 02:40</span>. Each line opens the part of the sheet that covers it.</p>
+    </nav>
+  </div>
+</section>
+
+<!-- 02 · Week -->
+<section class="sec" id="week" aria-labelledby="h-week">
+  <div class="sheet row">
+    <p class="num" aria-hidden="true">02</p>
+    <div class="s-head">
+      <h2 id="h-week" class="h2">Thursday’s class moves when K2&nbsp;fires.</h2>
+      <p class="body">When a firing goes on the sheet, the kiln room closes for it and anything booked there moves, before anyone turns up.</p>
+    </div>
+
+    <div class="s-inst">
+      <p class="strip"><span class="strip-t">Booking week · 12–18 Oct · Hollow Lane Studio</span><span class="tag">Sample data</span><span class="hint">Scroll sideways</span></p>
+      <div class="week-wrap" role="region" aria-label="Sample booking week, Monday 12 to Sunday 18 October" tabindex="0">
+        <div class="week">
+          <div class="wh" style="grid-column:1" aria-hidden="true"></div>
+          <div class="wh" style="grid-column:2">Mon 12</div>
+          <div class="wh" style="grid-column:3">Tue 13</div>
+          <div class="wh" style="grid-column:4">Wed 14</div>
+          <div class="wh is-fire" style="grid-column:5">Thu 15</div>
+          <div class="wh is-fire" style="grid-column:6" data-scroll-to>Fri 16 · now</div>
+          <div class="wh" style="grid-column:7">Sat 17</div>
+          <div class="wh" style="grid-column:8">Sun 18</div>
+
+          <div class="wt" style="grid-row:2">09:00</div><div class="wt" style="grid-row:4">10:00</div><div class="wt" style="grid-row:6">11:00</div><div class="wt" style="grid-row:8">12:00</div><div class="wt" style="grid-row:10">13:00</div><div class="wt" style="grid-row:12">14:00</div><div class="wt" style="grid-row:14">15:00</div><div class="wt" style="grid-row:16">16:00</div><div class="wt" style="grid-row:18">17:00</div><div class="wt" style="grid-row:20">18:00</div><div class="wt" style="grid-row:22">19:00</div><div class="wt" style="grid-row:24">20:00</div><div class="wt" style="grid-row:26">21:00</div>
+
+          <div class="closed" style="grid-column:5;grid-row:20/28"><span>Kiln room shut · K2 firing</span></div>
+          <div class="closed" style="grid-column:6;grid-row:2/28"><span>Kiln room shut · K2 cooling</span></div>
+
+          <div class="ev ev-staff" style="grid-column:2;grid-row:4/10"><b>STF</b>Glaze mixing<i>Staff only</i></div>
+          <div class="ev ev-open" style="grid-column:3;grid-row:4/10"><b>OPN</b>Open studio<i class="m">6 / 10</i></div>
+          <div class="ev ev-class" style="grid-column:3;grid-row:21/26"><b>CLS</b>Wheel I · wk 3<i class="m">8 / 8 · full</i></div>
+          <div class="ev ev-kiln" style="grid-column:4;grid-row:4/8"><b>KLN</b>K1 bisque unload<i>to <span class="m">B-01–B-09</span></i></div>
+          <div class="ev ev-open" style="grid-column:4;grid-row:12/18"><b>OPN</b>Open studio<i class="m">9 / 10</i></div>
+          <div class="ev ev-class" style="grid-column:4;grid-row:21/26"><b>CLS</b>Wheel II · wk 5<i class="m">7 / 8</i></div>
+          <div class="ev ev-open" style="grid-column:5;grid-row:4/10"><b>OPN</b>Open studio<i class="m">4 / 10</i></div>
+          <div class="ev ev-kiln" style="grid-column:5;grid-row:12/19"><b>KLN</b>K2 glaze load<i>Ines · <span class="m">38 pcs</span></i></div>
+          <div class="ev ev-class ev-moved" style="grid-column:5;grid-row:21/26"><b>CLS</b>Hand-building<i>Moved: bench room</i><sup class="note-ref">A</sup></div>
+          <div class="ev ev-open ev-over" style="grid-column:6;grid-row:19/25"><b>OPN</b>Open studio<i>Bench room · <span class="m">10 / 10</span></i><sup class="note-ref">B</sup></div>
+          <div class="ev ev-kiln" style="grid-column:7;grid-row:2/5"><b>KLN</b>K2 unload<i class="m">11 told</i></div>
+          <div class="ev ev-class" style="grid-column:7;grid-row:6/12"><b>CLS</b>Saturday intro<i class="m">8 / 8 · full</i></div>
+          <div class="ev ev-open" style="grid-column:7;grid-row:13/21"><b>OPN</b>Open studio<i class="m">7 / 10</i></div>
+          <div class="ev ev-open" style="grid-column:8;grid-row:6/14"><b>OPN</b>Open studio<i class="m">3 / 10</i></div>
+          <div class="ev ev-kiln" style="grid-column:8;grid-row:15/18"><b>KLN</b>K1 bisque load<i class="m">34 / 60</i><sup class="note-ref">C</sup></div>
+        </div>
+      </div>
+      <div class="week-foot">
+        <ol class="annot">
+          <li><span class="note-ref">A</span><span>Hand-building moves to the bench room. The kiln room shuts at <span class="m">18:00</span> while K2 climbs.</span></li>
+          <li><span class="note-ref">B</span><span>Friday open studio runs in the bench room; the kiln room stays shut until K2 is below <span class="m">65 °C</span>.</span></li>
+          <li><span class="note-ref">C</span><span>Sunday’s K1 bisque load fills from the greenware shelves. See the meter in <a href="#meter">01</a>.</span></li>
+        </ol>
+        <dl class="key">
+          <div><dt><span class="k k-class"></span>CLS</dt><dd>Class</dd></div>
+          <div><dt><span class="k k-open"></span>OPN</dt><dd>Open studio</dd></div>
+          <div><dt><span class="k k-kiln"></span>KLN</dt><dd>Kiln work</dd></div>
+          <div><dt><span class="k k-closed"></span>///</dt><dd>Kiln room shut</dd></div>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 · Kilns -->
+<section class="sec" id="kilns" aria-labelledby="h-kilns">
+  <div class="sheet row">
+    <p class="num" aria-hidden="true">03</p>
+    <div class="s-head">
+      <h2 id="h-kilns" class="h2">Load by level. Fire by&nbsp;program.</h2>
+      <p class="body">Each kiln keeps its own queue; a load is built shelf level by shelf level from pieces that are ready.</p>
+    </div>
+
+    <div class="s-inst">
+      <table class="tbl kilns">
+        <caption class="strip"><span class="strip-t">Kiln queue · as of Fri 16 · 02:40</span><span class="tag">Sample data</span></caption>
+        <thead><tr><th scope="col">Kiln</th><th scope="col">Size</th><th scope="col">Now</th><th scope="col">Next firing</th><th scope="col" class="n">Booked</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">K1</th><td data-l="Size"><span class="m">5 cu ft</span> · electric</td><td data-l="Now">Idle · bisque out <span class="m">Wed 14</span></td><td data-l="Next">Bisque <span class="m">^04 · Sun 18 17:00</span></td><td data-l="Booked" class="n">34 / 60</td></tr>
+          <tr class="is-live"><th scope="row">K2</th><td data-l="Size"><span class="m">7 cu ft</span> · electric</td><td data-l="Now"><span class="live">Firing · S3 · <span class="m">1207 °C</span></span></td><td data-l="Next">Glaze <span class="m">^6 · Tue 20 18:00</span></td><td data-l="Booked" class="n">12 / 40</td></tr>
+          <tr><th scope="row">K3</th><td data-l="Size"><span class="m">2 cu ft</span> · electric</td><td data-l="Now">Idle</td><td data-l="Next">Test tiles <span class="m">^6 · Wed 21 09:00</span></td><td data-l="Booked" class="n">18 / 24</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <figure class="kiln-fig">
+      <img data-slot="Three kilns side by side in the kiln room, K1, K2 and K3, lids closed" class="slot slot-wide" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="1600" height="900" alt="Three kilns side by side in the kiln room">
+      <figcaption class="mono-s cap">Fig. 2 · K1, K2, K3, left to right</figcaption>
+    </figure>
+
+    <div class="load-plan">
+      <p class="strip" id="load-cap"><span class="strip-t">Load plan · K2 glaze ^6 · Thu 15</span><span class="tag">Sample data</span><span class="hint">Scroll sideways</span></p>
+      <div class="tbl-scroll" role="region" aria-labelledby="load-cap" tabindex="0">
+      <table class="tbl load" aria-labelledby="load-cap">
+        <thead><tr><th scope="col">Level</th><th scope="col" class="n">Posts</th><th scope="col" class="n">Pieces</th><th scope="col" class="n">Tallest</th><th scope="col">Members</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">4 · top</th><td class="n">—</td><td class="n">12</td><td class="n">7.5 cm</td><td class="m">AO · LM · PR</td></tr>
+          <tr><th scope="row">3</th><td class="n">10 cm</td><td class="n">9</td><td class="n">9.0 cm</td><td><span class="m">JA · KC</span> · cone pack</td></tr>
+          <tr><th scope="row">2</th><td class="n">18 cm</td><td class="n">8</td><td class="n">16.5 cm</td><td class="m">RO · SK · ML</td></tr>
+          <tr><th scope="row">1 · floor</th><td class="n">23 cm</td><td class="n">9</td><td class="n">21.0 cm</td><td class="m">DV · HB · EF</td></tr>
+        </tbody>
+        <tfoot><tr><th scope="row">Total</th><td class="n">3 sets</td><td class="n">38</td><td class="n">—</td><td><span class="m">11</span> members</td></tr></tfoot>
+      </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 · Shelves -->
+<section class="sec" id="shelves" aria-labelledby="h-shelves">
+  <div class="sheet row">
+    <p class="num" aria-hidden="true">04</p>
+    <div class="s-head">
+      <h2 id="h-shelves" class="h2">A name and a date on every&nbsp;shelf.</h2>
+      <p class="body">Pieces move greenware, bisque, glazed, ready, and anything left too long shows up without a walk to the back room.</p>
+    </div>
+
+    <div class="s-inst">
+      <div class="shelf-bar">
+        <p class="strip"><span class="strip-t">Member shelves · 8 of 64 shown</span><span class="tag">Sample data</span><span class="hint">Scroll sideways</span></p>
+        <div class="filters" role="group" aria-label="Filter shelves">
+          <button type="button" class="chip" aria-pressed="true" data-f="all">All <span>8</span></button>
+          <button type="button" class="chip" aria-pressed="false" data-f="ready">Ready to collect <span>2</span></button>
+          <button type="button" class="chip" aria-pressed="false" data-f="kiln">In K2 <span>2</span></button>
+          <button type="button" class="chip" aria-pressed="false" data-f="old">21+ days <span>2</span></button>
+          <button type="button" class="chip" aria-pressed="false" data-f="k3">For K3 <span>0</span></button>
+        </div>
+      </div>
+      <div class="tbl-scroll" role="region" aria-label="Member shelves table, sample data" tabindex="0">
+      <table class="tbl shelf-tbl">
+        <thead><tr><th scope="col">Shelf</th><th scope="col">Member</th><th scope="col" class="n">Pieces</th><th scope="col">Stage</th><th scope="col" class="n">Days</th><th scope="col">Next</th></tr></thead>
+        <tbody>
+          <tr data-s="kiln"><th scope="row">B-11</th><td>Priya Raman</td><td class="n">6</td><td><span class="st st-kiln">Glazed, in K2</span></td><td class="n">—</td><td>Out <span class="m">Sat 17</span>, to <span class="m">C-14</span></td></tr>
+          <tr data-s="kiln"><th scope="row">B-06</th><td>Ruth Okafor</td><td class="n">4</td><td><span class="st st-kiln">Glazed, in K2</span></td><td class="n">—</td><td>Out <span class="m">Sat 17</span>, to <span class="m">C-07</span></td></tr>
+          <tr data-s="ready"><th scope="row">C-02</th><td>Tomás Nieto</td><td class="n">3</td><td><span class="st st-ready">Ready to collect</span></td><td class="n">9</td><td>Told <span class="m">Wed 7 Oct</span></td></tr>
+          <tr data-s="ready" data-old><th scope="row">C-12</th><td>Hugo Brandt</td><td class="n">3</td><td><span class="st st-ready">Ready to collect</span></td><td class="n">24</td><td>Second reminder <span class="m">Thu 15</span></td></tr>
+          <tr data-s="bisque"><th scope="row">B-04</th><td>Nadia Haddad</td><td class="n">5</td><td><span class="st st-bisque">Bisqued</span></td><td class="n">2</td><td>Glaze by <span class="m">Mon 19</span></td></tr>
+          <tr data-s="bisque" data-old><th scope="row">B-09</th><td>Esme Fairley</td><td class="n">1</td><td><span class="st st-bisque">Bisqued</span></td><td class="n">53</td><td>Ask: keep or reclaim?</td></tr>
+          <tr data-s="green"><th scope="row">G-03</th><td>Sun-hee Kwon</td><td class="n">7</td><td><span class="st st-green">Greenware</span></td><td class="n">4</td><td>K1 bisque <span class="m">Sun 18</span></td></tr>
+          <tr data-s="green"><th scope="row">G-08</th><td>Dara Vance</td><td class="n">2</td><td><span class="st st-green">Greenware</span></td><td class="n">9</td><td>K1 bisque <span class="m">Sun 18</span></td></tr>
+          <tr class="empty-row" hidden><td colspan="6">Nothing is waiting for K3. Test tiles go in on <span class="m">Wed 21</span>.</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 · Notices -->
+<section class="sec" id="notices" aria-labelledby="h-notices">
+  <div class="sheet row">
+    <p class="num" aria-hidden="true">05</p>
+    <div class="s-head">
+      <h2 id="h-notices" class="h2">Only the people with work in the kiln&nbsp;hear.</h2>
+      <p class="body">Mark a firing done and each member in that load gets one message with their shelf.</p>
+    </div>
+
+    <div class="s-inst notice">
+      <div class="rule">
+        <p class="strip"><span class="strip-t">Notice rule · K2</span><span class="tag">Sample data</span></p>
+        <dl class="specs">
+          <div><dt>When</dt><dd>K2 firing marked done</dd></div>
+          <div><dt>Who</dt><dd>Members with pieces in the load · <span class="m">11</span></dd></div>
+          <div><dt>Says</dt><dd>Kiln, program, their shelf, collect-by date</dd></div>
+          <div><dt>Status</dt><dd>Queued · est. <span class="m">Sat 17 10:40</span></dd></div>
+        </dl>
+      </div>
+      <figure class="msg">
+        <figcaption class="strip"><span class="strip-t">To Priya Raman · 1 of 11</span><span class="tag">Sample data</span></figcaption>
+        <blockquote class="msg-body">
+          <p>Hollow Lane Studio: your glaze firing is out of K2.</p>
+          <p>6 pieces are on shelf C-14. Please collect by Sat 31 Oct.</p>
+        </blockquote>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- 06 · Trial -->
+<section class="sec end" id="start-trial" aria-labelledby="h-trial">
+  <div class="sheet row">
+    <p class="num" aria-hidden="true">06</p>
+    <h2 id="h-trial" class="display end-h">Start the log on your next&nbsp;firing.</h2>
+    <div class="end-side">
+      <p class="body">Add your kilns, your classes and your members’ shelves, then plan next week from the kiln outward.</p>
+      <div class="actions"><a class="btn btn-lg" href="#start-trial">Start free trial</a></div>
+    </div>
+
+    <table class="title-block">
+      <caption class="sr">Sheet title block</caption>
+      <tbody>
+        <tr>
+          <th scope="row">Project</th><td colspan="3">Kilnward · studio control sheet</td>
+          <th scope="row">Sheet</th><td class="m">KW-01 · 1 of 1</td>
+        </tr>
+        <tr>
+          <th scope="row">Drawn</th><td>Kilnward</td>
+          <th scope="row">Checked</th><td>Hollow Lane Studio <span class="mono-s">(sample)</span></td>
+          <th scope="row">Date</th><td class="m">16 Oct 2026 · Rev 4</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="sheet foot-in">
+    <p class="mono-s">Kilnward · Sheet KW-01</p>
+    <p class="mono-s">Kilnward is a fictional product. Every studio, member, kiln, time and temperature on this sheet is sample data.</p>
+  </div>
+</footer>
+
+<script src="script.js" defer></script>
+</body>
+</html>

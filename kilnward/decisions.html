@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Decision log · Kilnward demo</title><link rel="icon" href="data:,">
+<style>:root{--bg:#f7f8f8;--ink:#141817;--muted:#55605d;--accent:#0e5e58;color-scheme:light}
+@media (prefers-color-scheme:dark){:root{--bg:#101413;--ink:#e8eeec;--muted:#9aa8a4;--accent:#5fc2b6;color-scheme:dark}}
+body{margin:0;background:var(--bg);color:var(--ink);padding:32px max(16px,env(safe-area-inset-left,0px))}
+main{max-width:88ch;margin:0 auto} a{color:var(--accent)}
+pre{white-space:pre-wrap;word-wrap:break-word;font:400 14px/1.6 ui-monospace,Menlo,monospace}
+p{font:400 15px/1.5 system-ui,sans-serif;color:var(--muted)}</style></head>
+<body><main><p><a href="../index.html">Back to the demo</a> · Decision log · the file exactly as written during the run.</p>
+<pre># Decision log
+
+&lt;!-- unslop keeps this file current after every stage. A new session reads &quot;Current stage&quot;
+     first to resume. Record the user&#x27;s picks in their own words where possible. --&gt;
+
+## Current stage
+
+stage: done
+waiting on: nothing
+
+## Skill versions
+
+- impeccable: 4.7.0 (.claude/skills/impeccable)
+- design-taste-frontend: tasteskill v2, skills-lock hash 69021ac7 (.claude/skills/design-taste-frontend)
+
+## Log
+
+&lt;!-- One entry per decision, newest last:
+### YYYY-MM-DD · Stage N · &lt;what was decided&gt;
+- Picked: …
+- Borrowed: …
+- Why (user&#x27;s words): …
+--&gt;
+
+### 2026-10-23 · Intake · brief approved
+- Demo run: the user asked Claude to run the demo end to end; brief, guardrails and picks are Claude&#x27;s.
+- Product name Kilnward checked by web search (no existing use found); &#x27;Kiln&#x27; rejected (existing businesses).
+
+### 2026-10-23 · Stage 1 · style picks
+- 44 references from Dribbble search (9 queries), grouped into 8 visual languages.
+- Picked (Claude, demo): Warm craft, Editorial serif, Swiss technical, Risograph print, Booking over photo.
+- Why: Dark cinematic and Soft SaaS rely on glossy objects and gradients the Never list bans; Brutalist display fights &quot;calm&quot;.
+
+### 2026-10-23 · Stage 2 · directions approved
+- Five direction blocks in stage-2/DIRECTIONS.md (Claude, demo).
+
+### 2026-10-23 · Stage 2 · winner
+- 10 builds done; all pass automated checks (no script errors, no fetched images, 2 reserved slots each, CTA ≥ 2, no horizontal overflow).
+- Winner (Claude, demo): 03 Kiln Log · impeccable. Why: the firing curve (cone markers, quartz inversion, live NOW marker) is the clearest proof of &quot;they understand how my week actually works&quot;.
+- Borrowed: the day-by-day &quot;In this issue&quot; index from 02 Studio Journal · taste (as a week index); the interactive kiln capacity meter from 05 Open Studio · taste (booking pieces fills the next load).
+- Weakness to address in iterations: &quot;tactile&quot; is under-served; copy converges on &quot;whiteboard&quot; phrasing across builds.
+
+### 2026-10-23 · Stage 3 · synthesis and iteration names
+- iter-1 &quot;Kiln room wall&quot;: the log pinned up in the kiln room: warm sheet, pencil-weight annotations, tactile without leaving the technical world.
+- iter-2 &quot;One firing, start to finish&quot;: the page is one firing&#x27;s timeline (book → load → fire → cool → collect); the week index is the rail.
+- iter-3 &quot;The control sheet&quot;: denser and interactive: the capacity meter beside the curve in the first screen; fewer words, more instrument.
+- Skill: impeccable (winner&#x27;s skill).
+
+### 2026-10-23 · Stage 3 · picks from each iteration
+- All three iterations verified in a real browser: capacity meters fill, overflow and switch sessions correctly; no script errors; no horizontal overflow at 1440.
+- Picks (Claude, demo):
+  1. iter-3 &quot;The control sheet&quot;: the first screen with three instruments side by side (firing curve, capacity meter, week index).
+  2. iter-1 &quot;Kiln room wall&quot;: the warm sheet (#F5F2EB, warm grid), grease-pencil annotations (capped at 4 so the page stays calm), the headline &quot;The week runs on the kiln&#x27;s clock.&quot;, and the closing title block.
+  3. iter-2 &quot;One firing, start to finish&quot;: below the fold, sections follow one firing in order (booked → loaded → fired → cooling → unloaded), including the cooling chart and the phone-specific curve that fits without scrolling.
+- Conflict resolved: iter-2&#x27;s sticky time rail would duplicate iter-3&#x27;s week index, so story sections carry margin timestamps instead of a rail.
+
+### 2026-10-23 · Stage 4 · composition approved (Claude, demo)
+
+### 2026-10-23 · Post-build edit (Claude)
+- stage-2/05-open-studio-impeccable: secondary text on tinted session cards changed from #776D64 (measured 4.15:1) to #4B423B (8.06:1); header link &quot;Sign in&quot; relabelled &quot;Start free trial&quot; because it pointed at the trial section. Both found by impeccable&#x27;s finish reviewer.
+
+### 2026-10-23 · Stage 4 · final shipped
+- design/final verified in a real browser: meter fill and overflow, 3 CTAs, 2 reserved slots, no external images, no script errors, no horizontal overflow at 1440 or 390.
+- DESIGN.md written from the shipped CSS and markup.
+- Files the skills wrote outside design/: .claude/ and skills-lock.json (installers), .taste-skill/ (tasteskill inspector output).
+</pre></main></body></html>

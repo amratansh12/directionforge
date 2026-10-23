@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kilnward · bookings, kilns and shelves for small ceramic studios</title>
+<meta name="description" content="Kilnward runs a small ceramic studio's week: class and open-studio bookings, kiln loads and firing schedules, and every member's shelf, in one place.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="bar">
+  <div class="bar__in">
+    <a class="wordmark" href="#top" aria-label="Kilnward, back to top">Kilnward</a>
+    <nav aria-label="Sections">
+      <ul class="bar__links">
+        <li><a href="#week">The week</a></li>
+        <li><a href="#kilns">Kilns</a></li>
+        <li><a href="#shelves">Shelves</a></li>
+        <li><a href="#log">A piece's log</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn--sm" href="#start">Start free trial</a>
+  </div>
+</header>
+
+<main id="main">
+  <div class="gridlines" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+
+  <!-- 01 · HERO: the firing curve -->
+  <section class="sec sec--hero" id="top" aria-labelledby="h-hero">
+    <div class="rail" aria-hidden="true"><span class="num">01</span></div>
+    
+    <div class="grid">
+      <div class="hero__head cell" data-rise>
+        <h1 id="h-hero">Every firing, logged.</h1>
+      </div>
+      <div class="hero__lede cell" data-rise>
+        <p class="lede">Kilnward runs a small ceramic studio's week: class and open-studio bookings, kiln loads and firing schedules, and every member's shelf, in one place.</p>
+        <div class="actions">
+          <a class="btn" href="#start">Start free trial</a>
+          <a class="textlink" href="#week">See a studio week</a>
+        </div>
+      </div>
+
+      <figure class="curve cell" data-ui aria-labelledby="curve-cap">
+        <div class="curve__top mono">
+          <span>Kiln B · Cone 6 glaze · Fri 24 Oct</span>
+          <span class="tag">Sample data</span>
+        </div>
+        <div class="curve__plot" id="plot">
+          <div class="yaxis mono" aria-hidden="true">
+            <span style="top:100%">0</span><span style="top:84.615%">200</span><span style="top:69.231%">400</span><span style="top:53.846%">600</span><span style="top:38.462%">800</span><span style="top:23.077%">1000</span><span style="top:7.692%">1200</span>
+          </div>
+          <div class="curve__area">
+            <svg class="curve__svg" viewBox="0 0 1200 520" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+              <g class="ticks">
+                <path d="M0 440H1200M0 360H1200M0 280H1200M0 200H1200M0 120H1200M0 40H1200" class="t-major"/>
+                <path d="M100 0V520M200 0V520M300 0V520M400 0V520M500 0V520M600 0V520M700 0V520M800 0V520M900 0V520M1000 0V520M1100 0V520" class="t-major"/>
+                <path d="M50 520v-8M150 520v-8M250 520v-8M350 520v-8M450 520v-8M550 520v-8M650 520v-8M750 520v-8M850 520v-8M950 520v-8M1050 520v-8M1150 520v-8M25 520v-4M75 520v-4M125 520v-4M175 520v-4M225 520v-4M275 520v-4M325 520v-4M375 520v-4M425 520v-4M475 520v-4M525 520v-4M575 520v-4M625 520v-4M675 520v-4M725 520v-4M775 520v-4M825 520v-4M875 520v-4M925 520v-4M975 520v-4M1025 520v-4M1075 520v-4M1125 520v-4M1175 520v-4" class="t-minor"/>
+              </g>
+              <g class="cones">
+                <path d="M0 31.2H1200" /><path d="M0 45.6H1200" /><path d="M0 96H1200" /><path d="M0 290.8H1200" class="quartz"/>
+              </g>
+              <polyline class="plan" points="0,512 250,432 640,120 1010,31.2 1026.7,31.2 1174.7,120 1200,132.8"/>
+              <clipPath id="done"><rect id="done-rect" x="0" y="0" width="1200" height="520"/></clipPath>
+              <polyline class="live" id="live-line" clip-path="url(#done)" points="0,512 250,432 640,120 1010,31.2 1026.7,31.2 1174.7,120 1200,132.8"/>
+            </svg>
+            <div class="conelabels mono" aria-hidden="true">
+              <span style="top:6%">Cone 6 · 1222 °C</span>
+              <span style="top:8.77%" class="lo">Cone 5 · 1186</span>
+              <span style="top:18.46%">Cone 04 · 1060</span>
+              <span style="top:55.92%">573 °C<span class="long"> · quartz inversion, go gently</span></span>
+            </div>
+            <div class="seglabels mono" aria-hidden="true">
+              <span style="left:10.4%;top:88%">80 °C/h</span>
+              <span style="left:39%;top:56%">200 °C/h</span>
+              <span style="left:63%;top:23%">60 °C/h</span>
+              <span style="left:85.6%;top:1%">hold 10 min</span>
+            </div>
+            <div class="now" id="now" style="left:60%">
+              <span class="now__dot" id="now-dot" style="top:30%"></span>
+            </div>
+          </div>
+          <div class="xaxis mono" aria-hidden="true">
+            <span style="left:0%">06:00</span><span style="left:16.667%">08:00</span><span style="left:33.333%">10:00</span><span style="left:50%">12:00</span><span style="left:66.667%">14:00</span><span style="left:83.333%">16:00</span><span style="left:100%">18:00</span>
+          </div>
+        </div>
+        <div class="curve__read">
+          <label class="scrub-label mono" for="scrub">Read the log at</label>
+          <input class="scrub" id="scrub" type="range" min="0" max="720" step="5" value="432" aria-describedby="readout">
+          <output class="readout mono" id="readout" for="scrub" aria-live="polite">13:12 · 1,048 °C · segment 3, climbing 60 °C/h to 1222 °C</output>
+        </div>
+        <figcaption id="curve-cap" class="cap">Twelve hours of a cone 6 glaze firing, temperature against time. The orange line is how far the firing has got at this time of day; drag the marker to read any point.</figcaption>
+      </figure>
+
+      <aside class="spec cell" aria-label="Firing summary">
+        <img class="slot slot--square" data-slot="Cone pack after firing: witness cones 5, 6 and 7 in a clay pad, cone 6 bent to touch the base" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" width="600" height="600" alt="Witness cones 5, 6 and 7 after the firing; cone 6 bent over until its tip touches the pad.">
+        <p class="spec__cap">Witness cones 5, 6, 7 from this firing. Six is down; seven is standing.</p>
+        <dl class="spec__list mono">
+          <div><dt>Programme</dt><dd>Cone 6 glaze, medium</dd></div>
+          <div><dt>Peak</dt><dd>1222 °C, hold 10 min</dd></div>
+          <div><dt>Run time</dt><dd>11 h 45 m</dd></div>
+          <div><dt>Load</dt><dd>46 pieces, 5 levels</dd></div>
+          <div><dt>Unload</dt><dd>Sun 26 Oct, 12:00</dd></div>
+        </dl>
+      </aside>
+    </div>
+    <div class="rail rail--r" aria-hidden="true"><span class="ref mono">Sheet 01 of 06 · Firing curve</span></div>
+  </section>
+
+  <!-- 02 · THE WEEK -->
+  <section class="sec" id="week" aria-labelledby="h-week">
+    <div class="rail" aria-hidden="true"><span class="num">02</span></div>
+    
+    <div class="grid">
+      <div class="cell sec__head" data-rise>
+        <h2 id="h-week">The week, on one sheet.</h2>
+      </div>
+      <div class="cell sec__text" data-rise>
+        <p>Classes, open studio and kiln days share the same seven columns, because they share the same room. Members book their own seats; a class stops taking bookings when the wheels run out, and the waitlist is right there under it.</p>
+        <p>The spreadsheet, the group chat and the whiteboard by the kiln become this page.</p>
+      </div>
+
+      <div class="week cell" data-ui role="region" aria-label="Sample booking week, week 43">
+        <div class="week__top mono"><span>Week 43 · 20–26 Oct</span><span class="tag">Sample data</span></div>
+        <div class="week__days">
+          <div class="day">
+            <h3 class="day__name mono">Mon 20</h3>
+            <ul>
+              <li class="ev ev--kiln"><span class="ev__t mono">09:00</span><span class="ev__n">Bisque load</span><span class="ev__m mono">Kiln A · cone 04</span></li>
+              <li class="ev ev--closed"><span class="ev__t mono">All day</span><span class="ev__n">Studio closed</span><span class="ev__m mono">Reclaim, mop, glaze mixing</span></li>
+            </ul>
+          </div>
+          <div class="day">
+            <h3 class="day__name mono">Tue 21</h3>
+            <ul>
+              <li class="ev"><span class="ev__t mono">10:00–13:00</span><span class="ev__n">Open studio</span><span class="ev__m mono">11 of 14 booked</span><span class="meter" style="--f:.786"></span></li>
+              <li class="ev ev--class ev--full"><span class="ev__t mono">18:30–21:00</span><span class="ev__n">Wheel I · week 3 of 6</span><span class="ev__m mono">8 of 8 · full · 2 waiting</span><span class="meter" style="--f:1"></span></li>
+            </ul>
+          </div>
+          <div class="day">
+            <h3 class="day__name mono">Wed 22</h3>
+            <ul>
+              <li class="ev"><span class="ev__t mono">10:00–13:00</span><span class="ev__n">Open studio</span><span class="ev__m mono">6 of 14 booked</span><span class="meter" style="--f:.429"></span></li>
+              <li class="ev ev--class"><span class="ev__t mono">18:30–21:00</span><span class="ev__n">Handbuilding</span><span class="ev__m mono">7 of 10 booked</span><span class="meter" style="--f:.7"></span></li>
+            </ul>
+          </div>
+          <div class="day">
+            <h3 class="day__name mono">Thu 23</h3>
+            <ul>
+              <li class="ev ev--kiln"><span class="ev__t mono">14:00</span><span class="ev__n">Glaze load</span><span class="ev__m mono">Kiln B · 46 pieces</span></li>
+              <li class="ev ev--class"><span class="ev__t mono">18:30–21:00</span><span class="ev__n">Wheel II</span><span class="ev__m mono">6 of 8 booked</span><span class="meter" style="--f:.75"></span></li>
+            </ul>
+          </div>
+          <div class="day day--today">
+            <h3 class="day__name mono">Fri 24 <span class="today">Today</span></h3>
+            <ul>
+              <li class="ev ev--kiln ev--live"><span class="ev__t mono">06:00–18:00</span><span class="ev__n">Kiln B firing</span><span class="ev__m mono">Cone 6 · studio stays open</span></li>
+              <li class="ev"><span class="ev__t mono">10:00–16:00</span><span class="ev__n">Open studio</span><span class="ev__m mono">9 of 14 booked</span><span class="meter" style="--f:.643"></span></li>
+            </ul>
+          </div>
+          <div class="day">
+            <h3 class="day__name mono">Sat 25</h3>
+            <ul>
+              <li class="ev ev--class ev--full"><span class="ev__t mono">10:00–12:30</span><span class="ev__n">Taster: first pots</span><span class="ev__m mono">10 of 10 · full · 3 waiting</span><span class="meter" style="--f:1"></span></li>
+              <li class="ev"><span class="ev__t mono">13:30–17:00</span><span class="ev__n">Open studio</span><span class="ev__m mono">12 of 14 booked</span><span class="meter" style="--f:.857"></span></li>
+            </ul>
+          </div>
+          <div class="day">
+            <h3 class="day__name mono">Sun 26</h3>
+            <ul>
+              <li class="ev ev--kiln"><span class="ev__t mono">12:00</span><span class="ev__n">Unload Kiln B</span><span class="ev__m mono">Pieces to pickup shelves</span></li>
+              <li class="ev"><span class="ev__t mono">11:00–15:00</span><span class="ev__n">Open studio</span><span class="ev__m mono">4 of 14 booked</span><span class="meter" style="--f:.286"></span></li>
+            </ul>
+          </div>
+        </div>
+        <p class="week__key mono">Class · open studio · <span class="key-kiln">kiln event</span>. Bars show seats taken.</p>
+      </div>
+    </div>
+    <div class="rail rail--r" aria-hidden="true"><span class="ref mono">Sheet 02 of 06 · Booking week</span></div>
+  </section>
+
+  <!-- 03 · KILNS -->
+  <section class="sec" id="kilns" aria-labelledby="h-kilns">
+    <div class="rail" aria-hidden="true"><span class="num">03</span></div>
+    
+    <div class="grid">
+      <div class="cell sec__head" data-rise>
+        <h2 id="h-kilns">Three kilns, one plan.</h2>
+      </div>
+      <div class="cell sec__text" data-rise>
+        <p>Each kiln keeps its own queue: what is going in, at what cone, on which level, and when it can come out. Loads are planned by height and level before anyone lifts a shelf, and the schedule you programme is the one the members see.</p>
+      </div>
+
+      <figure class="kilnpic cell" data-rise>
+        <img class="slot slot--wide" data-slot="Three kilns side by side in a studio kiln room: a large top-loader, a second top-loader with its lid open, and a small test kiln" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" width="1600" height="900" alt="The kiln room: kilns A, B and C side by side, with B's lid open.">
+        <figcaption class="cap mono">Left to right: Kiln A, Kiln B, Kiln C (test).</figcaption>
+      </figure>
+
+      <div class="kilns cell" data-ui role="region" aria-label="Sample kiln queue">
+        <div class="tbl__top mono"><span>Kiln queue · this week</span><span class="tag">Sample data</span></div>
+        <table class="tbl">
+          <thead><tr><th scope="col">Kiln</th><th scope="col">Next firing</th><th scope="col">Load</th><th scope="col">When</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">A <span class="sub">7.0 cu ft</span></th><td>Bisque, cone 04</td><td class="num">3 of 4 levels</td><td class="mono">Mon 27 · 09:00</td></tr>
+            <tr class="is-live"><th scope="row">B <span class="sub">7.0 cu ft</span></th><td>Glaze, cone 6 <span class="state">Firing now</span></td><td class="num">5 of 5 levels</td><td class="mono">Fri 24 · 06:00</td></tr>
+            <tr><th scope="row">C <span class="sub">1.2 cu ft</span></th><td>Test tiles, cone 6</td><td class="num">18 tiles</td><td class="mono">Wed 29 · 10:00</td></tr>
+          </tbody>
+        </table>
+
+        <div class="tbl__top mono tbl__top--gap"><span>Kiln B · load plan by level</span></div>
+        <table class="tbl tbl--load">
+          <thead><tr><th scope="col">Level</th><th scope="col">Pieces</th><th scope="col">What</th><th scope="col">Posts</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">5 · top</th><td class="num">9</td><td>Hannah K. ×5, Taster bowls ×4</td><td class="mono">10 cm</td></tr>
+            <tr><th scope="row">4</th><td class="num">10</td><td>Wheel I mugs, week 2</td><td class="mono">12 cm</td></tr>
+            <tr><th scope="row">3</th><td class="num">8</td><td>Wheel II ×7, Joe P. ×1</td><td class="mono">12 cm</td></tr>
+            <tr><th scope="row">2</th><td class="num">11</td><td>Handbuilding plates</td><td class="mono">6 cm</td></tr>
+            <tr><th scope="row">1 · base</th><td class="num">8</td><td>Tall vases, glaze-tested</td><td class="mono">32 cm</td></tr>
+          </tbody>
+          <tfoot><tr><th scope="row">Total</th><td class="num">46</td><td colspan="2"></td></tr></tfoot>
+        </table>
+      </div>
+
+      <div class="sched cell" data-ui role="region" aria-label="Sample firing programme for Kiln B">
+        <div class="tbl__top mono"><span>Programme · cone 6 glaze, medium · as drawn in 01</span><span class="tag">Sample data</span></div>
+        <ol class="segs">
+          <li><span class="mono seg__n">Seg 1</span><span class="seg__r">80 °C/h to 220 °C</span><span class="mono seg__d">2 h 30 m</span><span class="seg__w">Slow start; last water out.</span></li>
+          <li><span class="mono seg__n">Seg 2</span><span class="seg__r">200 °C/h to 1000 °C</span><span class="mono seg__d">3 h 54 m</span><span class="seg__w">Through quartz inversion at 573 °C.</span></li>
+          <li><span class="mono seg__n">Seg 3</span><span class="seg__r">60 °C/h to 1222 °C, hold 10 min</span><span class="mono seg__d">3 h 52 m</span><span class="seg__w">Slow finish so the cones read true.</span></li>
+          <li><span class="mono seg__n">Seg 4</span><span class="seg__r">Cool 150 °C/h to 1000 °C</span><span class="mono seg__d">1 h 29 m</span><span class="seg__w">Controlled cool, then kiln off.</span></li>
+        </ol>
+      </div>
+    </div>
+    <div class="rail rail--r" aria-hidden="true"><span class="ref mono">Sheet 03 of 06 · Kiln queue</span></div>
+  </section>
+
+  <!-- 04 · SHELVES -->
+  <section class="sec" id="shelves" aria-labelledby="h-shelves">
+    <div class="rail" aria-hidden="true"><span class="num">04</span></div>
+    
+    <div class="grid">
+      <div class="cell shelves__text" data-rise>
+        <h2 id="h-shelves">Every shelf, accounted for.</h2>
+        <p>Each piece sits on a labelled shelf and carries its stage: greenware, bisqued, glazed, in the kiln, ready to collect. Members check their own shelf from their phone. You see which pots have been waiting three weeks for an owner.</p>
+        <div class="filters" role="group" aria-label="Filter shelves by stage">
+          <button type="button" class="filter is-on" aria-pressed="true" data-f="all">All <span class="mono">10</span></button>
+          <button type="button" class="filter" aria-pressed="false" data-f="green">Greenware <span class="mono">2</span></button>
+          <button type="button" class="filter" aria-pressed="false" data-f="bisque">Bisqued <span class="mono">2</span></button>
+          <button type="button" class="filter" aria-pressed="false" data-f="glazed">Glazed <span class="mono">3</span></button>
+          <button type="button" class="filter" aria-pressed="false" data-f="ready">Ready <span class="mono">3</span></button>
+        </div>
+      </div>
+
+      <div class="shelves cell" data-ui role="region" aria-label="Sample member shelf list">
+        <div class="tbl__top mono"><span>Member shelves · Fri 24 Oct</span><span class="tag">Sample data</span></div>
+        <table class="tbl tbl--shelves">
+          <thead><tr><th scope="col">Shelf</th><th scope="col">Member</th><th scope="col">Pieces</th><th scope="col">Stage</th><th scope="col">Next</th><th scope="col">Days</th></tr></thead>
+          <tbody>
+            <tr data-s="green"><th scope="row" class="mono">G1</th><td>Priya S.</td><td class="num">4</td><td>Greenware</td><td>Bisque, Mon 27</td><td class="num">3</td></tr>
+            <tr data-s="green"><th scope="row" class="mono">G3</th><td>Tom W.</td><td class="num">2</td><td>Greenware</td><td>Trim by Sat</td><td class="num">8</td></tr>
+            <tr data-s="bisque"><th scope="row" class="mono">B2</th><td>Ana R.</td><td class="num">6</td><td>Bisqued</td><td>Glaze in open studio</td><td class="num">10</td></tr>
+            <tr data-s="bisque"><th scope="row" class="mono">B4</th><td>Marcus L.</td><td class="num">3</td><td>Bisqued</td><td>Glaze in open studio</td><td class="num">11</td></tr>
+            <tr data-s="glazed" class="is-live"><th scope="row" class="mono">Z1</th><td>Hannah K.</td><td class="num">5</td><td>In Kiln B</td><td>Unload Sun 26</td><td class="num">9</td></tr>
+            <tr data-s="glazed" class="is-live"><th scope="row" class="mono">Z2</th><td>Joe P.</td><td class="num">1</td><td>In Kiln B</td><td>Unload Sun 26</td><td class="num">9</td></tr>
+            <tr data-s="glazed"><th scope="row" class="mono">Z4</th><td>Mei T.</td><td class="num">3</td><td>Glazed</td><td>Glaze load, Thu 30</td><td class="num">6</td></tr>
+            <tr data-s="ready" class="is-old"><th scope="row" class="mono">P3</th><td>Sam O.</td><td class="num">7</td><td>Ready to collect</td><td>Reminder sent twice</td><td class="num">22</td></tr>
+            <tr data-s="ready"><th scope="row" class="mono">P5</th><td>Ruth D.</td><td class="num">2</td><td>Ready to collect</td><td>Collect by Sun 2 Nov</td><td class="num">5</td></tr>
+            <tr data-s="ready"><th scope="row" class="mono">P7</th><td>Leo M.</td><td class="num">4</td><td>Ready to collect</td><td>Collect by Sun 2 Nov</td><td class="num">5</td></tr>
+          </tbody>
+        </table>
+        <p class="tbl__foot mono" id="shelf-count" aria-live="polite">Showing 10 shelves · 37 pieces</p>
+      </div>
+    </div>
+    <div class="rail rail--r" aria-hidden="true"><span class="ref mono">Sheet 04 of 06 · Member shelves</span></div>
+  </section>
+
+  <!-- 05 · ONE PIECE'S LOG -->
+  <section class="sec" id="log" aria-labelledby="h-log">
+    <div class="rail" aria-hidden="true"><span class="num">05</span></div>
+    
+    <div class="grid">
+      <div class="cell sec__head" data-rise>
+        <h2 id="h-log">One mug, wheel to pickup.</h2>
+      </div>
+      <div class="cell sec__text" data-rise>
+        <p>Bookings, kilns and shelves are one record, so a single piece can be followed through all of them. This is Joe's mug from Wheel I, written down at every step by whoever moved it.</p>
+      </div>
+      <ol class="log cell" data-ui aria-label="Sample log for one piece">
+        <li class="log__row"><time class="mono" datetime="2026-10-02T19:40">Thu 2 Oct · 19:40</time><span class="log__e">Thrown in Wheel I, week 1</span><span class="log__w mono">Shelf G3 · greenware</span></li>
+        <li class="log__row"><time class="mono" datetime="2026-10-07T18:55">Tue 7 Oct · 18:55</time><span class="log__e">Trimmed, handle pulled</span><span class="log__w mono">Shelf G3 · drying</span></li>
+        <li class="log__row"><time class="mono" datetime="2026-10-13T09:10">Mon 13 Oct · 09:10</time><span class="log__e">Loaded for bisque</span><span class="log__w mono">Kiln A · level 2 · cone 04</span></li>
+        <li class="log__row"><time class="mono" datetime="2026-10-15T11:30">Wed 15 Oct · 11:30</time><span class="log__e">Glazed in open studio</span><span class="log__w mono">Shelf Z2 · glazed</span></li>
+        <li class="log__row is-live"><time class="mono" datetime="2026-10-23T14:00">Thu 23 Oct · 14:00</time><span class="log__e">Loaded for glaze firing</span><span class="log__w mono">Kiln B · level 3 · cone 6</span></li>
+        <li class="log__row is-next"><time class="mono" datetime="2026-10-26T12:00">Sun 26 Oct · 12:00</time><span class="log__e">Unload, to pickup shelf</span><span class="log__w mono">Shelf P8 · planned</span></li>
+      </ol>
+      <p class="cell log__note mono">Sample data · names and dates are invented for this page.</p>
+    </div>
+    <div class="rail rail--r" aria-hidden="true"><span class="ref mono">Sheet 05 of 06 · Piece log</span></div>
+  </section>
+
+  <!-- 06 · START -->
+  <section class="sec sec--start" id="start" aria-labelledby="h-start">
+    <div class="rail" aria-hidden="true"><span class="num">06</span></div>
+    
+    <div class="grid">
+      <div class="cell start__head" data-rise>
+        <h2 id="h-start">Start your studio's log.</h2>
+        <p class="lede">Bring your kilns, your class calendar and your member list. Your first week is on the sheet before the next firing.</p>
+        <div class="actions">
+          <a class="btn btn--lg" href="mailto:hello@kilnward.example?subject=Start%20free%20trial&amp;body=Studio%20name%3A%0AKilns%3A%0AMembers%3A">Start free trial</a>
+        </div>
+      </div>
+      <ol class="setup cell" aria-label="What you set up first">
+        <li><span class="mono setup__n">Kilns</span><span>Name each kiln, its size and the programmes you fire. One kiln or three.</span></li>
+        <li><span class="mono setup__n">Week</span><span>Add your classes and open-studio hours, with the number of seats each one has.</span></li>
+        <li><span class="mono setup__n">Shelves</span><span>Label the shelves the way they are labelled in the studio, then invite members.</span></li>
+      </ol>
+    </div>
+    <div class="rail rail--r" aria-hidden="true"><span class="ref mono">Sheet 06 of 06 · Set-up</span></div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="foot__in">
+    <p class="foot__mark" aria-hidden="true">Kilnward</p>
+    <div class="foot__row mono">
+      <span>Kilnward · bookings, kilns and shelves for small ceramic studios</span>
+      <span>All names, figures and schedules on this page are sample data.</span>
+      <a href="#top">Back to top</a>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js" defer></script>
+</body>
+</html>

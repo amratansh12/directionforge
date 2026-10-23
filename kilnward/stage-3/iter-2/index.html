@@ -1,0 +1,698 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kilnward · One firing, start to finish</title>
+<meta name="description" content="Follow one glaze firing at a small ceramic studio from the first booking to the last collected pot. Kilnward keeps bookings, load plans, firing schedules and member shelves together. Sample data throughout.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="top-in">
+    <a class="mark" href="#main" aria-label="Kilnward, top of page">
+      <svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><path d="M4 17 L10 3 L16 17" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M2 17.2 H18" stroke="currentColor" stroke-width="1.6"/></svg>
+      <span>Kilnward</span>
+    </a>
+    <p class="meta top-meta">Firing log <span class="m">K2-0412</span> · Hollow Lane Studio · <span class="m">15–18 Oct</span></p>
+    <a class="btn btn-sm" href="#start-trial">Start free trial</a>
+  </div>
+</header>
+
+<div class="frame">
+
+<nav class="rail" aria-label="Stages of firing K2-0412">
+  <p class="rail-head"><span class="m">K2-0412</span><span class="tag">Sample data</span></p>
+  <ol class="rail-list">
+    <li><a href="#booked" data-to="booked"><span class="r-name">Booked</span><span class="r-time">Mon 12 → Thu 13:00</span></a></li>
+    <li><a href="#loaded" data-to="loaded"><span class="r-name">Loaded</span><span class="r-time">Thu 15 · 14:00</span></a></li>
+    <li><a href="#fired" data-to="fired"><span class="r-name">Fired</span><span class="r-time">Thu 15 · 18:00</span></a></li>
+    <li><a href="#cooling" data-to="cooling"><span class="r-name">Cooling</span><span class="r-time">Fri 16 · 06:00</span></a></li>
+    <li><a href="#unloaded" data-to="unloaded"><span class="r-name">Unloaded</span><span class="r-time">Fri 16 · 15:00</span></a></li>
+    <li><a href="#start-trial" data-to="next"><span class="r-name">Next firing</span><span class="r-time">Tue 20 · 18:00</span></a></li>
+  </ol>
+  <p class="rail-foot meta">The page reads in firing order. The curve at the top is the night itself.</p>
+</nav>
+
+<main id="main">
+
+<!-- Hero: the middle of the story -->
+<section class="sec hero" data-stage="fired" aria-labelledby="h-hero">
+  <div class="sheet row">
+    <p class="stamp" aria-hidden="true"><span>THU 15</span><span>18:00</span></p>
+    <div class="hero-head">
+      <h1 id="h-hero" class="display">Thursday night, K2 went to cone&nbsp;6.</h1>
+      <div class="hero-side">
+        <p class="lede">That is the twelve hours everyone remembers. Kilnward keeps the rest of the firing as well: who booked in, what went on which shelf, when the lid could come up, and whose bowls are still waiting. Below, one firing from first booking to empty shelf.</p>
+        <div class="actions">
+          <a class="btn" href="#start-trial">Start free trial</a>
+          <a class="link" href="#booked">Start at the booking</a>
+        </div>
+      </div>
+    </div>
+
+    <figure class="log" aria-labelledby="log-cap">
+      <figcaption id="log-cap" class="strip">
+        <span>Stage 3 of 5 · Fired · K2 · Glaze <span class="m">^6</span>, slow cool</span>
+        <span class="strip-r m">Thu 15 Oct 18:00 → Fri 16 Oct 06:00</span>
+        <span class="tag">Sample data</span>
+      </figcaption>
+      <div class="plot" tabindex="0" aria-describedby="plot-help">
+<svg class="curve curve-desk" data-x0="64" data-x1="968" data-y0="430" data-y1="34" viewBox="0 0 1000 470" role="img" aria-labelledby="cd-t cd-d">
+<title id="cd-t">Sample firing log, kiln K2, glaze firing to cone 6</title>
+<desc id="cd-d">Sample data, temperatures approximate. Twelve hours from Thursday 18:00 to Friday 06:00. The programme climbs at 100 degrees per hour to 220, at 180 per hour to 1100, then at 60 per hour to a peak of 1222 degrees at 02:55, holds 10 minutes, falls to 1000 and slow-cools at 80 per hour until the elements switch off at 06:00 at 847 degrees. The logged trace follows the programme throughout.</desc>
+<g class="grid">
+<line x1="64" x2="968" y1="430" y2="430"/>
+<line x1="64" x2="968" y1="369.1" y2="369.1"/>
+<line x1="64" x2="968" y1="308.2" y2="308.2"/>
+<line x1="64" x2="968" y1="247.2" y2="247.2"/>
+<line x1="64" x2="968" y1="186.3" y2="186.3"/>
+<line x1="64" x2="968" y1="125.4" y2="125.4"/>
+<line x1="64" x2="968" y1="64.5" y2="64.5"/>
+<line x1="64" x2="64" y1="34" y2="430"/>
+<line x1="139.3" x2="139.3" y1="34" y2="430"/>
+<line x1="214.7" x2="214.7" y1="34" y2="430"/>
+<line x1="290" x2="290" y1="34" y2="430"/>
+<line x1="365.3" x2="365.3" y1="34" y2="430"/>
+<line x1="440.7" x2="440.7" y1="34" y2="430"/>
+<line x1="516" x2="516" y1="34" y2="430"/>
+<line x1="591.3" x2="591.3" y1="34" y2="430"/>
+<line x1="666.7" x2="666.7" y1="34" y2="430"/>
+<line x1="742" x2="742" y1="34" y2="430"/>
+<line x1="817.3" x2="817.3" y1="34" y2="430"/>
+<line x1="892.7" x2="892.7" y1="34" y2="430"/>
+<line x1="968" x2="968" y1="34" y2="430"/>
+</g><g class="ruler">
+<line x1="56" x2="64" y1="430" y2="430"/><line x1="968" x2="976" y1="430" y2="430"/>
+<line x1="61" x2="64" y1="414.8" y2="414.8"/><line x1="968" x2="971" y1="414.8" y2="414.8"/>
+<line x1="59" x2="64" y1="399.5" y2="399.5"/><line x1="968" x2="973" y1="399.5" y2="399.5"/>
+<line x1="61" x2="64" y1="384.3" y2="384.3"/><line x1="968" x2="971" y1="384.3" y2="384.3"/>
+<line x1="56" x2="64" y1="369.1" y2="369.1"/><line x1="968" x2="976" y1="369.1" y2="369.1"/>
+<line x1="61" x2="64" y1="353.8" y2="353.8"/><line x1="968" x2="971" y1="353.8" y2="353.8"/>
+<line x1="59" x2="64" y1="338.6" y2="338.6"/><line x1="968" x2="973" y1="338.6" y2="338.6"/>
+<line x1="61" x2="64" y1="323.4" y2="323.4"/><line x1="968" x2="971" y1="323.4" y2="323.4"/>
+<line x1="56" x2="64" y1="308.2" y2="308.2"/><line x1="968" x2="976" y1="308.2" y2="308.2"/>
+<line x1="61" x2="64" y1="292.9" y2="292.9"/><line x1="968" x2="971" y1="292.9" y2="292.9"/>
+<line x1="59" x2="64" y1="277.7" y2="277.7"/><line x1="968" x2="973" y1="277.7" y2="277.7"/>
+<line x1="61" x2="64" y1="262.5" y2="262.5"/><line x1="968" x2="971" y1="262.5" y2="262.5"/>
+<line x1="56" x2="64" y1="247.2" y2="247.2"/><line x1="968" x2="976" y1="247.2" y2="247.2"/>
+<line x1="61" x2="64" y1="232" y2="232"/><line x1="968" x2="971" y1="232" y2="232"/>
+<line x1="59" x2="64" y1="216.8" y2="216.8"/><line x1="968" x2="973" y1="216.8" y2="216.8"/>
+<line x1="61" x2="64" y1="201.5" y2="201.5"/><line x1="968" x2="971" y1="201.5" y2="201.5"/>
+<line x1="56" x2="64" y1="186.3" y2="186.3"/><line x1="968" x2="976" y1="186.3" y2="186.3"/>
+<line x1="61" x2="64" y1="171.1" y2="171.1"/><line x1="968" x2="971" y1="171.1" y2="171.1"/>
+<line x1="59" x2="64" y1="155.8" y2="155.8"/><line x1="968" x2="973" y1="155.8" y2="155.8"/>
+<line x1="61" x2="64" y1="140.6" y2="140.6"/><line x1="968" x2="971" y1="140.6" y2="140.6"/>
+<line x1="56" x2="64" y1="125.4" y2="125.4"/><line x1="968" x2="976" y1="125.4" y2="125.4"/>
+<line x1="61" x2="64" y1="110.2" y2="110.2"/><line x1="968" x2="971" y1="110.2" y2="110.2"/>
+<line x1="59" x2="64" y1="94.9" y2="94.9"/><line x1="968" x2="973" y1="94.9" y2="94.9"/>
+<line x1="61" x2="64" y1="79.7" y2="79.7"/><line x1="968" x2="971" y1="79.7" y2="79.7"/>
+<line x1="56" x2="64" y1="64.5" y2="64.5"/><line x1="968" x2="976" y1="64.5" y2="64.5"/>
+<line x1="61" x2="64" y1="49.2" y2="49.2"/><line x1="968" x2="971" y1="49.2" y2="49.2"/>
+<line x1="59" x2="64" y1="34" y2="34"/><line x1="968" x2="973" y1="34" y2="34"/>
+<line x1="64" x2="64" y1="430" y2="438"/><line x1="64" x2="64" y1="34" y2="26"/>
+<line x1="82.8" x2="82.8" y1="430" y2="433"/><line x1="82.8" x2="82.8" y1="34" y2="31"/>
+<line x1="101.7" x2="101.7" y1="430" y2="435"/><line x1="101.7" x2="101.7" y1="34" y2="29"/>
+<line x1="120.5" x2="120.5" y1="430" y2="433"/><line x1="120.5" x2="120.5" y1="34" y2="31"/>
+<line x1="139.3" x2="139.3" y1="430" y2="438"/><line x1="139.3" x2="139.3" y1="34" y2="26"/>
+<line x1="158.2" x2="158.2" y1="430" y2="433"/><line x1="158.2" x2="158.2" y1="34" y2="31"/>
+<line x1="177" x2="177" y1="430" y2="435"/><line x1="177" x2="177" y1="34" y2="29"/>
+<line x1="195.8" x2="195.8" y1="430" y2="433"/><line x1="195.8" x2="195.8" y1="34" y2="31"/>
+<line x1="214.7" x2="214.7" y1="430" y2="438"/><line x1="214.7" x2="214.7" y1="34" y2="26"/>
+<line x1="233.5" x2="233.5" y1="430" y2="433"/><line x1="233.5" x2="233.5" y1="34" y2="31"/>
+<line x1="252.3" x2="252.3" y1="430" y2="435"/><line x1="252.3" x2="252.3" y1="34" y2="29"/>
+<line x1="271.2" x2="271.2" y1="430" y2="433"/><line x1="271.2" x2="271.2" y1="34" y2="31"/>
+<line x1="290" x2="290" y1="430" y2="438"/><line x1="290" x2="290" y1="34" y2="26"/>
+<line x1="308.8" x2="308.8" y1="430" y2="433"/><line x1="308.8" x2="308.8" y1="34" y2="31"/>
+<line x1="327.7" x2="327.7" y1="430" y2="435"/><line x1="327.7" x2="327.7" y1="34" y2="29"/>
+<line x1="346.5" x2="346.5" y1="430" y2="433"/><line x1="346.5" x2="346.5" y1="34" y2="31"/>
+<line x1="365.3" x2="365.3" y1="430" y2="438"/><line x1="365.3" x2="365.3" y1="34" y2="26"/>
+<line x1="384.2" x2="384.2" y1="430" y2="433"/><line x1="384.2" x2="384.2" y1="34" y2="31"/>
+<line x1="403" x2="403" y1="430" y2="435"/><line x1="403" x2="403" y1="34" y2="29"/>
+<line x1="421.8" x2="421.8" y1="430" y2="433"/><line x1="421.8" x2="421.8" y1="34" y2="31"/>
+<line x1="440.7" x2="440.7" y1="430" y2="438"/><line x1="440.7" x2="440.7" y1="34" y2="26"/>
+<line x1="459.5" x2="459.5" y1="430" y2="433"/><line x1="459.5" x2="459.5" y1="34" y2="31"/>
+<line x1="478.3" x2="478.3" y1="430" y2="435"/><line x1="478.3" x2="478.3" y1="34" y2="29"/>
+<line x1="497.2" x2="497.2" y1="430" y2="433"/><line x1="497.2" x2="497.2" y1="34" y2="31"/>
+<line x1="516" x2="516" y1="430" y2="438"/><line x1="516" x2="516" y1="34" y2="26"/>
+<line x1="534.8" x2="534.8" y1="430" y2="433"/><line x1="534.8" x2="534.8" y1="34" y2="31"/>
+<line x1="553.7" x2="553.7" y1="430" y2="435"/><line x1="553.7" x2="553.7" y1="34" y2="29"/>
+<line x1="572.5" x2="572.5" y1="430" y2="433"/><line x1="572.5" x2="572.5" y1="34" y2="31"/>
+<line x1="591.3" x2="591.3" y1="430" y2="438"/><line x1="591.3" x2="591.3" y1="34" y2="26"/>
+<line x1="610.2" x2="610.2" y1="430" y2="433"/><line x1="610.2" x2="610.2" y1="34" y2="31"/>
+<line x1="629" x2="629" y1="430" y2="435"/><line x1="629" x2="629" y1="34" y2="29"/>
+<line x1="647.8" x2="647.8" y1="430" y2="433"/><line x1="647.8" x2="647.8" y1="34" y2="31"/>
+<line x1="666.7" x2="666.7" y1="430" y2="438"/><line x1="666.7" x2="666.7" y1="34" y2="26"/>
+<line x1="685.5" x2="685.5" y1="430" y2="433"/><line x1="685.5" x2="685.5" y1="34" y2="31"/>
+<line x1="704.3" x2="704.3" y1="430" y2="435"/><line x1="704.3" x2="704.3" y1="34" y2="29"/>
+<line x1="723.2" x2="723.2" y1="430" y2="433"/><line x1="723.2" x2="723.2" y1="34" y2="31"/>
+<line x1="742" x2="742" y1="430" y2="438"/><line x1="742" x2="742" y1="34" y2="26"/>
+<line x1="760.8" x2="760.8" y1="430" y2="433"/><line x1="760.8" x2="760.8" y1="34" y2="31"/>
+<line x1="779.7" x2="779.7" y1="430" y2="435"/><line x1="779.7" x2="779.7" y1="34" y2="29"/>
+<line x1="798.5" x2="798.5" y1="430" y2="433"/><line x1="798.5" x2="798.5" y1="34" y2="31"/>
+<line x1="817.3" x2="817.3" y1="430" y2="438"/><line x1="817.3" x2="817.3" y1="34" y2="26"/>
+<line x1="836.2" x2="836.2" y1="430" y2="433"/><line x1="836.2" x2="836.2" y1="34" y2="31"/>
+<line x1="855" x2="855" y1="430" y2="435"/><line x1="855" x2="855" y1="34" y2="29"/>
+<line x1="873.8" x2="873.8" y1="430" y2="433"/><line x1="873.8" x2="873.8" y1="34" y2="31"/>
+<line x1="892.7" x2="892.7" y1="430" y2="438"/><line x1="892.7" x2="892.7" y1="34" y2="26"/>
+<line x1="911.5" x2="911.5" y1="430" y2="433"/><line x1="911.5" x2="911.5" y1="34" y2="31"/>
+<line x1="930.3" x2="930.3" y1="430" y2="435"/><line x1="930.3" x2="930.3" y1="34" y2="29"/>
+<line x1="949.2" x2="949.2" y1="430" y2="433"/><line x1="949.2" x2="949.2" y1="34" y2="31"/>
+<line x1="968" x2="968" y1="430" y2="438"/><line x1="968" x2="968" y1="34" y2="26"/>
+<rect x="64" y="34" width="904" height="396" fill="none"/></g>
+<g class="lbl">
+<text x="52" y="434" text-anchor="end">0</text>
+<text x="52" y="373.1" text-anchor="end">200</text>
+<text x="52" y="312.2" text-anchor="end">400</text>
+<text x="52" y="251.2" text-anchor="end">600</text>
+<text x="52" y="190.3" text-anchor="end">800</text>
+<text x="52" y="129.4" text-anchor="end">1000</text>
+<text x="52" y="68.5" text-anchor="end">1200</text>
+<text x="52" y="22" text-anchor="end" class="ink">°C</text>
+<text x="64" y="452" text-anchor="middle">18:00</text>
+<text x="139.3" y="452" text-anchor="middle" class="minor">19:00</text>
+<text x="214.7" y="452" text-anchor="middle" class="minor">20:00</text>
+<text x="290" y="452" text-anchor="middle">21:00</text>
+<text x="365.3" y="452" text-anchor="middle" class="minor">22:00</text>
+<text x="440.7" y="452" text-anchor="middle" class="minor">23:00</text>
+<text x="516" y="452" text-anchor="middle">00:00</text>
+<text x="591.3" y="452" text-anchor="middle" class="minor">01:00</text>
+<text x="666.7" y="452" text-anchor="middle" class="minor">02:00</text>
+<text x="742" y="452" text-anchor="middle">03:00</text>
+<text x="817.3" y="452" text-anchor="middle" class="minor">04:00</text>
+<text x="892.7" y="452" text-anchor="middle" class="minor">05:00</text>
+<text x="968" y="452" text-anchor="middle">06:00</text>
+<text x="64" y="468" class="ink" text-anchor="start">THU 15 OCT</text><text x="516" y="468" class="ink" text-anchor="middle">FRI 16 OCT</text>
+</g>
+<line class="refline" x1="64" x2="968" y1="255.5" y2="255.5"/>
+<text class="lbl" x="962" y="249.5" text-anchor="end">573 °C · QUARTZ INVERSION</text>
+<text class="lbl seg" x="150" y="407">S1 · 100 °C/h</text>
+<text class="lbl seg" x="440" y="240">S2 · 180 °C/h</text>
+<text class="lbl seg" x="592" y="122">S3 · 60 °C/h</text>
+<text class="lbl seg" x="752" y="46">HOLD 10 MIN</text>
+<text class="lbl seg" x="800" y="96">S4 · FALL</text>
+<text class="lbl seg" x="880" y="136">S5 · 80 °C/h</text>
+<polyline class="program" points="64,423.9 214.7,363 583,94.9 736.1,57.8 748.7,57.8 824.1,125.4 968,172"/>
+<polyline class="logged" pathLength="1" points="64,423.6 76.6,419 89.1,414.1 101.7,409.2 114.2,404.2 126.8,399.5 139.3,394.5 151.9,388.9 164.4,383.6 177,378.6 189.6,373.4 202.1,368.7 214.7,364.1 227.2,354.7 239.8,345.2 252.3,336.1 264.9,326.7 277.4,317.5 290,308.9 302.6,300.1 315.1,290.7 327.7,281.5 340.2,272.2 352.8,262.6 365.3,253.6 377.9,245 390.4,235.9 403,226.7 415.6,217.7 428.1,208.1 440.7,198.6 453.2,189.8 465.8,180.9 478.3,171.8 490.9,163 503.4,153.7 516,144 528.6,134.8 541.1,125.9 553.7,116.7 566.2,107.9 578.8,99.1 583,96 591.3,93.7 603.9,90.2 616.4,87.2 629,84.1 641.6,81.1 654.1,78.6 666.7,75.7 679.2,72.2 691.8,69.1 704.3,65.9 716.9,62.6 729.4,59.8 736.1,58.5 742,58.8 748.7,58.8 754.6,62.7 767.1,73.8 779.7,85.1 792.2,95.9 804.8,106.9 817.3,118.7 824.1,125 829.9,126.9 842.4,130.9 855,135.1 867.6,139 880.1,142.5 892.7,146.6 905.2,151 917.8,155.1 930.3,159.4 942.9,163.7 955.4,167.3 968,171"/>
+<g class="cone" transform="translate(736.1 57.8)"><line x1="0" x2="0" y1="5" y2="88"/><path d="M-4 98 L0 88 L4 98 Z"/><text class="lbl ink" x="0" y="112" text-anchor="middle">^6 · 1222 °C · 02:55</text></g>
+<g class="endpt"><circle cx="968" cy="172" r="4.5"/><text class="lbl accent" x="962" y="196" text-anchor="end">ELEMENTS OFF 06:00 · 847 °C</text></g>
+<g class="cursor" aria-hidden="true"><line class="cursor-line" x1="0" x2="0" y1="34" y2="430"/><circle class="cursor-dot" r="4" cx="0" cy="0"/></g>
+<rect class="hit" x="64" y="34" width="904" height="396"/>
+</svg>
+<svg class="curve curve-mob" data-x0="44" data-x1="350" data-y0="344" data-y1="30" viewBox="0 0 360 392" role="img" aria-labelledby="cm-t cm-d">
+<title id="cm-t">Sample firing log, kiln K2, glaze firing to cone 6</title>
+<desc id="cm-d">Sample data, temperatures approximate. Thursday 18:00 to Friday 06:00, peak 1222 degrees at 02:55, elements off at 06:00 at 847 degrees.</desc>
+<g class="grid">
+<line x1="44" x2="350" y1="344" y2="344"/>
+<line x1="44" x2="350" y1="295.7" y2="295.7"/>
+<line x1="44" x2="350" y1="247.4" y2="247.4"/>
+<line x1="44" x2="350" y1="199.1" y2="199.1"/>
+<line x1="44" x2="350" y1="150.8" y2="150.8"/>
+<line x1="44" x2="350" y1="102.5" y2="102.5"/>
+<line x1="44" x2="350" y1="54.2" y2="54.2"/>
+<line x1="44" x2="44" y1="30" y2="344"/>
+<line x1="120.5" x2="120.5" y1="30" y2="344"/>
+<line x1="197" x2="197" y1="30" y2="344"/>
+<line x1="273.5" x2="273.5" y1="30" y2="344"/>
+<line x1="350" x2="350" y1="30" y2="344"/>
+</g><g class="ruler">
+<line x1="38" x2="44" y1="344" y2="344"/>
+<line x1="41" x2="44" y1="319.8" y2="319.8"/>
+<line x1="41" x2="44" y1="295.7" y2="295.7"/>
+<line x1="41" x2="44" y1="271.5" y2="271.5"/>
+<line x1="38" x2="44" y1="247.4" y2="247.4"/>
+<line x1="41" x2="44" y1="223.2" y2="223.2"/>
+<line x1="41" x2="44" y1="199.1" y2="199.1"/>
+<line x1="41" x2="44" y1="174.9" y2="174.9"/>
+<line x1="38" x2="44" y1="150.8" y2="150.8"/>
+<line x1="41" x2="44" y1="126.6" y2="126.6"/>
+<line x1="41" x2="44" y1="102.5" y2="102.5"/>
+<line x1="41" x2="44" y1="78.3" y2="78.3"/>
+<line x1="38" x2="44" y1="54.2" y2="54.2"/>
+<line x1="41" x2="44" y1="30" y2="30"/>
+<line x1="44" x2="44" y1="344" y2="350"/>
+<line x1="56.8" x2="56.8" y1="344" y2="347"/>
+<line x1="69.5" x2="69.5" y1="344" y2="347"/>
+<line x1="82.2" x2="82.2" y1="344" y2="347"/>
+<line x1="95" x2="95" y1="344" y2="347"/>
+<line x1="107.8" x2="107.8" y1="344" y2="347"/>
+<line x1="120.5" x2="120.5" y1="344" y2="350"/>
+<line x1="133.2" x2="133.2" y1="344" y2="347"/>
+<line x1="146" x2="146" y1="344" y2="347"/>
+<line x1="158.8" x2="158.8" y1="344" y2="347"/>
+<line x1="171.5" x2="171.5" y1="344" y2="347"/>
+<line x1="184.2" x2="184.2" y1="344" y2="347"/>
+<line x1="197" x2="197" y1="344" y2="350"/>
+<line x1="209.8" x2="209.8" y1="344" y2="347"/>
+<line x1="222.5" x2="222.5" y1="344" y2="347"/>
+<line x1="235.2" x2="235.2" y1="344" y2="347"/>
+<line x1="248" x2="248" y1="344" y2="347"/>
+<line x1="260.8" x2="260.8" y1="344" y2="347"/>
+<line x1="273.5" x2="273.5" y1="344" y2="350"/>
+<line x1="286.2" x2="286.2" y1="344" y2="347"/>
+<line x1="299" x2="299" y1="344" y2="347"/>
+<line x1="311.8" x2="311.8" y1="344" y2="347"/>
+<line x1="324.5" x2="324.5" y1="344" y2="347"/>
+<line x1="337.2" x2="337.2" y1="344" y2="347"/>
+<line x1="350" x2="350" y1="344" y2="350"/>
+<rect x="44" y="30" width="306" height="314" fill="none"/></g><g class="lbl">
+<text x="36" y="348" text-anchor="end">0</text>
+<text x="36" y="251.4" text-anchor="end">400</text>
+<text x="36" y="154.8" text-anchor="end">800</text>
+<text x="36" y="58.2" text-anchor="end">1200</text>
+<text x="36" y="18" text-anchor="end" class="ink">°C</text>
+<text x="44" y="364" text-anchor="start">18:00</text>
+<text x="120.5" y="364" text-anchor="middle">21:00</text>
+<text x="197" y="364" text-anchor="middle">00:00</text>
+<text x="273.5" y="364" text-anchor="middle">03:00</text>
+<text x="350" y="364" text-anchor="end">06:00</text>
+<text x="44" y="384" class="ink">THU 15 OCT</text><text x="197" y="384" class="ink" text-anchor="middle">FRI 16</text></g>
+<line class="refline" x1="44" x2="350" y1="205.6" y2="205.6"/>
+<text class="lbl" x="48" y="199.6">573 °C</text>
+<polyline class="program" points="44,339.2 95,290.9 219.7,78.3 271.5,48.8 275.8,48.8 301.3,102.5 350,139.4"/>
+<polyline class="logged" pathLength="1" points="44,338.9 48.2,335.3 52.5,331.4 56.8,327.5 61,323.5 65.2,319.8 69.5,315.9 73.8,311.4 78,307.2 82.2,303.3 86.5,299.1 90.8,295.4 95,291.8 99.2,284.3 103.5,276.8 107.8,269.5 112,262.1 116.2,254.8 120.5,248 124.8,241 129,233.5 133.2,226.2 137.5,218.9 141.8,211.2 146,204.1 150.2,197.3 154.5,190.1 158.8,182.8 163,175.7 167.2,168 171.5,160.5 175.8,153.5 180,146.5 184.2,139.3 188.5,132.3 192.8,124.9 197,117.2 201.3,109.9 205.5,102.8 209.8,95.6 214,88.6 218.2,81.6 219.7,79.2 222.5,77.3 226.8,74.6 231,72.2 235.2,69.7 239.5,67.3 243.8,65.4 248,63.1 252.2,60.3 256.5,57.8 260.8,55.3 265,52.6 269.2,50.5 271.5,49.5 273.5,49.6 275.8,49.6 277.8,52.7 282,61.6 286.2,70.5 290.5,79.1 294.8,87.8 299,97.1 301.3,102.1 303.2,103.7 307.5,106.8 311.8,110.2 316,113.3 320.2,116 324.5,119.3 328.8,122.8 333,126.1 337.2,129.5 341.5,132.9 345.8,135.7 350,138.6"/>
+<g class="cone"><line x1="271.5" x2="271.5" y1="43.8" y2="20"/><text class="lbl ink" x="261.5" y="14" text-anchor="middle">^6 · 1222 °C</text></g>
+<g class="endpt"><circle cx="350" cy="139.4" r="4"/><text class="lbl accent" x="346" y="163.4" text-anchor="end">OFF 06:00 · 847 °C</text></g>
+<g class="cursor" aria-hidden="true"><line class="cursor-line" x1="0" x2="0" y1="30" y2="344"/><circle class="cursor-dot" r="4" cx="0" cy="0"/></g>
+<rect class="hit" x="44" y="30" width="306" height="314"/></svg>
+      </div>
+      <p id="plot-help" class="sr">Use the left and right arrow keys to read the log in 15 minute steps. Home and End jump to the start and end.</p>
+      <dl class="readout" aria-live="polite">
+        <div><dt>Time</dt><dd data-r="time">02:55 Fri</dd></div>
+        <div><dt>Programme</dt><dd data-r="prog">1222 °C</dd></div>
+        <div><dt>Logged</dt><dd data-r="log">1219 °C</dd></div>
+        <div><dt>Segment</dt><dd data-r="seg">S3 · 60 °C/h</dd></div>
+      </dl>
+      <p class="note meta">Orange: logged. Dashed: programme. Temperatures approximate; cone temperatures vary with heating rate. Hover, or focus the chart and use the arrow keys, to read the log.</p>
+    </figure>
+
+    <aside class="spec" aria-label="Firing specification, sample data">
+      <figure class="slot-fig">
+        <img data-slot="Cone pack after firing: witness cones 5, 6 and 7 in a clay pad, 5 flat, 6 bent to three o'clock, 7 standing" class="slot slot-sq" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="600" height="600" alt="Witness cone pack after the firing, cones 5, 6 and 7 in a clay pad, bent">
+        <figcaption class="meta">Fig. 1 · Cone pack, level 3 · <span class="m">^5</span> down, <span class="m">^6</span> at 3 o'clock, <span class="m">^7</span> standing</figcaption>
+      </figure>
+      <dl class="specs">
+        <div><dt>Kiln</dt><dd>K2 · electric · <span class="m">7 cu ft</span></dd></div>
+        <div><dt>Programme</dt><dd>Glaze <span class="m">^6</span>, slow cool</dd></div>
+        <div><dt>Load</dt><dd><span class="m">38</span> pieces · <span class="m">11</span> members</dd></div>
+        <div><dt>Lid closed</dt><dd>Ines · <span class="m">Thu 17:40</span></dd></div>
+        <div><dt>Peak</dt><dd><span class="m">1222 °C · 02:55</span></dd></div>
+        <div><dt>Safe to open</dt><dd>below <span class="m">65 °C</span> · est. <span class="m">Fri 14:20</span></dd></div>
+      </dl>
+    </aside>
+  </div>
+</section>
+
+<!-- 1 · Booked -->
+<section class="sec" id="booked" data-stage="booked" aria-labelledby="h-booked">
+  <div class="sheet row">
+    <p class="stamp" aria-hidden="true"><span>MON 12</span><span class="ink">→ THU 15</span><span>13:00</span></p>
+    <h2 id="h-booked" class="h2 c-head">The load starts filling on Monday.</h2>
+    <p class="body c-body">Members book glaze nights and open studio, and say how many pieces they are glazing for the next <span class="m">^6</span>. Each booking takes space in a named firing, so you know Thursday's load before anyone opens the kiln lid.</p>
+
+    <form class="booker c-half" id="booker" aria-labelledby="booker-cap" onsubmit="return false">
+      <p id="booker-cap" class="cap">Booking as Lars Moen <span class="tag">Sample data</span></p>
+      <fieldset class="sessions">
+        <legend class="sr">Session</legend>
+        <table class="tbl sess-tbl">
+          <thead><tr><th scope="col"><span class="sr">Choose</span></th><th scope="col">Session</th><th scope="col">When</th><th scope="col" class="n">Places</th><th scope="col">Feeds</th></tr></thead>
+          <tbody>
+            <tr><td><input type="radio" name="sess" id="s0" value="0" data-feeds="k2" data-taken="9" data-cap="12"></td><th scope="row"><label for="s0">Glaze night</label></th><td class="m nw">Tue 13 · 19:00–21:30</td><td class="n" data-places>9 / 12</td><td class="m nw">K2 · Thu 15</td></tr>
+            <tr><td><input type="radio" name="sess" id="s1" value="1" data-feeds="k2" data-taken="7" data-cap="10" checked></td><th scope="row"><label for="s1">Open studio</label></th><td class="m nw">Wed 14 · 10:00–13:00</td><td class="n" data-places>8 / 10</td><td class="m nw">K2 · Thu 15</td></tr>
+            <tr class="is-full"><td><input type="radio" name="sess" id="s2" value="2" disabled></td><th scope="row"><label for="s2">Glaze night</label></th><td class="m nw">Wed 14 · 19:00–21:30</td><td class="n">12 / 12</td><td class="nw">Full · waitlist</td></tr>
+            <tr><td><input type="radio" name="sess" id="s3" value="3" data-feeds="k2" data-taken="4" data-cap="10"></td><th scope="row"><label for="s3">Open studio</label></th><td class="m nw">Thu 15 · 10:00–13:00</td><td class="n" data-places>4 / 10</td><td class="m nw">K2 · Thu 15</td></tr>
+            <tr><td><input type="radio" name="sess" id="s4" value="4" data-feeds="next" data-taken="6" data-cap="8"></td><th scope="row"><label for="s4">Hand-building</label></th><td class="m nw">Thu 15 · 18:30–21:00</td><td class="n" data-places>6 / 8</td><td class="m nw">K2 · Tue 20</td></tr>
+          </tbody>
+        </table>
+      </fieldset>
+      <div class="pieces">
+        <span id="pieces-label" class="pieces-label">Pieces for the glaze firing</span>
+        <div class="stepper" role="group" aria-labelledby="pieces-label">
+          <button type="button" class="step" id="p-down" aria-label="One piece fewer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10"/></svg></button>
+          <output id="p-out" class="m" aria-live="polite">3</output>
+          <button type="button" class="step" id="p-up" aria-label="One piece more"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M8 3v10"/></svg></button>
+        </div>
+      </div>
+      <p class="meta booker-note">Glazed work goes on the K2 shelf by <span class="m">Thu 13:00</span>. Sessions after that feed the next glaze firing.</p>
+    </form>
+
+    <div class="meter-wrap c-half2" aria-labelledby="meter-cap">
+      <p id="meter-cap" class="cap">Load · K2 glaze <span class="m">^6</span> · fires <span class="m">Thu 15 · 18:00</span> <span class="tag">Sample data</span></p>
+      <div class="meter-read">
+        <p class="big m"><span id="m-total">38</span><span class="of"> / 44</span></p>
+        <p class="meter-sub">piece spaces on four levels<br><span id="m-members" class="m">11</span> members</p>
+      </div>
+      <div class="meter" id="meter" role="img" aria-label="38 of 44 piece spaces booked"></div>
+      <div class="overflow" id="m-over" aria-hidden="true"></div>
+      <div class="meter-scale m" aria-hidden="true"><span>0</span><span>11</span><span>22</span><span>33</span><span>44</span></div>
+      <dl class="key">
+        <div><dt><span class="k k-base"></span></dt><dd>Already booked · <span class="m">35</span> pieces, <span class="m">10</span> members</dd></div>
+        <div><dt><span class="k k-add"></span></dt><dd>This booking</dd></div>
+        <div><dt><span class="k k-over"></span></dt><dd>Waits for the next firing</dd></div>
+      </dl>
+      <p class="meter-status" id="m-status" aria-live="polite">Lars's 3 pieces go in Thursday's load. 6 spaces left.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 2 · Loaded -->
+<section class="sec" id="loaded" data-stage="loaded" aria-labelledby="h-loaded">
+  <div class="sheet row">
+    <p class="stamp" aria-hidden="true"><span>THU 15</span><span>14:00</span></p>
+    <h2 id="h-loaded" class="h2 c-head">Thirty-eight pieces, four levels, one cone pack.</h2>
+    <p class="body c-body">The load plan comes straight from the bookings. Whoever loads sees each member's work, the tallest piece per level and the post height it needs, then ticks it off shelf by shelf.</p>
+
+    <figure class="kiln-fig c-half">
+      <img data-slot="Three kilns side by side in the kiln room: two electric top-loaders and one front-loader, lids closed" class="slot slot-wide" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="1600" height="900" alt="Three kilns side by side in the kiln room">
+      <figcaption class="meta">Fig. 2 · K1, K2, K3 in the kiln room, left to right. K2 is the middle one.</figcaption>
+    </figure>
+
+    <div class="c-half2">
+      <table class="tbl load">
+        <caption class="cap"><span>Load plan · K2 · <span class="m">Thu 15 Oct</span></span><span class="tag">Sample data</span></caption>
+        <thead><tr><th scope="col">Level</th><th scope="col" class="n">Posts</th><th scope="col" class="n">Pieces</th><th scope="col" class="n">Tallest</th><th scope="col">Members</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">4 · top</th><td class="n">—</td><td class="n">12</td><td class="n">7.5 cm</td><td class="mem">Owusu <span class="m">4</span>, Moen <span class="m">3</span>, Raman <span class="m">5</span></td></tr>
+          <tr><th scope="row">3</th><td class="n">10 cm</td><td class="n">9</td><td class="n">9.0 cm</td><td class="mem">Arai <span class="m">5</span>, Nieto <span class="m">4</span>, cone pack</td></tr>
+          <tr><th scope="row">2</th><td class="n">18 cm</td><td class="n">8</td><td class="n">16.5 cm</td><td class="mem">Okafor <span class="m">4</span>, Kwon <span class="m">2</span>, Lund <span class="m">2</span></td></tr>
+          <tr><th scope="row">1 · floor</th><td class="n">23 cm</td><td class="n">9</td><td class="n">21.0 cm</td><td class="mem">Vance <span class="m">2</span>, Brandt <span class="m">3</span>, Fairley <span class="m">4</span></td></tr>
+        </tbody>
+        <tfoot><tr><th scope="row">Total</th><td class="n">3 sets</td><td class="n">38</td><td class="n">—</td><td class="mem"><span class="m">11</span> members</td></tr></tfoot>
+      </table>
+      <dl class="specs specs-load">
+        <div><dt>Loaded by</dt><dd>Ines · <span class="m">14:00–17:30</span></dd></div>
+        <div><dt>Programme</dt><dd>Glaze <span class="m">^6</span>, slow cool · starts <span class="m">18:00</span></dd></div>
+        <div><dt>Kiln room</dt><dd>Closed on the booking sheet from <span class="m">18:00</span>. Thursday hand-building moves to the bench room.</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- 3 · Fired -->
+<section class="sec" id="fired" data-stage="fired" aria-labelledby="h-fired">
+  <div class="sheet row">
+    <p class="stamp" aria-hidden="true"><span>THU 15</span><span>18:00</span></p>
+    <h2 id="h-fired" class="h2 c-head">Twelve hours, written down as they happen.</h2>
+    <p class="body c-body">The controller runs the programme. Kilnward keeps the record: each segment as it starts, the peak, the hold, and the moment the elements switch off. It is the curve at the <a href="#h-hero">top of this page</a>, as a log.</p>
+
+    <div class="c-main">
+      <table class="tbl firelog">
+        <caption class="cap"><span>Firing log · K2-0412</span><span class="tag">Sample data</span></caption>
+        <thead><tr><th scope="col">Time</th><th scope="col">Event</th><th scope="col" class="n">Programme</th><th scope="col" class="n">Logged</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Thu 18:00</th><td>Start · S1 at <span class="m">100 °C/h</span></td><td class="n">20 °C</td><td class="n">21 °C</td></tr>
+          <tr><th scope="row">Thu 20:00</th><td>S2 at <span class="m">180 °C/h</span></td><td class="n">220 °C</td><td class="n">216 °C</td></tr>
+          <tr><th scope="row">Thu 21:58</th><td>Past quartz inversion</td><td class="n">573 °C</td><td class="n">573 °C</td></tr>
+          <tr><th scope="row">Fri 00:53</th><td>S3 at <span class="m">60 °C/h</span></td><td class="n">1100 °C</td><td class="n">1095 °C</td></tr>
+          <tr class="is-peak"><th scope="row">Fri 02:55</th><td>Peak · hold <span class="m">10 min</span></td><td class="n">1222 °C</td><td class="n">1219 °C</td></tr>
+          <tr><th scope="row">Fri 03:05</th><td>S4 · fall to <span class="m">1000 °C</span></td><td class="n">1222 °C</td><td class="n">1219 °C</td></tr>
+          <tr><th scope="row">Fri 04:05</th><td>S5 · slow cool at <span class="m">80 °C/h</span></td><td class="n">1000 °C</td><td class="n">1003 °C</td></tr>
+          <tr><th scope="row">Fri 06:00</th><td>Elements off</td><td class="n">847 °C</td><td class="n">850 °C</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="c-side">
+      <p class="cap">Programme · Glaze <span class="m">^6</span>, slow cool</p>
+      <ol class="prog">
+        <li><span class="m">S1</span><span>100 °C/h to 220 °C</span></li>
+        <li><span class="m">S2</span><span>180 °C/h to 1100 °C</span></li>
+        <li><span class="m">S3</span><span>60 °C/h to 1222 °C, hold 10 min</span></li>
+        <li><span class="m">S4</span><span>Fall to 1000 °C</span></li>
+        <li><span class="m">S5</span><span>80 °C/h to 847 °C, then off</span></li>
+      </ol>
+      <p class="meta side-note">Saved once, reused for every glaze firing in K2. Temperatures approximate.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 4 · Cooling -->
+<section class="sec" id="cooling" data-stage="cooling" aria-labelledby="h-cooling">
+  <div class="sheet row">
+    <p class="stamp" aria-hidden="true"><span>FRI 16</span><span>06:00</span></p>
+    <h2 id="h-cooling" class="h2 c-head">Nobody lifts the lid before 14:20.</h2>
+    <p class="body c-body">After the elements go off, Kilnward estimates when the kiln can be cracked and when it is safe to open, and keeps the kiln room closed on the booking sheet until then. The rest of the studio carries on around it.</p>
+
+    <figure class="c-full cool-fig" aria-labelledby="cool-cap">
+      <figcaption id="cool-cap" class="cap"><span>Cooling · K2 · <span class="m">Fri 16 Oct</span> · the kiln room and the studio on one clock</span><span class="tag">Sample data</span></figcaption>
+<svg class="cool cool-desk" viewBox="0 0 1000 380" role="img" aria-labelledby="cd-t cd-d">
+<title id="cd-t">Sample cooling log, kiln K2, Friday 16 October</title>
+<desc id="cd-d">Sample data, temperatures approximate. From 847 degrees at 06:00 the kiln cools naturally. Peeps out and lid cracked below 200 degrees, around 10:20. Safe to open below 65 degrees, around 14:20. The kiln room stays closed until the unload at 15:00, notices go out at 16:05 and open studio runs 17:00 to 21:00 with 10 of 10 wheels booked.</desc>
+<defs><pattern id="hatch-d" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="7" class="hatch"/></pattern></defs>
+<g class="grid">
+<line x1="64" x2="968" y1="230" y2="230"/>
+<line x1="64" x2="968" y1="198.3" y2="198.3"/>
+<line x1="64" x2="968" y1="166.7" y2="166.7"/>
+<line x1="64" x2="968" y1="135" y2="135"/>
+<line x1="64" x2="968" y1="103.3" y2="103.3"/>
+<line x1="64" x2="968" y1="71.7" y2="71.7"/>
+<line x1="64" x2="968" y1="40" y2="40"/>
+<line x1="64" x2="64" y1="40" y2="326"/>
+<line x1="177" x2="177" y1="40" y2="326"/>
+<line x1="290" x2="290" y1="40" y2="326"/>
+<line x1="403" x2="403" y1="40" y2="326"/>
+<line x1="516" x2="516" y1="40" y2="326"/>
+<line x1="629" x2="629" y1="40" y2="326"/>
+<line x1="742" x2="742" y1="40" y2="326"/>
+<line x1="855" x2="855" y1="40" y2="326"/>
+<line x1="968" x2="968" y1="40" y2="326"/>
+</g><g class="ruler"><rect x="64" y="40" width="904" height="190" fill="none"/>
+<line x1="64" x2="64" y1="326" y2="332"/>
+<line x1="92.2" x2="92.2" y1="326" y2="329"/>
+<line x1="120.5" x2="120.5" y1="326" y2="329"/>
+<line x1="148.8" x2="148.8" y1="326" y2="329"/>
+<line x1="177" x2="177" y1="326" y2="332"/>
+<line x1="205.2" x2="205.2" y1="326" y2="329"/>
+<line x1="233.5" x2="233.5" y1="326" y2="329"/>
+<line x1="261.8" x2="261.8" y1="326" y2="329"/>
+<line x1="290" x2="290" y1="326" y2="332"/>
+<line x1="318.2" x2="318.2" y1="326" y2="329"/>
+<line x1="346.5" x2="346.5" y1="326" y2="329"/>
+<line x1="374.8" x2="374.8" y1="326" y2="329"/>
+<line x1="403" x2="403" y1="326" y2="332"/>
+<line x1="431.2" x2="431.2" y1="326" y2="329"/>
+<line x1="459.5" x2="459.5" y1="326" y2="329"/>
+<line x1="487.8" x2="487.8" y1="326" y2="329"/>
+<line x1="516" x2="516" y1="326" y2="332"/>
+<line x1="544.2" x2="544.2" y1="326" y2="329"/>
+<line x1="572.5" x2="572.5" y1="326" y2="329"/>
+<line x1="600.8" x2="600.8" y1="326" y2="329"/>
+<line x1="629" x2="629" y1="326" y2="332"/>
+<line x1="657.2" x2="657.2" y1="326" y2="329"/>
+<line x1="685.5" x2="685.5" y1="326" y2="329"/>
+<line x1="713.8" x2="713.8" y1="326" y2="329"/>
+<line x1="742" x2="742" y1="326" y2="332"/>
+<line x1="770.2" x2="770.2" y1="326" y2="329"/>
+<line x1="798.5" x2="798.5" y1="326" y2="329"/>
+<line x1="826.8" x2="826.8" y1="326" y2="329"/>
+<line x1="855" x2="855" y1="326" y2="332"/>
+<line x1="883.2" x2="883.2" y1="326" y2="329"/>
+<line x1="911.5" x2="911.5" y1="326" y2="329"/>
+<line x1="939.8" x2="939.8" y1="326" y2="329"/>
+<line x1="968" x2="968" y1="326" y2="332"/>
+</g><g class="lbl">
+<text x="56" y="234" text-anchor="end">0</text>
+<text x="56" y="170.7" text-anchor="end">300</text>
+<text x="56" y="107.3" text-anchor="end">600</text>
+<text x="56" y="44" text-anchor="end">900</text>
+<text x="56" y="26" text-anchor="end" class="ink">°C</text>
+<text x="64" y="348" text-anchor="start">06:00</text>
+<text x="177" y="348" text-anchor="middle">08:00</text>
+<text x="290" y="348" text-anchor="middle">10:00</text>
+<text x="403" y="348" text-anchor="middle">12:00</text>
+<text x="516" y="348" text-anchor="middle">14:00</text>
+<text x="629" y="348" text-anchor="middle">16:00</text>
+<text x="742" y="348" text-anchor="middle">18:00</text>
+<text x="855" y="348" text-anchor="middle">20:00</text>
+<text x="968" y="348" text-anchor="end">22:00</text>
+<text x="64" y="368" class="ink">FRI 16 OCT</text></g>
+<line class="refline" x1="64" x2="968" y1="187.8" y2="187.8"/>
+<line class="refline" x1="64" x2="968" y1="216.3" y2="216.3"/>
+<text class="lbl" x="962" y="181.8" text-anchor="end">200 °C · PEEPS OUT, LID CRACKED</text>
+<text class="lbl" x="962" y="210.3" text-anchor="end">65 °C · SAFE TO OPEN</text>
+<line class="mark-ink" x1="310.3" x2="310.3" y1="30" y2="230"/>
+<line class="mark-acc" x1="534.8" x2="534.8" y1="30" y2="326"/>
+<text class="lbl ink" x="316.3" y="26">LID CRACKED · EST 10:20</text>
+<text class="lbl accent" x="540.8" y="26">SAFE TO OPEN · EST 14:20</text>
+<text class="lbl ink" x="110" y="58">ELEMENTS OFF 06:00 · 847 °C</text>
+<polyline class="cooled" points="64,51.2 73.4,60.8 82.8,70.1 92.2,79 101.7,87.6 111.1,95.6 120.5,102.9 129.9,109.6 139.3,116 148.8,122.1 158.2,128.1 167.6,133.9 177,139.3 186.4,144.1 195.8,148.5 205.2,152.6 214.7,156.7 224.1,160.8 233.5,164.7 242.9,168.3 252.3,171.5 261.8,174.4 271.2,177 280.6,179.7 290,182.5 299.4,185.2 308.8,187.7 318.2,189.8 327.7,191.6 337.1,193.3 346.5,195 355.9,197 365.3,198.9 374.8,200.5 384.2,201.9 393.6,203 403,204.1 412.4,205.2 421.8,206.6 431.2,207.9 440.7,209.1 450.1,210 459.5,210.6 468.9,211.2 478.3,212 487.8,213 497.2,214 506.6,214.8 516,215.3 525.4,215.7 534.8,216 544.2,216.5 553.7,217.2 563.1,218 572.5,218.6"/>
+<circle class="endpt-ink" cx="572.5" cy="218.3" r="3.5"/>
+<rect class="closed" x="64" y="254" width="508.5" height="30" fill="url(#hatch-d)"/>
+<text class="lbl acc-deep" x="72" y="273">KILN ROOM CLOSED · K2 COOLING</text>
+<rect class="blk-kiln" x="572.5" y="254" width="56.5" height="30"/>
+<text class="lbl ink" x="578.5" y="248">UNLOAD · INES</text>
+<rect class="tick-acc" x="629.7" y="265" width="8" height="8"/>
+<text class="lbl ink" x="643.7" y="273">16:05 · 11 NOTICES SENT</text>
+<rect class="blk-open" x="290" y="296" width="113" height="30"/><text class="lbl ink" x="298" y="315">HAND-BUILDING · 6/8</text>
+<rect class="blk-open" x="685.5" y="296" width="226" height="30"/><text class="lbl ink" x="693.5" y="315">OPEN STUDIO · 10/10 WHEELS</text>
+</svg>
+<svg class="cool cool-mob" viewBox="0 0 360 402" role="img" aria-labelledby="cm-t cm-d">
+<title id="cm-t">Sample cooling log, kiln K2, Friday 16 October</title>
+<desc id="cm-d">Sample data, temperatures approximate. From 847 degrees at 06:00 the kiln cools naturally. Peeps out and lid cracked below 200 degrees, around 10:20. Safe to open below 65 degrees, around 14:20. The kiln room stays closed until the unload at 15:00, notices go out at 16:05 and open studio runs 17:00 to 21:00 with 10 of 10 wheels booked.</desc>
+<defs><pattern id="hatch-m" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="7" class="hatch"/></pattern></defs>
+<g class="grid">
+<line x1="44" x2="350" y1="230" y2="230"/>
+<line x1="44" x2="350" y1="168" y2="168"/>
+<line x1="44" x2="350" y1="106" y2="106"/>
+<line x1="44" x2="350" y1="44" y2="44"/>
+<line x1="44" x2="44" y1="44" y2="326"/>
+<line x1="120.5" x2="120.5" y1="44" y2="326"/>
+<line x1="197" x2="197" y1="44" y2="326"/>
+<line x1="273.5" x2="273.5" y1="44" y2="326"/>
+<line x1="350" x2="350" y1="44" y2="326"/>
+</g><g class="ruler"><rect x="44" y="44" width="306" height="186" fill="none"/>
+<line x1="44" x2="44" y1="326" y2="332"/>
+<line x1="53.6" x2="53.6" y1="326" y2="329"/>
+<line x1="63.1" x2="63.1" y1="326" y2="329"/>
+<line x1="72.7" x2="72.7" y1="326" y2="329"/>
+<line x1="82.2" x2="82.2" y1="326" y2="329"/>
+<line x1="91.8" x2="91.8" y1="326" y2="329"/>
+<line x1="101.4" x2="101.4" y1="326" y2="329"/>
+<line x1="110.9" x2="110.9" y1="326" y2="329"/>
+<line x1="120.5" x2="120.5" y1="326" y2="332"/>
+<line x1="130.1" x2="130.1" y1="326" y2="329"/>
+<line x1="139.6" x2="139.6" y1="326" y2="329"/>
+<line x1="149.2" x2="149.2" y1="326" y2="329"/>
+<line x1="158.8" x2="158.8" y1="326" y2="329"/>
+<line x1="168.3" x2="168.3" y1="326" y2="329"/>
+<line x1="177.9" x2="177.9" y1="326" y2="329"/>
+<line x1="187.4" x2="187.4" y1="326" y2="329"/>
+<line x1="197" x2="197" y1="326" y2="332"/>
+<line x1="206.6" x2="206.6" y1="326" y2="329"/>
+<line x1="216.1" x2="216.1" y1="326" y2="329"/>
+<line x1="225.7" x2="225.7" y1="326" y2="329"/>
+<line x1="235.2" x2="235.2" y1="326" y2="329"/>
+<line x1="244.8" x2="244.8" y1="326" y2="329"/>
+<line x1="254.4" x2="254.4" y1="326" y2="329"/>
+<line x1="263.9" x2="263.9" y1="326" y2="329"/>
+<line x1="273.5" x2="273.5" y1="326" y2="332"/>
+<line x1="283.1" x2="283.1" y1="326" y2="329"/>
+<line x1="292.6" x2="292.6" y1="326" y2="329"/>
+<line x1="302.2" x2="302.2" y1="326" y2="329"/>
+<line x1="311.8" x2="311.8" y1="326" y2="329"/>
+<line x1="321.3" x2="321.3" y1="326" y2="329"/>
+<line x1="330.9" x2="330.9" y1="326" y2="329"/>
+<line x1="340.4" x2="340.4" y1="326" y2="329"/>
+<line x1="350" x2="350" y1="326" y2="332"/>
+</g><g class="lbl">
+<text x="36" y="234" text-anchor="end">0</text>
+<text x="36" y="172" text-anchor="end">300</text>
+<text x="36" y="110" text-anchor="end">600</text>
+<text x="36" y="48" text-anchor="end">900</text>
+<text x="36" y="30" text-anchor="end" class="ink">°C</text>
+<text x="44" y="354" text-anchor="start">06:00</text>
+<text x="120.5" y="354" text-anchor="middle">10:00</text>
+<text x="197" y="354" text-anchor="middle">14:00</text>
+<text x="273.5" y="354" text-anchor="middle">18:00</text>
+<text x="350" y="354" text-anchor="end">22:00</text>
+<text x="44" y="374" class="ink">FRI 16 OCT</text></g>
+<line class="refline" x1="44" x2="350" y1="188.7" y2="188.7"/>
+<line class="refline" x1="44" x2="350" y1="216.6" y2="216.6"/>
+<text class="lbl" x="348" y="182.7" text-anchor="end">200 °C</text>
+<text class="lbl" x="348" y="210.6" text-anchor="end">65 °C</text>
+<line class="mark-ink" x1="127.4" x2="127.4" y1="34" y2="230"/>
+<line class="mark-acc" x1="203.4" x2="203.4" y1="34" y2="326"/>
+<text class="lbl ink" x="122.4" y="30" text-anchor="end">LID 10:20</text>
+<text class="lbl accent" x="208.4" y="30">SAFE 14:20</text>
+<polyline class="cooled" points="44,55 47.2,64.4 50.4,73.4 53.6,82.2 56.8,90.6 59.9,98.4 63.1,105.6 66.3,112.2 69.5,118.4 72.7,124.4 75.9,130.3 79.1,135.9 82.2,141.2 85.4,145.9 88.6,150.2 91.8,154.3 95,158.2 98.2,162.2 101.4,166.1 104.6,169.6 107.8,172.8 110.9,175.5 114.1,178.1 117.3,180.8 120.5,183.5 123.7,186.2 126.9,188.6 130.1,190.6 133.2,192.4 136.4,194 139.6,195.8 142.8,197.6 146,199.5 149.2,201.2 152.4,202.5 155.6,203.6 158.8,204.6 161.9,205.8 165.1,207.1 168.3,208.4 171.5,209.5 174.7,210.4 177.9,211 181.1,211.6 184.2,212.4 187.4,213.3 190.6,214.3 193.8,215.1 197,215.6 200.2,216 203.4,216.3 206.6,216.8 209.8,217.5 212.9,218.2 216.1,218.8"/>
+<circle class="endpt-ink" cx="216.1" cy="218.5" r="3.5"/>
+<rect class="closed" x="44" y="252" width="172.1" height="32" fill="url(#hatch-m)"/>
+<text class="lbl acc-deep" x="52" y="272">CLOSED · COOLING</text>
+<rect class="blk-kiln" x="216.1" y="252" width="19.1" height="32"/>
+<text class="lbl ink" x="241.2" y="272">UNLOAD 15:00</text>
+<rect class="blk-open" x="254.4" y="294" width="76.5" height="32"/><text class="lbl ink" x="260.4" y="314">OPEN 10/10</text>
+</svg>
+      <p class="note meta">Temperatures approximate. Unloaded at <span class="m">15:00</span> at about <span class="m">56 °C</span>.</p>
+    </figure>
+  </div>
+</section>
+
+<!-- 5 · Unloaded and collected -->
+<section class="sec" id="unloaded" data-stage="unloaded" aria-labelledby="h-unloaded">
+  <div class="sheet row">
+    <p class="stamp" aria-hidden="true"><span>FRI 16</span><span>15:00</span></p>
+    <h2 id="h-unloaded" class="h2 c-head">Out of the kiln, onto eleven shelves.</h2>
+    <p class="body c-body">The unload follows the load plan in reverse. Each member's work goes to a collection shelf, and the eleven people with pieces in K2 get one message each with their shelf. Nobody else is pinged.</p>
+
+    <div class="c-main">
+      <div class="shelf-bar">
+        <p class="cap">Collection shelves · as of <span class="m">Sun 18 Oct 12:00</span> <span class="tag">Sample data</span></p>
+        <div class="filters" role="group" aria-label="Filter shelves">
+          <button type="button" class="chip" aria-pressed="true" data-f="all">All <span class="m">11</span></button>
+          <button type="button" class="chip" aria-pressed="false" data-f="waiting">Waiting <span class="m">4</span></button>
+          <button type="button" class="chip" aria-pressed="false" data-f="collected">Collected <span class="m">7</span></button>
+        </div>
+      </div>
+      <table class="tbl shelf-tbl">
+        <thead><tr><th scope="col">Shelf</th><th scope="col">Member</th><th scope="col" class="n">Pieces</th><th scope="col">Told</th><th scope="col">Status</th></tr></thead>
+        <tbody>
+          <tr data-s="collected"><th scope="row">C-01</th><td class="who">Ama Owusu</td><td class="n">4</td><td class="m nw">Fri 16:05</td><td class="st st-done">Collected <span class="m">Fri 17:10</span></td></tr>
+          <tr data-s="collected"><th scope="row">C-02</th><td class="who">Lars Moen</td><td class="n">3</td><td class="m nw">Fri 16:05</td><td class="st st-done">Collected <span class="m">Sat 10:25</span></td></tr>
+          <tr data-s="collected"><th scope="row">C-03</th><td class="who">Priya Raman</td><td class="n">5</td><td class="m nw">Fri 16:05</td><td class="st st-done">Collected <span class="m">Fri 18:40</span></td></tr>
+          <tr data-s="waiting"><th scope="row">C-04</th><td class="who">Jun Arai</td><td class="n">5</td><td class="m nw">Fri 16:05</td><td class="st st-wait">Waiting · <span class="m">2 days</span></td></tr>
+          <tr data-s="collected"><th scope="row">C-05</th><td class="who">Tomás Nieto</td><td class="n">4</td><td class="m nw">Fri 16:05</td><td class="st st-done">Collected <span class="m">Sat 11:02</span></td></tr>
+          <tr data-s="collected"><th scope="row">C-06</th><td class="who">Ruth Okafor</td><td class="n">4</td><td class="m nw">Fri 16:05</td><td class="st st-done">Collected <span class="m">Fri 17:35</span></td></tr>
+          <tr data-s="waiting"><th scope="row">C-07</th><td class="who">Sun-hee Kwon</td><td class="n">2</td><td class="m nw">Fri 16:05</td><td class="st st-wait">Waiting · <span class="m">2 days</span></td></tr>
+          <tr data-s="collected"><th scope="row">C-08</th><td class="who">Mira Lund</td><td class="n">2</td><td class="m nw">Fri 16:05</td><td class="st st-done">Collected <span class="m">Sat 14:50</span></td></tr>
+          <tr data-s="collected"><th scope="row">C-09</th><td class="who">Dara Vance</td><td class="n">2</td><td class="m nw">Fri 16:05</td><td class="st st-done">Collected <span class="m">Sun 11:20</span></td></tr>
+          <tr data-s="waiting"><th scope="row">C-10</th><td class="who">Hugo Brandt</td><td class="n">3</td><td class="m nw">Fri 16:05</td><td class="st st-wait">Waiting · <span class="m">2 days</span></td></tr>
+          <tr data-s="waiting"><th scope="row">C-11</th><td class="who">Esme Fairley</td><td class="n">4</td><td class="m nw">Fri 16:05</td><td class="st st-wait">Waiting · <span class="m">2 days</span></td></tr>
+        </tbody>
+        <tfoot><tr><th scope="row">Total</th><td><span class="m">11</span> members</td><td class="n">38</td><td></td><td><span class="m">24</span> collected · <span class="m">14</span> waiting</td></tr></tfoot>
+      </table>
+    </div>
+
+    <div class="c-side">
+      <figure class="msg">
+        <figcaption class="cap">Message to Lars Moen · <span class="m">Fri 16:05</span> <span class="tag">Sample data</span></figcaption>
+        <blockquote class="msg-body">
+          <p>Hollow Lane Studio: the glaze firing is out of K2.</p>
+          <p>Your 3 pieces are on shelf C-02. Please collect by Friday 30 October.</p>
+        </blockquote>
+      </figure>
+      <dl class="specs specs-rule">
+        <div><dt>Sent to</dt><dd>Members with work in <span class="m">K2-0412</span> · <span class="m">11</span></dd></div>
+        <div><dt>Reminder</dt><dd>To anyone still waiting on <span class="m">Wed 21 Oct</span></dd></div>
+        <div><dt>Collect by</dt><dd><span class="m">Fri 30 Oct</span></dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- 6 · Next firing / trial -->
+<section class="sec end" id="start-trial" data-stage="next" aria-labelledby="h-trial">
+  <div class="sheet row">
+    <p class="stamp" aria-hidden="true"><span>TUE 20</span><span>18:00</span></p>
+    <h2 id="h-trial" class="display c-end">Log the next one.</h2>
+    <div class="end-side">
+      <p class="body">Add your kilns and their programmes, open next week's sessions for booking, and give members their shelves. Your next firing runs through Kilnward from the first booking to the last pot collected.</p>
+      <div class="actions">
+        <a class="btn btn-lg" href="#start-trial">Start free trial</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+</div>
+
+<footer class="foot">
+  <div class="titleblock">
+    <dl>
+      <div class="tb-wide"><dt>Title</dt><dd>Kilnward · One firing, start to finish</dd></div>
+      <div><dt>Firing</dt><dd class="m">K2-0412</dd></div>
+      <div><dt>Drawn by</dt><dd>Kilnward</dd></div>
+      <div><dt>Checked</dt><dd>Ines, studio tech (sample)</dd></div>
+      <div><dt>Date</dt><dd class="m">16 Oct 2026</dd></div>
+      <div><dt>Sheet</dt><dd class="m">1 of 1</dd></div>
+    </dl>
+    <p class="meta">Kilnward is a fictional product. Hollow Lane Studio, its members, kilns, times and temperatures are all sample data. Temperatures approximate.</p>
+  </div>
+</footer>
+
+<script src="script.js" defer></script>
+</body>
+</html>

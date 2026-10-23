@@ -1,0 +1,512 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kilnward — Booking and kiln scheduling for small pottery studios</title>
+<meta name="description" content="Kilnward handles class bookings, membership hours and kiln loads for small pottery studios, so you can spend more time at the wheel.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --clay:#b5532f;
+    --clay-dark:#8f3d1f;
+    --sand:#f6efe6;
+    --bisque:#ecdfcf;
+    --slip:#fffaf4;
+    --ink:#2a211c;
+    --muted:#6e6158;
+    --glaze:#3f6b63;
+    --line:#e2d3c1;
+    --radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:var(--sand);line-height:1.6;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:600;line-height:1.15;letter-spacing:-0.01em}
+  a{color:inherit}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+  .btn{display:inline-block;padding:14px 24px;border-radius:999px;font-weight:600;text-decoration:none;font-size:15px;transition:transform .15s ease,background .15s ease}
+  .btn-primary{background:var(--clay);color:#fff}
+  .btn-primary:hover{background:var(--clay-dark);transform:translateY(-1px)}
+  .btn-ghost{border:1.5px solid var(--ink);color:var(--ink)}
+  .btn-ghost:hover{background:var(--ink);color:var(--sand)}
+  .eyebrow{font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--clay)}
+  .img{background:var(--bisque);border-radius:var(--radius)}
+
+  /* Nav */
+  header{position:sticky;top:0;z-index:10;background:rgba(246,239,230,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .logo{font-family:Fraunces,serif;font-weight:700;font-size:22px;text-decoration:none;display:flex;align-items:center;gap:10px}
+  .logo-mark{width:26px;height:26px;border-radius:50% 50% 6px 6px;background:var(--clay)}
+  .nav-links{display:flex;gap:32px;list-style:none;font-size:15px}
+  .nav-links a{text-decoration:none;color:var(--muted)}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-cta{display:flex;gap:12px;align-items:center}
+  .nav-cta .signin{font-size:15px;text-decoration:none;color:var(--muted)}
+
+  /* Hero */
+  .hero{padding:88px 0 72px}
+  .hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center}
+  .hero h1{font-size:clamp(40px,5.4vw,64px);margin:16px 0 20px}
+  .hero h1 em{font-style:italic;color:var(--clay)}
+  .hero p.lead{font-size:19px;color:var(--muted);max-width:520px;margin-bottom:32px}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+  .hero-note{margin-top:18px;font-size:14px;color:var(--muted)}
+  .hero-visual{position:relative}
+  .hero-visual .img{aspect-ratio:4/5;background:#d9b99b}
+  .float-card{position:absolute;background:var(--slip);border-radius:12px;box-shadow:0 12px 32px rgba(42,33,28,.14);padding:16px 18px;font-size:14px}
+  .float-card.one{left:-36px;bottom:56px;width:250px}
+  .float-card.two{right:-20px;top:40px;width:210px}
+  .float-card strong{display:block;font-size:15px}
+  .float-card .meta{color:var(--muted);font-size:13px}
+  .bar{height:8px;border-radius:4px;background:var(--bisque);margin-top:10px;overflow:hidden}
+  .bar span{display:block;height:100%;width:72%;background:var(--glaze)}
+  .pill{display:inline-block;font-size:12px;font-weight:600;padding:3px 10px;border-radius:999px;background:#e3efe9;color:var(--glaze);margin-top:8px}
+
+  /* Strip */
+  .strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:28px 0;background:var(--slip)}
+  .strip .wrap{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+  .strip p{font-size:14px;color:var(--muted)}
+  .studios{display:flex;gap:36px;flex-wrap:wrap;font-family:Fraunces,serif;font-size:18px;color:#9a8b7f}
+
+  /* Features */
+  section{padding:96px 0}
+  .section-head{max-width:640px;margin-bottom:56px}
+  .section-head h2{font-size:clamp(32px,3.6vw,44px);margin:12px 0 16px}
+  .section-head p{color:var(--muted);font-size:18px}
+  .features{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .feature{background:var(--slip);border:1px solid var(--line);border-radius:var(--radius);padding:28px}
+  .feature .icon{width:44px;height:44px;border-radius:10px;background:var(--bisque);margin-bottom:20px;display:grid;place-items:center}
+  .feature .icon i{display:block;width:18px;height:18px;border-radius:4px;background:var(--clay)}
+  .feature:nth-child(2) .icon i{border-radius:50%;background:var(--glaze)}
+  .feature:nth-child(3) .icon i{border-radius:50% 50% 4px 4px}
+  .feature h3{font-size:22px;margin-bottom:10px}
+  .feature p{color:var(--muted);font-size:15.5px}
+
+  /* Kiln split */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+  .split.reverse .split-text{order:2}
+  .split h2{font-size:clamp(30px,3.4vw,42px);margin:12px 0 18px}
+  .split p{color:var(--muted);font-size:17px;margin-bottom:20px}
+  .checks{list-style:none;display:grid;gap:12px}
+  .checks li{padding-left:30px;position:relative;font-size:15.5px}
+  .checks li::before{content:"";position:absolute;left:0;top:5px;width:16px;height:16px;border-radius:50%;background:var(--glaze);box-shadow:inset 0 0 0 4px #cfe2da}
+  .kiln-board{background:var(--slip);border:1px solid var(--line);border-radius:var(--radius);padding:24px;box-shadow:0 20px 40px rgba(42,33,28,.08)}
+  .kb-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:18px}
+  .kb-head h4{font-family:Fraunces,serif;font-size:18px;font-weight:600}
+  .kb-head span{font-size:13px;color:var(--muted)}
+  .kb-row{display:grid;grid-template-columns:90px 1fr;gap:14px;align-items:center;padding:10px 0;border-top:1px dashed var(--line)}
+  .kb-row .label{font-size:13px;font-weight:600;color:var(--muted)}
+  .track{position:relative;height:34px;background:var(--sand);border-radius:8px}
+  .slot{position:absolute;top:4px;bottom:4px;border-radius:6px;font-size:12px;font-weight:600;color:#fff;padding:0 10px;display:flex;align-items:center;white-space:nowrap;overflow:hidden}
+  .slot.bisque{background:#c98a5e}
+  .slot.glaze{background:var(--glaze)}
+  .slot.cool{background:#b9aea4;color:var(--ink)}
+  .split-visual .img{aspect-ratio:5/4;background:#c7a487}
+
+  /* Steps */
+  .steps-sec{background:var(--ink);color:var(--sand)}
+  .steps-sec .section-head p{color:#c9bbae}
+  .steps-sec .eyebrow{color:#e59b74}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;counter-reset:s}
+  .step{border-top:1px solid #4a3d35;padding-top:24px}
+  .step::before{counter-increment:s;content:"0" counter(s);font-family:Fraunces,serif;font-size:15px;color:#e59b74}
+  .step h3{font-size:22px;margin:10px 0 8px}
+  .step p{color:#c9bbae;font-size:15.5px}
+
+  /* Testimonials */
+  .quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .quote{background:var(--slip);border:1px solid var(--line);border-radius:var(--radius);padding:28px;display:flex;flex-direction:column;justify-content:space-between;gap:24px}
+  .quote blockquote{font-family:Fraunces,serif;font-size:19px;line-height:1.45}
+  .who{display:flex;gap:12px;align-items:center}
+  .who .avatar{width:42px;height:42px;border-radius:50%;background:#d9b99b;flex-shrink:0}
+  .quote:nth-child(2) .avatar{background:#a9c3b9}
+  .quote:nth-child(3) .avatar{background:#c98a5e}
+  .who strong{display:block;font-size:15px}
+  .who span{font-size:13px;color:var(--muted)}
+
+  /* Pricing */
+  .pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:stretch}
+  .plan{background:var(--slip);border:1px solid var(--line);border-radius:var(--radius);padding:32px;display:flex;flex-direction:column}
+  .plan.featured{border:2px solid var(--clay);position:relative}
+  .plan.featured .tag{position:absolute;top:-13px;left:32px;background:var(--clay);color:#fff;font-size:12px;font-weight:600;padding:4px 12px;border-radius:999px}
+  .plan h3{font-size:24px}
+  .plan .desc{color:var(--muted);font-size:15px;margin:6px 0 20px}
+  .price{font-family:Fraunces,serif;font-size:44px;font-weight:600}
+  .price small{font-family:Inter,sans-serif;font-size:15px;color:var(--muted);font-weight:400}
+  .plan ul{list-style:none;margin:24px 0 28px;display:grid;gap:10px;font-size:15px;flex:1}
+  .plan li{padding-left:22px;position:relative}
+  .plan li::before{content:"";position:absolute;left:0;top:9px;width:10px;height:2px;background:var(--clay)}
+  .plan .btn{text-align:center}
+
+  /* FAQ */
+  .faq{max-width:780px}
+  details{border-bottom:1px solid var(--line);padding:22px 0}
+  summary{cursor:pointer;font-family:Fraunces,serif;font-size:20px;list-style:none;display:flex;justify-content:space-between;gap:16px}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";font-family:Inter,sans-serif;color:var(--clay);font-size:22px;line-height:1}
+  details[open] summary::after{content:"–"}
+  details p{color:var(--muted);margin-top:12px;font-size:16px}
+
+  /* CTA */
+  .cta{background:var(--clay);color:#fff;border-radius:24px;padding:72px 56px;display:grid;grid-template-columns:1.4fr 1fr;gap:40px;align-items:center}
+  .cta h2{font-size:clamp(32px,3.6vw,46px)}
+  .cta p{opacity:.88;margin-top:14px;font-size:17px}
+  .cta form{display:flex;gap:10px;flex-wrap:wrap}
+  .cta input{flex:1;min-width:200px;padding:14px 18px;border-radius:999px;border:none;font:inherit;font-size:15px}
+  .cta button{padding:14px 24px;border-radius:999px;border:none;background:var(--ink);color:#fff;font:inherit;font-weight:600;cursor:pointer}
+  .cta button:hover{background:#000}
+  .cta small{display:block;margin-top:12px;opacity:.8;font-size:13px}
+
+  footer{padding:64px 0 40px;font-size:14px;color:var(--muted)}
+  .foot{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px;margin-bottom:48px}
+  .foot h5{font-size:13px;text-transform:uppercase;letter-spacing:.1em;color:var(--ink);margin-bottom:14px}
+  .foot ul{list-style:none;display:grid;gap:8px}
+  .foot a{text-decoration:none}
+  .foot a:hover{color:var(--ink)}
+  .foot-bottom{border-top:1px solid var(--line);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+
+  @media (max-width:900px){
+    .nav-links{display:none}
+    .hero-grid,.split,.cta{grid-template-columns:1fr}
+    .split.reverse .split-text{order:0}
+    .features,.steps,.quotes,.pricing{grid-template-columns:1fr}
+    .float-card.one{left:12px}
+    .float-card.two{right:12px}
+    .foot{grid-template-columns:1fr 1fr}
+    .cta{padding:48px 28px}
+    section{padding:72px 0}
+  }
+  @media (max-width:520px){
+    .nav-cta .signin{display:none}
+    .foot{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body><div role="note" style="position:relative;z-index:2147483647;background:#141817;color:#f7f8f8;font:500 14px/1.5 ui-monospace,Menlo,monospace;padding:10px max(16px,env(safe-area-inset-left,0px));">Comparison page, unedited: plain Claude (no skills, no process) from the one-line prompt &quot;Make a landing page for Kilnward, a booking and kiln-scheduling app for small pottery studios.&quot; Kilnward is fictional. The quotes, studio names and prices on this page were invented by the model and are not real. <a href="../../index.html" style="color:#5fc2b6">Back to the demo</a></div>
+
+<header>
+  <nav class="wrap">
+    <a href="#" class="logo"><span class="logo-mark"></span>Kilnward</a>
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#kiln">Kiln scheduling</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="#" class="signin">Sign in</a>
+      <a href="#start" class="btn btn-primary">Start free</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <!-- Hero -->
+  <div class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">For studios with one wheel or twenty</span>
+        <h1>Run your studio, not a <em>spreadsheet.</em></h1>
+        <p class="lead">Kilnward brings class bookings, member shelf space and every kiln firing into one calm calendar — so you can spend your mornings with clay instead of chasing emails.</p>
+        <div class="hero-actions">
+          <a href="#start" class="btn btn-primary">Start your 30-day trial</a>
+          <a href="#kiln" class="btn btn-ghost">See the kiln planner</a>
+        </div>
+        <p class="hero-note">No card needed. Set up in an afternoon.</p>
+      </div>
+      <div class="hero-visual">
+        <div class="img" role="img" aria-label="Image placeholder: potter at the wheel"></div>
+        <div class="float-card two">
+          <strong>Wheel Basics · Thu 6pm</strong>
+          <span class="meta">7 of 8 seats booked</span>
+          <div class="pill">1 spot left</div>
+        </div>
+        <div class="float-card one">
+          <strong>Kiln 2 — Cone 6 glaze</strong>
+          <span class="meta">Loading closes Fri, 4pm</span>
+          <div class="bar"><span></span></div>
+          <span class="meta">72% of shelf space claimed</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="strip">
+    <div class="wrap">
+      <p>Firing schedules kept by independent studios like</p>
+      <div class="studios">
+        <span>Mudlark Co-op</span><span>Saltmarsh Clay</span><span>The Ember Room</span><span>Little Shard</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Features -->
+  <section id="features">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Everything in one place</span>
+        <h2>Built for the way small studios actually work</h2>
+        <p>Not a generic booking tool with a pottery theme. Kilnward understands bisque, glaze, shelves and the fact that nothing leaves the kiln on time.</p>
+      </div>
+      <div class="features">
+        <div class="feature">
+          <div class="icon"><i></i></div>
+          <h3>Classes &amp; workshops</h3>
+          <p>Publish term courses, one-off date nights and drop-in throwing sessions. Students book and pay online, and waitlists fill themselves when someone cancels.</p>
+        </div>
+        <div class="feature">
+          <div class="icon"><i></i></div>
+          <h3>Memberships &amp; open studio</h3>
+          <p>Sell monthly hours, track wheel time, and let members reserve a spot without texting you at 11pm. Shelf rentals included.</p>
+        </div>
+        <div class="feature">
+          <div class="icon"><i></i></div>
+          <h3>Kiln scheduling</h3>
+          <p>Plan bisque and glaze loads, set cut-off times and let members claim shelf space. Everyone gets a nudge when their work is ready to collect.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kiln split -->
+  <section id="kiln" style="padding-top:0">
+    <div class="wrap split">
+      <div class="split-text">
+        <span class="eyebrow">The kiln planner</span>
+        <h2>Know what's in every firing, before you shut the lid</h2>
+        <p>Drag loads onto a weekly timeline for each kiln. Kilnward blocks out heating and cooling time, warns you about clashing cones, and shows members exactly when their pieces come out.</p>
+        <ul class="checks">
+          <li>Per-kiln timelines with cooling windows built in</li>
+          <li>Shelf-space claims by members, with per-piece firing fees</li>
+          <li>Automatic "ready for pickup" messages</li>
+          <li>Firing log you can actually find next year</li>
+        </ul>
+      </div>
+      <div class="kiln-board" aria-label="Example kiln schedule">
+        <div class="kb-head"><h4>This week's firings</h4><span>Mon – Sun</span></div>
+        <div class="kb-row">
+          <span class="label">Kiln 1</span>
+          <div class="track">
+            <div class="slot bisque" style="left:2%;width:30%">Bisque · 04</div>
+            <div class="slot cool" style="left:33%;width:14%">Cool</div>
+            <div class="slot bisque" style="left:60%;width:28%">Bisque · 04</div>
+          </div>
+        </div>
+        <div class="kb-row">
+          <span class="label">Kiln 2</span>
+          <div class="track">
+            <div class="slot glaze" style="left:10%;width:34%">Glaze · Cone 6</div>
+            <div class="slot cool" style="left:45%;width:16%">Cool</div>
+          </div>
+        </div>
+        <div class="kb-row">
+          <span class="label">Test kiln</span>
+          <div class="track">
+            <div class="slot glaze" style="left:40%;width:18%">Tiles</div>
+            <div class="slot glaze" style="left:72%;width:20%">Raku</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Split 2 -->
+  <section style="padding-top:0">
+    <div class="wrap split reverse">
+      <div class="split-text">
+        <span class="eyebrow">Front desk, handled</span>
+        <h2>A booking page your students will actually enjoy</h2>
+        <p>Give your studio a simple, branded page for classes, gift cards and open-studio slots. Payments, reminders and cancellations take care of themselves.</p>
+        <ul class="checks">
+          <li>Gift cards and class packs</li>
+          <li>Automatic reminders the day before</li>
+          <li>Cancellation rules you set once</li>
+        </ul>
+      </div>
+      <div class="split-visual">
+        <div class="img" role="img" aria-label="Image placeholder: booking page on a phone"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Steps -->
+  <section class="steps-sec">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Getting started</span>
+        <h2>Up and running before your next firing</h2>
+        <p>Most studios move over in a single afternoon. We'll help import your members and class list.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <h3>Add your studio</h3>
+          <p>Enter your kilns, wheels and opening hours. Kilnward builds your calendar around them.</p>
+        </div>
+        <div class="step">
+          <h3>Publish classes</h3>
+          <p>Create courses and open-studio slots, set prices and share your booking link.</p>
+        </div>
+        <div class="step">
+          <h3>Start firing</h3>
+          <p>Members claim shelf space, you plan loads, and everyone knows when work is ready.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">From the studio floor</span>
+        <h2>Studio owners on Kilnward</h2>
+      </div>
+      <div class="quotes">
+        <figure class="quote">
+          <blockquote>"I used to keep the kiln schedule on a whiteboard that got wiped every other week. Now members just check their phones."</blockquote>
+          <figcaption class="who"><span class="avatar"></span><div><strong>Marta Quillon</strong><span>Owner, Saltmarsh Clay</span></div></figcaption>
+        </figure>
+        <figure class="quote">
+          <blockquote>"Our waitlist fills cancelled spots on its own. That alone paid for the subscription in the first month."</blockquote>
+          <figcaption class="who"><span class="avatar"></span><div><strong>Dev Ashcombe</strong><span>Co-founder, The Ember Room</span></div></figcaption>
+        </figure>
+        <figure class="quote">
+          <blockquote>"It feels like it was made by someone who has actually unloaded a kiln at 7am."</blockquote>
+          <figcaption class="who"><span class="avatar"></span><div><strong>Noor Pellow</strong><span>Studio manager, Little Shard</span></div></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Pricing</span>
+        <h2>Simple plans for small studios</h2>
+        <p>Every plan includes unlimited students and bookings. No per-booking fees from us.</p>
+      </div>
+      <div class="pricing">
+        <div class="plan">
+          <h3>Solo</h3>
+          <p class="desc">For one-person studios and teachers.</p>
+          <div class="price">$29<small> / month</small></div>
+          <ul>
+            <li>1 kiln</li>
+            <li>Classes &amp; workshops</li>
+            <li>Online payments</li>
+            <li>Email reminders</li>
+          </ul>
+          <a href="#start" class="btn btn-ghost">Start free trial</a>
+        </div>
+        <div class="plan featured">
+          <span class="tag">Most popular</span>
+          <h3>Studio</h3>
+          <p class="desc">For studios with members and open hours.</p>
+          <div class="price">$59<small> / month</small></div>
+          <ul>
+            <li>Up to 4 kilns</li>
+            <li>Memberships &amp; shelf rentals</li>
+            <li>Kiln planner with shelf claims</li>
+            <li>Gift cards &amp; class packs</li>
+            <li>3 staff accounts</li>
+          </ul>
+          <a href="#start" class="btn btn-primary">Start free trial</a>
+        </div>
+        <div class="plan">
+          <h3>Collective</h3>
+          <p class="desc">For co-ops and multi-room spaces.</p>
+          <div class="price">$99<small> / month</small></div>
+          <ul>
+            <li>Unlimited kilns</li>
+            <li>Multiple locations</li>
+            <li>Unlimited staff</li>
+            <li>Priority support</li>
+          </ul>
+          <a href="#start" class="btn btn-ghost">Talk to us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Questions</span>
+        <h2>Frequently asked</h2>
+      </div>
+      <div class="faq">
+        <details open>
+          <summary>Can I move my existing members over?</summary>
+          <p>Yes. Upload a spreadsheet of members and remaining class credits, and we'll match them up. On Studio and Collective plans we'll do the import with you.</p>
+        </details>
+        <details>
+          <summary>Does Kilnward control my kiln?</summary>
+          <p>No — Kilnward is a scheduling tool. It plans loads and timings around your kilns, but you still run the firing on your controller as usual.</p>
+        </details>
+        <details>
+          <summary>How do students pay?</summary>
+          <p>Students pay by card at checkout. Funds go straight to your studio's account, and you can also mark cash or bank transfers manually.</p>
+        </details>
+        <details>
+          <summary>What happens after the trial?</summary>
+          <p>Pick a plan to keep going. If you don't, your account pauses and your data stays put for 90 days in case you change your mind.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="start" style="padding-top:0">
+    <div class="wrap">
+      <div class="cta">
+        <div>
+          <h2>Give your studio a calmer week.</h2>
+          <p>Try Kilnward free for 30 days. Bring your kilns, your classes and your members — we'll handle the calendar.</p>
+        </div>
+        <div>
+          <form onsubmit="event.preventDefault();this.querySelector('button').textContent='Check your inbox';">
+            <label for="email" style="position:absolute;left:-9999px">Email address</label>
+            <input id="email" type="email" placeholder="you@yourstudio.com" required>
+            <button type="submit">Start free</button>
+          </form>
+          <small>No card required. Cancel anytime.</small>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a href="#" class="logo" style="color:var(--ink)"><span class="logo-mark"></span>Kilnward</a>
+        <p style="margin-top:12px;max-width:280px">Booking and kiln scheduling for small pottery studios.</p>
+      </div>
+      <div>
+        <h5>Product</h5>
+        <ul><li><a href="#features">Features</a></li><li><a href="#kiln">Kiln planner</a></li><li><a href="#pricing">Pricing</a></li></ul>
+      </div>
+      <div>
+        <h5>Studio</h5>
+        <ul><li><a href="#">Guides</a></li><li><a href="#">Changelog</a></li><li><a href="#">Help centre</a></li></ul>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <ul><li><a href="#">About</a></li><li><a href="#">Contact</a></li><li><a href="#">Privacy</a></li></ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Kilnward. All rights reserved.</span>
+      <span>Made for people with clay under their nails.</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

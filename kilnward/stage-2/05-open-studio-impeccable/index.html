@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kilnward · Bookings, firings and shelves for small ceramic studios</title>
+<meta name="description" content="Kilnward puts class and open-studio bookings, kiln load planning, firing schedules and member shelves in one place. A fictional product.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;1,7..72,400&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-head">
+  <div class="wrap site-head__row">
+    <a class="wordmark" href="#top" aria-label="Kilnward home">
+      <svg class="wordmark__mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M6 21V10.5C6 6.9 8.7 4 12 4s6 2.9 6 6.5V21" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M3.5 21h17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M9.5 15.5h5" fill="none" stroke="var(--amber)" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+      Kilnward
+    </a>
+    <nav aria-label="Primary">
+      <ul class="nav">
+        <li class="nav__link"><a href="#bookings">Bookings</a></li>
+        <li class="nav__link"><a href="#firings">Firings</a></li>
+        <li class="nav__link"><a href="#shelves">Shelves</a></li>
+        <li><a class="nav__signin" href="#start">Start free trial</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- HERO: full-bleed 16:9 scene, cover, centred bottom -->
+<section class="hero" id="top" data-slot="hero background, full-bleed 16:9, cover, centred bottom: the studio at dusk, wheels and shelves in warm light" aria-labelledby="hero-title">
+  <div class="hero__scrim" aria-hidden="true"></div>
+  <div class="wrap hero__grid">
+    <div class="hero__copy">
+      <h1 id="hero-title" class="display">Your studio&rsquo;s week, from wheel to kiln.</h1>
+      <p class="lede">Kilnward keeps class bookings, open&#8209;studio slots, firing schedules and member shelves in one place, so the whiteboard by the kiln can finally be wiped clean.</p>
+      <p class="hero__hint">Try the planner: pick a day, open a few sessions, and watch Friday&rsquo;s bisque load fill.</p>
+    </div>
+
+    <form class="panel planner" id="planner" aria-labelledby="planner-title" onsubmit="return false">
+      <div class="panel__head">
+        <h2 id="planner-title" class="panel__title">Plan the week</h2>
+        <span class="tag">Sample data</span>
+      </div>
+      <p class="panel__sub">Hollow Pine Clay Co. &middot; week of Mon 26 Oct</p>
+
+      <fieldset class="days">
+        <legend class="sr-only">Day</legend>
+        <div class="days__row" id="day-row"></div>
+      </fieldset>
+
+      <fieldset class="sessions">
+        <legend class="sessions__legend" id="sessions-legend">Sessions</legend>
+        <ul class="sessions__list" id="session-list"></ul>
+      </fieldset>
+
+      <div class="kiln" aria-live="polite">
+        <div class="kiln__head">
+          <p class="kiln__name">Kiln 2 &middot; Bisque, cone 04 <span class="kiln__when">Fri 30 Oct, 18:00</span></p>
+          <p class="kiln__count"><span id="load-num">0</span><span class="kiln__of"> / 120 pieces</span></p>
+        </div>
+        <div class="meter" role="img" id="meter" aria-label="">
+          <span class="meter__base" id="meter-base"></span>
+          <span class="meter__add" id="meter-add"></span>
+        </div>
+        <p class="kiln__note" id="kiln-note"></p>
+        <p class="kiln__next" id="kiln-next"></p>
+      </div>
+
+      <a class="btn btn--primary btn--block" href="#start">Start free trial</a>
+    </form>
+  </div>
+</section>
+
+<!-- BOOKINGS (light) -->
+<section class="band band--light" id="bookings" aria-labelledby="bookings-title">
+  <div class="wrap band__grid band__grid--wide-panel">
+    <div class="band__copy">
+      <h2 id="bookings-title" class="h2">Classes and open studio on one calendar.</h2>
+      <p>Members book a wheel or a class seat themselves. You see who is coming, who is waiting for a cancellation, and which evenings still have room, without scrolling back through forty messages in the group chat.</p>
+      <p>When a seat frees up, the first person on the waitlist gets it and a note saying so. You find out over coffee, not at the door.</p>
+    </div>
+
+    <div class="panel week" aria-labelledby="week-title">
+      <div class="panel__head">
+        <h3 id="week-title" class="panel__title">Booking week &middot; 26 Oct &ndash; 1 Nov</h3>
+        <span class="tag">Sample data</span>
+      </div>
+      <fieldset class="seg">
+        <legend class="sr-only">Show</legend>
+        <label><input type="radio" name="week-filter" value="all" checked><span>Everything</span></label>
+        <label><input type="radio" name="week-filter" value="class"><span>Classes</span></label>
+        <label><input type="radio" name="week-filter" value="open"><span>Open studio</span></label>
+      </fieldset>
+      <div class="week__grid" id="week-grid"></div>
+      <p class="week__key"><span class="key key--full" aria-hidden="true"></span> Full, waitlist open <span class="key key--room" aria-hidden="true"></span> Seats left</p>
+    </div>
+  </div>
+</section>
+
+<!-- FIRINGS (dark) -->
+<section class="band band--dark" id="firings" aria-labelledby="firings-title">
+  <div class="wrap">
+    <div class="band__intro">
+      <h2 id="firings-title" class="h2">Firings planned around the load, not the other way round.</h2>
+      <p>Kilnward knows what went on the wheel this week and what is dry enough to go in. It sets bisque and glaze firings by kiln, tells you when a load is too light to be worth the electricity, and texts members when their work is out and cool.</p>
+    </div>
+    <div class="firings">
+      <figure class="firings__media">
+        <img class="slot-img" data-slot="kiln band, 4:3: a kiln being unloaded, hands lifting a bisqued bowl from a shelf" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="1200" height="900" alt="A kiln being unloaded after a bisque firing." loading="lazy">
+      </figure>
+
+      <div class="panel panel--on-dark sched" aria-labelledby="sched-title">
+        <div class="panel__head">
+          <h3 id="sched-title" class="panel__title">Firing schedule</h3>
+          <span class="tag">Sample data</span>
+        </div>
+        <ul class="sched__list" id="sched-list"></ul>
+        <div class="switch-row">
+          <span class="switch-row__label" id="notify-label">Text members when Kiln 2 is unloaded</span>
+          <button type="button" class="switch" role="switch" aria-checked="true" aria-labelledby="notify-label" id="notify">
+            <span class="switch__track" aria-hidden="true"><span class="switch__thumb"></span></span>
+            <span class="switch__state" id="notify-state">On</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SHELVES (light) -->
+<section class="band band--light" id="shelves" aria-labelledby="shelves-title">
+  <div class="wrap band__grid band__grid--panel-first">
+    <div class="band__copy">
+      <h2 id="shelves-title" class="h2">Every pot has a shelf, and every shelf has a name.</h2>
+      <p>Members can check where their work is (drying, bisqued, in the glaze load, ready) before they drive over. You get one list of what has sat past pickup, instead of a sticky note on the shelf that says &ldquo;whose is this?&rdquo;</p>
+    </div>
+
+    <div class="panel shelves" aria-labelledby="shelf-title">
+      <div class="panel__head">
+        <h3 id="shelf-title" class="panel__title">Member shelves</h3>
+        <span class="tag">Sample data</span>
+      </div>
+      <div class="shelves__tools">
+        <label class="field">
+          <span class="field__label">Find a member</span>
+          <input type="search" id="shelf-search" placeholder="Name or shelf, e.g. B2" autocomplete="off">
+        </label>
+        <fieldset class="seg seg--compact">
+          <legend class="sr-only">Stage</legend>
+          <label><input type="radio" name="shelf-filter" value="all" checked><span>All</span></label>
+          <label><input type="radio" name="shelf-filter" value="ready"><span>Ready</span></label>
+          <label><input type="radio" name="shelf-filter" value="late"><span>Past pickup</span></label>
+        </fieldset>
+      </div>
+      <table class="shelf-table">
+        <caption class="sr-only">Member shelves, sample data</caption>
+        <thead>
+          <tr><th scope="col">Member</th><th scope="col">Shelf</th><th scope="col" class="num">Pieces</th><th scope="col">Stage</th></tr>
+        </thead>
+        <tbody id="shelf-body"></tbody>
+      </table>
+      <p class="shelves__empty" id="shelf-empty" hidden></p>
+      <p class="shelves__count" id="shelf-count" aria-live="polite"></p>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSE (dark) -->
+<section class="band band--dark close" id="start" aria-labelledby="close-title">
+  <div class="wrap close__inner">
+    <h2 id="close-title" class="display display--close">Wipe the whiteboard.</h2>
+    <p class="lede lede--close">Bring this week&rsquo;s classes, open-studio hours and next firing into Kilnward. Your members keep booking the way they do now; you stop being the one who keeps it all in their head.</p>
+    <div class="close__actions">
+      <a class="btn btn--primary btn--lg" href="#start">Start free trial</a>
+      <a class="btn btn--quiet" href="#top">Plan a sample week first</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-foot">
+  <div class="wrap site-foot__row">
+    <p class="site-foot__mark">Kilnward</p>
+    <p class="site-foot__note">Kilnward is a fictional product made for a design study. Studio names, members, bookings and firings on this page are sample data.</p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

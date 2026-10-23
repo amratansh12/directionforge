@@ -1,0 +1,88 @@
+# DESIGN.md · Kilnward landing page
+
+Written from the shipped build in `design/final/` (styles.css, index.html), not from intentions.
+Demo run: Kilnward is fictional; all data is sample data.
+
+## World
+
+Direction 3 "Kiln Log", composed from three iterations: the page is a technical sheet pinned on the
+kiln room wall. A visible 12-column grid, mono for every number, one orange for anything live,
+and a few grease-pencil marks. First screen: three working instruments (firing curve, next-load
+meter, week index). Below: one K2 glaze firing in time order (booked → loaded → fired → cooling →
+unloaded), closed by a drawing title block.
+
+## Colour
+
+| Token | Value | Role |
+|---|---|---|
+| `--paper` | #F5F2EB | page ground (warm sheet stock) |
+| `--ink` | #121212 | display type, rules, filled cells |
+| `--body` | #2B2925 | running text |
+| `--muted` | #67635B | secondary text, labels |
+| `--line` | #D8D2C4 | grid lines and rules |
+| `--line-soft` | #E5DFD2 | inner cell lines |
+| `--wash` | #ECE7DB | current-row and selected fills |
+| `--edge` | #8F8879 | control and empty-cell boundaries (3:1 on paper) |
+| `--standin` | #E2DCCE | reserved image slots |
+| `--signal` | #D9480F | the only accent: curve, live marks, pencil annotations |
+| `--signal-deep` | #B23B0C | orange text on paper, fills under white text |
+| `--signal-tint` | rgba(217,72,15,.12) | this-session cells in the meter |
+
+One accent family only. Light theme only (a printed sheet); no dark mode was specified.
+
+## Type
+
+- **Archivo** (Google Fonts) for display and text. Display: condensed width, 600, up to about
+  104px with tight leading. Text: 16px base; small text 13–15px.
+- **JetBrains Mono** (Google Fonts) for every label, number, time, unit and coordinate, and for
+  the grease-pencil notes (italic). Prose and member messages stay in Archivo.
+- All numbers use tabular figures.
+
+## Layout and spacing
+
+- 12-column visible grid; left rail `--rail` 72px for margin timestamps; `--gutter` 32px;
+  sections `--sec-pad` 88px apart.
+- Breakpoints: 1180px (layout reflows), 720px (single column, rail folds inline,
+  `--gutter` 16px, `--sec-pad` 64px).
+- Radius 0–2px. No cards with shadows; objects are separated by rules and cells.
+
+## Components
+
+- **Firing curve**: inline SVG, 12 h × 0–1300 °C, ruler ticks, cone ^5/^6 markers, 573 °C quartz
+  line, NOW marker; logged trace (orange) over the dashed programme. Scrub with pointer or arrow
+  keys; a four-cell readout (time, programme, logged, segment) updates live. Labels carry a
+  paper-coloured halo. At ≤720px a separate phone version fits without horizontal scroll.
+- **Next-load meter**: 60 cells in 5 rows of 12 (booked ink, this session hatched orange, free
+  outlined); session radios and a −/+ piece stepper; a live status line states fit or overflow to
+  the next load.
+- **Week index**: Mon–Sun rows, each linking to the section that covers it; today highlighted
+  with `--wash`, the firing day in `--signal-deep`.
+- **Tables** (load plan, shelves): mono numerics, no wrapping in numeric cells; at ≤720px they
+  stack secondary columns or show a sideways-scroll hint.
+- **Grease-pencil marks**: at most four hand-drawn SVG loops/arrows in `--signal` with mono
+  italic notes; they never cross other labels.
+- **Title block**: sheet, drawn, checked, date, rev, sheet 1 of 1.
+- **CTA**: "Start free trial", `--signal-deep` fill with white text, square corners; in the
+  header, hero and closing section, all linking to `#start-trial`.
+
+## Reserved image slots
+
+| Slot | Element | Aspect | Intended image |
+|---|---|---|---|
+| Cone pack | `<img data-slot>` beside the curve | 1:1 | witness cones 5, 6, 7 in a clay pad: 5 flat, 6 bent to three o'clock, 7 standing |
+| Kilns | `<img data-slot>` across 6 columns | 16:9 | K1, K2 and K3 side by side in the kiln room, lids closed |
+
+Both are flat `--standin` fills sized as the final images; replacing the source needs no layout change.
+
+## Motion
+
+The curve draws once on load and the pencil marks follow; the live square pulses twice. Under
+`prefers-reduced-motion: reduce` everything renders in its final state with no animation.
+
+## Guardrails (from the brief)
+
+Always: "Start free trial" in hero and end · real job shown with labelled sample data · one accent
+family · clear display/text contrast · image slots reserved, never filled.
+Never: purple/blue-violet gradients, glows, mesh · glossy blobs or floating shapes · icon +
+three-word feature card rows · Inter/system-only type · emoji, testimonials, logos, invented
+statistics · radius above 12px or pill sections.

@@ -1,0 +1,528 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kilnward — bookings, firings and shelves for small ceramic studios</title>
+<meta name="description" content="Kilnward keeps class bookings, kiln loads, firing schedules and member shelves in one place for small ceramic studios.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f4efe7;
+    --paper-2:#ebe4d8;
+    --card:#fbf8f3;
+    --ink:#2a2622;
+    --ink-2:#5b544c;
+    --ink-3:#8a8278;
+    --line:#d9d0c2;
+    --line-2:#c9bfae;
+    --clay:#b4532a;      /* accent */
+    --clay-deep:#8f3f1e;
+    --clay-soft:#f0d9cb;
+    --clay-tint:#f7e9df;
+    --slot:#d8cfc1;      /* flat image stand-in */
+    --slot-2:#cfc4b3;
+    --serif:"Fraunces", Georgia, "Times New Roman", serif;
+    --sans:"Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+    --r:8px;
+    --wrap:1160px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:var(--sans);font-size:17px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 28px}
+  h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:-0.015em;margin:0;color:var(--ink)}
+  p{margin:0}
+  .eyebrow{
+    font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--clay-deep);
+  }
+  .sample{
+    display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--ink-2);border:1px dashed var(--line-2);border-radius:4px;padding:2px 7px;background:var(--paper);
+  }
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;font-family:var(--sans);font-weight:600;font-size:16px;
+    text-decoration:none;padding:13px 22px;border-radius:6px;border:1px solid transparent;cursor:pointer;
+    transition:background .15s ease, border-color .15s ease, transform .15s ease;
+  }
+  .btn-primary{background:var(--clay);color:#fff8f2}
+  .btn-primary:hover{background:var(--clay-deep)}
+  .btn-primary:focus-visible,.btn-quiet:focus-visible,.nav a:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+  .btn-quiet{color:var(--ink);border-color:var(--line-2);background:transparent}
+  .btn-quiet:hover{border-color:var(--ink-2)}
+
+  /* nav */
+  header.top{border-bottom:1px solid var(--line);background:var(--paper);position:sticky;top:0;z-index:10}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .brand{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-size:22px;font-weight:600;text-decoration:none}
+  .brand-mark{width:22px;height:22px;border:2px solid var(--ink);border-radius:11px 11px 3px 3px;position:relative}
+  .brand-mark::after{content:"";position:absolute;left:4px;right:4px;bottom:4px;height:2px;background:var(--clay)}
+  .nav ul{display:flex;gap:28px;list-style:none;margin:0;padding:0;font-size:15px;color:var(--ink-2)}
+  .nav ul a{text-decoration:none}
+  .nav ul a:hover{color:var(--ink)}
+  .nav .btn{padding:9px 16px;font-size:15px}
+
+  /* hero */
+  .hero{padding:80px 0 72px}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:start}
+  .hero h1{font-size:clamp(42px,5.6vw,72px);line-height:1.02;margin:18px 0 24px}
+  .hero h1 em{font-style:italic;color:var(--clay-deep)}
+  .lede{font-size:19px;color:var(--ink-2);max-width:34em}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px;align-items:center}
+  .fine{font-size:14px;color:var(--ink-3);margin-top:14px}
+  .hero-visual{position:relative}
+  .slot{background:var(--slot);border-radius:var(--r);position:relative}
+  .slot-label{
+    position:absolute;left:12px;bottom:10px;font-family:var(--mono);font-size:11px;color:var(--ink-2);
+    letter-spacing:.04em;
+  }
+  .hero-slot{aspect-ratio:4/5}
+  .ticket{
+    position:absolute;left:-36px;bottom:-28px;width:min(330px,88%);background:var(--card);
+    border:1px solid var(--line);border-radius:var(--r);padding:18px 18px 14px;
+    box-shadow:0 1px 0 var(--line), 0 12px 30px -18px rgba(60,40,20,.35);
+  }
+  .ticket-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px}
+  .ticket h3{font-size:19px}
+  .ticket dl{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;margin:0;font-size:14px}
+  .ticket dt{color:var(--ink-3);font-family:var(--mono);font-size:12px;padding-top:2px}
+  .ticket dd{margin:0}
+  .ramp{margin-top:14px;height:56px}
+  .ramp svg{width:100%;height:100%;display:block}
+
+  /* section scaffolding */
+  section.block{padding:96px 0;border-top:1px solid var(--line)}
+  .sec-head{display:grid;grid-template-columns:280px 1fr;gap:56px;margin-bottom:48px}
+  .sec-head h2{font-size:clamp(32px,3.6vw,46px);line-height:1.08}
+  .sec-head p{color:var(--ink-2);margin-top:16px;max-width:36em}
+
+  /* the week */
+  .week-intro{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:end;margin-bottom:40px}
+  .week-intro h2{font-size:clamp(32px,3.8vw,48px);line-height:1.08;margin-top:14px}
+  .week-intro p{color:var(--ink-2)}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+  .panel-bar{
+    display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;
+    padding:14px 20px;border-bottom:1px solid var(--line);background:var(--paper)
+  }
+  .panel-bar strong{font-family:var(--serif);font-weight:500;font-size:18px}
+  .week{display:grid;grid-template-columns:64px repeat(7,minmax(108px,1fr));min-width:840px}
+  .scroll-x{overflow-x:auto}
+  .week .h{font-family:var(--mono);font-size:12px;color:var(--ink-2);padding:10px 10px;border-bottom:1px solid var(--line);border-left:1px solid var(--line)}
+  .week .h:first-child{border-left:0}
+  .week .h b{display:block;color:var(--ink);font-weight:500;font-size:13px}
+  .week .t{font-family:var(--mono);font-size:11px;color:var(--ink-3);padding:8px 10px;border-bottom:1px solid var(--line)}
+  .week .c{border-left:1px solid var(--line);border-bottom:1px solid var(--line);padding:6px;min-height:78px;display:flex;flex-direction:column;gap:5px}
+  .ev{border-radius:5px;padding:6px 8px;font-size:12.5px;line-height:1.3;border-left:3px solid}
+  .ev small{display:block;font-family:var(--mono);font-size:10.5px;color:var(--ink-2);margin-top:2px}
+  .ev.class{background:var(--clay-tint);border-color:var(--clay)}
+  .ev.open{background:var(--paper-2);border-color:var(--ink-3)}
+  .ev.fire{background:#2a2622;color:#f4efe7;border-color:var(--clay)}
+  .ev.fire small{color:#c9bfae}
+  .ev.full{position:relative}
+  .ev.full::after{content:"full";position:absolute;right:6px;top:6px;font-family:var(--mono);font-size:10px;color:var(--clay-deep)}
+  .legend{display:flex;gap:18px;flex-wrap:wrap;font-size:13px;color:var(--ink-2)}
+  .legend span{display:inline-flex;align-items:center;gap:7px}
+  .legend i{width:12px;height:12px;border-radius:3px;display:inline-block;border-left:3px solid}
+  .legend .l-class{background:var(--clay-tint);border-color:var(--clay)}
+  .legend .l-open{background:var(--paper-2);border-color:var(--ink-3)}
+  .legend .l-fire{background:var(--ink);border-color:var(--clay)}
+
+  /* kiln */
+  .kiln-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:28px}
+  .shelves{padding:20px}
+  .shelf{display:grid;grid-template-columns:70px 1fr;gap:14px;align-items:center;padding:10px 0;border-bottom:1px dashed var(--line)}
+  .shelf:last-child{border-bottom:0}
+  .shelf-name{font-family:var(--mono);font-size:12px;color:var(--ink-2)}
+  .shelf-row{display:flex;gap:6px;flex-wrap:wrap}
+  .pot{height:30px;border-radius:4px 4px 2px 2px;background:var(--slot-2);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:10px;color:var(--ink-2)}
+  .pot.w1{width:34px}.pot.w2{width:48px}.pot.w3{width:64px}
+  .pot.tall{height:44px}
+  .pot.mine{background:var(--clay-soft);color:var(--clay-deep)}
+  .pot.empty{background:transparent;border:1px dashed var(--line-2)}
+  .kiln-foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:14px 20px;border-top:1px solid var(--line);font-size:14px;color:var(--ink-2)}
+  .meter{flex:1;min-width:160px;height:8px;background:var(--paper-2);border-radius:4px;overflow:hidden;align-self:center}
+  .meter b{display:block;height:100%;width:82%;background:var(--clay)}
+  table.sched{width:100%;border-collapse:collapse;font-size:14.5px}
+  table.sched th{text-align:left;font-family:var(--mono);font-weight:400;font-size:11.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-3);padding:12px 16px;border-bottom:1px solid var(--line)}
+  table.sched td{padding:12px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+  table.sched tr:last-child td{border-bottom:0}
+  table.sched .num{font-family:var(--mono);font-size:13.5px;white-space:nowrap}
+  .status{font-family:var(--mono);font-size:11.5px;padding:2px 7px;border-radius:4px;white-space:nowrap}
+  .st-run{background:var(--clay);color:#fff8f2}
+  .st-cool{background:var(--clay-soft);color:var(--clay-deep)}
+  .st-load{background:var(--paper-2);color:var(--ink-2)}
+  .st-done{border:1px solid var(--line-2);color:var(--ink-3)}
+
+  /* shelf list */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+  .member-list{list-style:none;margin:0;padding:0}
+  .member-list li{display:grid;grid-template-columns:1fr auto;gap:4px 16px;padding:14px 20px;border-bottom:1px solid var(--line)}
+  .member-list li:last-child{border-bottom:0}
+  .member-list .who{font-weight:600}
+  .member-list .what{color:var(--ink-2);font-size:14.5px;grid-column:1}
+  .member-list .where{font-family:var(--mono);font-size:12px;color:var(--ink-2);text-align:right;grid-row:1/3;grid-column:2;align-self:center}
+  .member-list .where em{display:block;font-style:normal;color:var(--clay-deep)}
+  .stack{display:flex;flex-direction:column;gap:16px}
+  .slot-wide{aspect-ratio:16/10}
+  .note{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+  .note p{color:var(--ink-2);font-size:15.5px}
+  .note p + p{margin-top:10px}
+
+  /* before/after prose */
+  .ledger{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--ink)}
+  .ledger > div{padding:28px 0}
+  .ledger > div:nth-child(odd){padding-right:40px;border-right:1px solid var(--line)}
+  .ledger > div:nth-child(even){padding-left:40px}
+  .ledger > div:nth-child(n+3){border-top:1px solid var(--line)}
+  .ledger h3{font-size:22px;margin-bottom:8px}
+  .ledger .was{font-family:var(--mono);font-size:12px;color:var(--ink-3);margin-bottom:10px;text-decoration:line-through;text-decoration-color:var(--clay)}
+  .ledger p{color:var(--ink-2)}
+
+  /* trial */
+  .trial{padding:110px 0;border-top:1px solid var(--line);background:var(--paper-2)}
+  .trial-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:56px;align-items:center}
+  .trial h2{font-size:clamp(36px,4.6vw,60px);line-height:1.04}
+  .trial ol{margin:0;padding:0;list-style:none;counter-reset:s}
+  .trial ol li{counter-increment:s;display:grid;grid-template-columns:36px 1fr;padding:12px 0;border-bottom:1px solid var(--line-2);color:var(--ink-2)}
+  .trial ol li::before{content:counter(s,decimal-leading-zero);font-family:var(--mono);font-size:12px;color:var(--clay-deep);padding-top:4px}
+  .trial ol li b{color:var(--ink);font-weight:600}
+
+  footer{padding:40px 0 56px;border-top:1px solid var(--line);font-size:14px;color:var(--ink-3)}
+  .foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+  .foot ul{display:flex;gap:22px;list-style:none;margin:0;padding:0}
+  .foot a{text-decoration:none}
+  .foot a:hover{color:var(--ink)}
+
+  @media (max-width: 960px){
+    .hero-grid,.week-intro,.kiln-grid,.split,.trial-grid{grid-template-columns:1fr;gap:40px}
+    .sec-head{grid-template-columns:1fr;gap:12px}
+    .ticket{left:16px;bottom:-24px}
+    .hero{padding-bottom:96px}
+    .nav ul{display:none}
+  }
+  @media (max-width: 640px){
+    .wrap{padding:0 16px}
+    body{font-size:16px}
+    section.block{padding:72px 0}
+    .hero{padding-top:48px}
+    .ledger{grid-template-columns:1fr}
+    .ledger > div:nth-child(odd),.ledger > div:nth-child(even){padding:24px 0;border-right:0}
+    .ledger > div:nth-child(n+2){border-top:1px solid var(--line)}
+    table.sched th:nth-child(3), table.sched td:nth-child(3){display:none}
+    table.sched th, table.sched td{padding:10px 12px}
+    .ticket{position:relative;left:auto;bottom:auto;width:100%;margin-top:-48px;margin-left:0}
+    .hero-slot{aspect-ratio:4/3}
+    .hero{padding-bottom:64px}
+  }
+  @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}.btn{transition:none}}
+</style>
+</head>
+<body><div role="note" style="position:relative;z-index:2147483647;background:#141817;color:#f7f8f8;font:500 14px/1.5 ui-monospace,Menlo,monospace;padding:10px max(16px,env(safe-area-inset-left,0px));">Comparison page, unedited: plain Claude (no skills, no process) given the full Kilnward brief and guardrails. Kilnward is fictional and all data is sample data. <a href="../../index.html" style="color:#5fc2b6">Back to the demo</a></div>
+
+<header class="top">
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="Kilnward home"><span class="brand-mark" aria-hidden="true"></span>Kilnward</a>
+    <nav aria-label="Primary">
+      <ul>
+        <li><a href="#week">Bookings</a></li>
+        <li><a href="#kiln">Kiln &amp; firings</a></li>
+        <li><a href="#shelves">Shelves</a></li>
+        <li><a href="#trial">Free trial</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-primary" href="#trial">Start free trial</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">For studios with one to three kilns</p>
+        <h1>The whiteboard by the kiln, <em>finally</em> kept up to date.</h1>
+        <p class="lede">Kilnward holds your classes, open-studio hours, kiln loads and member shelves in one calm place, so you can stop reconciling a spreadsheet, a group chat and a marker that has run dry.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="#trial">Start free trial <span aria-hidden="true">&rarr;</span></a>
+          <a class="btn btn-quiet" href="#week">See a studio week</a>
+        </div>
+        <p class="fine">Free for 14 days. No card needed to start.</p>
+      </div>
+
+      <div class="hero-visual">
+        <div class="slot hero-slot" role="img" aria-label="Image placeholder: studio photograph">
+          <span class="slot-label">image slot / studio shelves, morning light</span>
+        </div>
+        <div class="ticket" aria-label="Sample firing ticket">
+          <div class="ticket-head">
+            <h3>Kiln 2 · Glaze</h3>
+            <span class="sample">Sample data</span>
+          </div>
+          <dl>
+            <dt>Cone</dt><dd>6, medium speed</dd>
+            <dt>Load</dt><dd>Thu 19:30 · 3 shelves</dd>
+            <dt>Unload</dt><dd>Sat after 10:00</dd>
+            <dt>Pieces</dt><dd>41 from 12 members</dd>
+          </dl>
+          <div class="ramp" aria-hidden="true">
+            <svg viewBox="0 0 300 56" preserveAspectRatio="none">
+              <line x1="0" y1="54" x2="300" y2="54" stroke="#d9d0c2" stroke-width="1"/>
+              <polyline points="0,52 70,30 150,8 175,8 230,34 300,50" fill="none" stroke="#b4532a" stroke-width="2"/>
+              <circle cx="150" cy="8" r="3" fill="#b4532a"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE WEEK -->
+  <section class="block" id="week">
+    <div class="wrap">
+      <div class="week-intro">
+        <div>
+          <p class="eyebrow">Bookings</p>
+          <h2>Your week, as it actually runs.</h2>
+        </div>
+        <p>Wheel classes, handbuilding nights, open-studio slots and the kiln itself sit on the same calendar. Members book their own seats and open-studio hours; when a class fills, the waitlist moves on its own and you hear about it once, not forty times.</p>
+      </div>
+
+      <div class="panel">
+        <div class="panel-bar">
+          <strong>Week of 14 October</strong>
+          <div class="legend">
+            <span><i class="l-class"></i>Class</span>
+            <span><i class="l-open"></i>Open studio</span>
+            <span><i class="l-fire"></i>Firing</span>
+            <span class="sample">Sample data</span>
+          </div>
+        </div>
+        <div class="scroll-x">
+          <div class="week" role="table" aria-label="Sample studio week">
+            <div class="h" role="columnheader"></div>
+            <div class="h" role="columnheader"><b>Mon</b>14</div>
+            <div class="h" role="columnheader"><b>Tue</b>15</div>
+            <div class="h" role="columnheader"><b>Wed</b>16</div>
+            <div class="h" role="columnheader"><b>Thu</b>17</div>
+            <div class="h" role="columnheader"><b>Fri</b>18</div>
+            <div class="h" role="columnheader"><b>Sat</b>19</div>
+            <div class="h" role="columnheader"><b>Sun</b>20</div>
+
+            <div class="t">Morning</div>
+            <div class="c"><div class="ev fire">Bisque · Kiln 1<small>unload 09:00</small></div></div>
+            <div class="c"><div class="ev open">Open studio<small>4 of 8 wheels</small></div></div>
+            <div class="c"></div>
+            <div class="c"><div class="ev open">Open studio<small>6 of 8 wheels</small></div></div>
+            <div class="c"><div class="ev class">Trimming clinic<small>5 of 6 seats</small></div></div>
+            <div class="c"><div class="ev class full">Wheel taster<small>8 of 8 · 3 waiting</small></div><div class="ev fire">Glaze · Kiln 2<small>unload 10:00</small></div></div>
+            <div class="c"><div class="ev open">Open studio<small>2 of 8 wheels</small></div></div>
+
+            <div class="t">Afternoon</div>
+            <div class="c"><div class="ev open">Glazing table<small>3 of 6 spots</small></div></div>
+            <div class="c"></div>
+            <div class="c"><div class="ev class">Handbuilding<small>7 of 10 seats</small></div></div>
+            <div class="c"><div class="ev open">Open studio<small>3 of 8 wheels</small></div></div>
+            <div class="c"></div>
+            <div class="c"><div class="ev open">Open studio<small>5 of 8 wheels</small></div></div>
+            <div class="c"><div class="ev fire">Bisque · Kiln 1<small>load 15:00</small></div></div>
+
+            <div class="t">Evening</div>
+            <div class="c"><div class="ev class full">Wheel I · wk 4<small>8 of 8</small></div></div>
+            <div class="c"><div class="ev class">Wheel II · wk 2<small>6 of 8 seats</small></div></div>
+            <div class="c"><div class="ev class full">Wheel I · wk 4<small>8 of 8 · 1 waiting</small></div></div>
+            <div class="c"><div class="ev fire">Glaze · Kiln 2<small>load 19:30</small></div><div class="ev class">Surface &amp; slip<small>4 of 8 seats</small></div></div>
+            <div class="c"><div class="ev open">Members' night<small>9 booked</small></div></div>
+            <div class="c"></div>
+            <div class="c"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KILN -->
+  <section class="block" id="kiln">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Kiln &amp; firings</p>
+        <div>
+          <h2>Plan the load before anyone opens the lid.</h2>
+          <p>Members drop work on the greenware or glaze shelf and log it in a few taps. You see what is waiting, how much room it needs and which firing it belongs to, then build the load on a shelf-by-shelf plan instead of in your head.</p>
+        </div>
+      </div>
+
+      <div class="kiln-grid">
+        <div class="panel">
+          <div class="panel-bar">
+            <strong>Kiln 2 · Thursday glaze load</strong>
+            <span class="sample">Sample data</span>
+          </div>
+          <div class="shelves" aria-label="Sample kiln load plan, three shelves">
+            <div class="shelf">
+              <span class="shelf-name">Top</span>
+              <div class="shelf-row">
+                <span class="pot w1">M</span><span class="pot w1">M</span><span class="pot w2 mine">bowl</span><span class="pot w1">cup</span><span class="pot w1">cup</span><span class="pot w2">dish</span><span class="pot w1 empty"></span>
+              </div>
+            </div>
+            <div class="shelf">
+              <span class="shelf-name">Middle</span>
+              <div class="shelf-row">
+                <span class="pot w3 tall">vase</span><span class="pot w2 tall mine">jug</span><span class="pot w2">bowl</span><span class="pot w2">bowl</span><span class="pot w1">cup</span>
+              </div>
+            </div>
+            <div class="shelf">
+              <span class="shelf-name">Bottom</span>
+              <div class="shelf-row">
+                <span class="pot w3">plate</span><span class="pot w3">plate</span><span class="pot w3 tall">planter</span><span class="pot w2 empty"></span>
+              </div>
+            </div>
+          </div>
+          <div class="kiln-foot">
+            <span>Shelf space used</span>
+            <span class="meter" aria-hidden="true"><b></b></span>
+            <span>Room for two small pieces</span>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-bar">
+            <strong>Firing schedule</strong>
+            <span class="sample">Sample data</span>
+          </div>
+          <div class="scroll-x">
+            <table class="sched">
+              <thead>
+                <tr><th>Kiln</th><th>Firing</th><th>Program</th><th>Load</th><th>Status</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Kiln 1</td><td>Bisque</td><td class="num">Cone 04 slow</td><td class="num">Sun 15:00</td><td><span class="status st-load">Loading</span></td></tr>
+                <tr><td>Kiln 2</td><td>Glaze</td><td class="num">Cone 6 medium</td><td class="num">Thu 19:30</td><td><span class="status st-run">Firing</span></td></tr>
+                <tr><td>Kiln 1</td><td>Bisque</td><td class="num">Cone 04 slow</td><td class="num">Sat 12 Oct</td><td><span class="status st-cool">Cooling</span></td></tr>
+                <tr><td>Test kiln</td><td>Glaze tests</td><td class="num">Cone 6 + hold</td><td class="num">Wed 09 Oct</td><td><span class="status st-done">Unloaded</span></td></tr>
+                <tr><td>Kiln 2</td><td>Glaze</td><td class="num">Cone 6 medium</td><td class="num">Mon 07 Oct</td><td><span class="status st-done">Unloaded</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHELVES -->
+  <section class="block" id="shelves">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Member shelves</p>
+        <div>
+          <h2>Every piece has an address.</h2>
+          <p>Members can see where their work is, from greenware to bisque to the pickup shelf, without asking you. Pieces that sit too long get a polite nudge, and you get your shelves back.</p>
+        </div>
+      </div>
+
+      <div class="split">
+        <div class="panel">
+          <div class="panel-bar">
+            <strong>Pickup &amp; storage</strong>
+            <span class="sample">Sample data</span>
+          </div>
+          <ul class="member-list">
+            <li><span class="who">Ines Albright</span><span class="what">2 mugs, 1 lidded jar · glaze fired</span><span class="where">Pickup B3<em>ready</em></span></li>
+            <li><span class="who">Tomasz Varela</span><span class="what">Serving bowl · waiting for bisque</span><span class="where">Green G1<em>Sun load</em></span></li>
+            <li><span class="who">Priya Okonkwo-Hale</span><span class="what">4 test tiles · glaze tests</span><span class="where">Test T2<em>ready</em></span></li>
+            <li><span class="who">Dana Whitcombe</span><span class="what">Planter, 2 plates · in Kiln 2</span><span class="where">Kiln 2<em>Sat unload</em></span></li>
+            <li><span class="who">Rafe Lindqvist</span><span class="what">3 cups · on pickup shelf for 19 days</span><span class="where">Pickup A1<em>nudge sent</em></span></li>
+          </ul>
+        </div>
+        <div class="stack">
+          <div class="slot slot-wide" role="img" aria-label="Image placeholder: labelled pickup shelf">
+            <span class="slot-label">image slot / labelled pickup shelf</span>
+          </div>
+          <div class="note">
+            <p><strong>Shelf labels you can print.</strong> Each shelf gets a short code. Members log a piece to a code; you move it when it fires. That is the whole system.</p>
+            <p>Works on the shared studio tablet or a member's phone, with greasy, clay-covered thumbs in mind.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT IT REPLACES -->
+  <section class="block">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">What it replaces</p>
+        <div>
+          <h2>Fewer places to check on a Saturday.</h2>
+        </div>
+      </div>
+      <div class="ledger">
+        <div>
+          <p class="was">The booking spreadsheet</p>
+          <h3>Classes and open studio</h3>
+          <p>Seats, waitlists and member hours in one calendar that members book from themselves.</p>
+        </div>
+        <div>
+          <p class="was">The group chat</p>
+          <h3>Firing notices</h3>
+          <p>Members who have work in a load hear when it is loaded, firing and ready, and nobody else gets pinged.</p>
+        </div>
+        <div>
+          <p class="was">The whiteboard by the kiln</p>
+          <h3>Load plans and schedules</h3>
+          <p>Cone, program, load and unload times for every kiln, kept where the whole studio can see them.</p>
+        </div>
+        <div>
+          <p class="was">The masking-tape labels</p>
+          <h3>Shelf tracking</h3>
+          <p>Each piece logged to a shelf code, so “whose bowl is this?” has an answer.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRIAL -->
+  <section class="trial" id="trial">
+    <div class="wrap trial-grid">
+      <div>
+        <p class="eyebrow">Free trial</p>
+        <h2 style="margin:16px 0 22px">Run next week's studio on Kilnward.</h2>
+        <p class="lede">Set up your kilns, add a class or two and invite a few members. If it doesn't make your week easier, you've lost an evening, not a season.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="#top">Start free trial <span aria-hidden="true">&rarr;</span></a>
+        </div>
+        <p class="fine">14 days free. No card needed to start.</p>
+      </div>
+      <ol>
+        <li><span><b>Add your kilns.</b> Name them, set the programs you actually fire.</span></li>
+        <li><span><b>Import your classes.</b> Paste from the spreadsheet you already keep.</span></li>
+        <li><span><b>Print shelf codes.</b> Stick them up before the next load.</span></li>
+        <li><span><b>Invite members.</b> They book and log their own work.</span></li>
+      </ol>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>Kilnward · a fictional product for demonstration. All names and data on this page are synthetic.</span>
+    <ul>
+      <li><a href="#week">Bookings</a></li>
+      <li><a href="#kiln">Firings</a></li>
+      <li><a href="#shelves">Shelves</a></li>
+    </ul>
+  </div>
+</footer>
+
+</body>
+</html>

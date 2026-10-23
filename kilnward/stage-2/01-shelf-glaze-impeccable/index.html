@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kilnward · Bookings, firings and shelves for small clay studios</title>
+<meta name="description" content="Kilnward keeps class and open-studio bookings, kiln loads, firing schedules and member shelves in one place. A fictional product; all data is sample data.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-head">
+  <div class="wrap head-row">
+    <a class="wordmark" href="#top" aria-label="Kilnward, back to top">Kilnward</a>
+    <nav aria-label="Primary">
+      <ul class="nav-list">
+        <li><a href="#week">Bookings</a></li>
+        <li><a href="#kiln">Kiln &amp; firings</a></li>
+        <li><a href="#shelves">Member shelves</a></li>
+      </ul>
+    </nav>
+    <div class="head-actions">
+      <a class="btn btn-small" href="#trial">Start free trial</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section class="hero wrap" id="top" aria-labelledby="hero-title">
+    <div class="hero-copy">
+      <h1 id="hero-title" class="display">The week, waiting its&nbsp;turn.</h1>
+      <p class="lede">Class bookings, open-studio hours, kiln loads and every member’s shelf, kept in one place. So the whiteboard by the kiln can finally be wiped clean.</p>
+      <div class="cta-row">
+        <a class="btn" href="#trial">Start free trial</a>
+        <a class="text-link" href="#week">See a studio week</a>
+      </div>
+    </div>
+    <figure class="hero-figure">
+      <img class="slot slot-portrait" data-slot="A glazed bowl resting on a wooden studio shelf in raking window light" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="800" height="1000" alt="A celadon-glazed bowl on a studio shelf, lit from a side window.">
+    </figure>
+
+    <!-- tonight's shelf: the signature, first seen -->
+    <div class="hero-shelf" aria-labelledby="tonight-title">
+      <div class="shelf-head">
+        <h2 id="tonight-title" class="shelf-title">Tuesday at the studio</h2>
+        <span class="sample">Sample data</span>
+      </div>
+      <ol class="shelf shelf-day" role="list">
+        <li class="piece kind-open"><span class="k">Open studio</span><span class="t">10:00 – 14:00</span><span class="d">9 of 12 benches booked</span></li>
+        <li class="piece kind-kiln"><span class="k">Kiln 1 · bisque</span><span class="t">Loads 16:00</span><span class="d">38 pieces, cone 04</span></li>
+        <li class="piece kind-class"><span class="k">Handbuilding, week 2</span><span class="t">18:30 – 21:00</span><span class="d">5 of 8 places · 3 open</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- BOOKING WEEK -->
+  <section class="section wrap" id="week" aria-labelledby="week-title">
+    <div class="section-intro">
+      <h2 id="week-title" class="h2">Every class, bench and firing on one week.</h2>
+      <p>Members book a wheel or a bench themselves. Classes fill and keep a waitlist. Firings sit on the same week as the people who made the pots, so you can see that Thursday’s unload lands before Friday’s glaze night.</p>
+    </div>
+
+    <div class="week" role="region" aria-label="Sample booking week">
+      <div class="week-meta">
+        <p class="week-name">Week of 13 October</p>
+        <span class="sample">Sample data · fictional studio</span>
+      </div>
+
+      <div class="day">
+        <h3 class="day-name">Mon</h3>
+        <ul class="shelf" role="list">
+          <li class="piece kind-open"><span class="k">Open studio</span><span class="t">10:00 – 14:00</span><span class="d">7 of 12 benches</span></li>
+          <li class="piece kind-class"><span class="k">Beginners’ wheel, week 3 of 6</span><span class="t">18:30</span><span class="d">8 of 8 · full</span></li>
+        </ul>
+      </div>
+      <div class="day">
+        <h3 class="day-name">Tue</h3>
+        <ul class="shelf" role="list">
+          <li class="piece kind-open"><span class="k">Open studio</span><span class="t">10:00 – 14:00</span><span class="d">9 of 12 benches</span></li>
+          <li class="piece kind-kiln"><span class="k">Kiln 1 · bisque loads</span><span class="t">16:00</span><span class="d">38 pieces</span></li>
+          <li class="piece kind-class"><span class="k">Handbuilding, week 2</span><span class="t">18:30</span><span class="d">5 of 8</span></li>
+        </ul>
+      </div>
+      <div class="day">
+        <h3 class="day-name">Wed</h3>
+        <ul class="shelf" role="list">
+          <li class="piece kind-open"><span class="k">Open studio</span><span class="t">10:00 – 14:00</span><span class="d">6 of 12 benches</span></li>
+          <li class="piece kind-class"><span class="k">Glaze night</span><span class="t">17:00 – 21:00</span><span class="d">7 of 10</span></li>
+        </ul>
+      </div>
+      <div class="day">
+        <h3 class="day-name">Thu</h3>
+        <ul class="shelf" role="list">
+          <li class="piece kind-kiln"><span class="k">Kiln 1 · unload</span><span class="t">09:00</span><span class="d">38 pieces back to shelves</span></li>
+          <li class="piece kind-class"><span class="k">Intermediate wheel</span><span class="t">18:30</span><span class="d">7 of 8</span></li>
+        </ul>
+      </div>
+      <div class="day">
+        <h3 class="day-name">Fri</h3>
+        <ul class="shelf" role="list">
+          <li class="piece kind-kiln"><span class="k">Kiln 2 · glaze loads</span><span class="t">15:00</span><span class="d">cone 6 · 24 pieces</span></li>
+        </ul>
+      </div>
+      <div class="day">
+        <h3 class="day-name">Sat</h3>
+        <ul class="shelf" role="list">
+          <li class="piece kind-open"><span class="k">Open studio</span><span class="t">10:00 – 16:00</span><span class="d">12 of 12 · 3 waiting</span></li>
+          <li class="piece kind-class"><span class="k">Taster session</span><span class="t">14:00</span><span class="d">6 of 6 · full</span></li>
+        </ul>
+      </div>
+      <div class="day day-quiet">
+        <h3 class="day-name">Sun</h3>
+        <ul class="shelf" role="list">
+          <li class="piece kind-rest"><span class="k">Studio closed</span><span class="d">Kiln 2 cooling, don’t open before noon</span></li>
+        </ul>
+      </div>
+
+      <ul class="legend" aria-label="Key">
+        <li><span class="swatch kind-class" aria-hidden="true"></span>Class</li>
+        <li><span class="swatch kind-open" aria-hidden="true"></span>Open studio</li>
+        <li><span class="swatch kind-kiln" aria-hidden="true"></span>Kiln</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- KILN LOAD + FIRING SCHEDULE -->
+  <section class="section wrap" id="kiln" aria-labelledby="kiln-title">
+    <div class="section-intro">
+      <h2 id="kiln-title" class="h2">Plan the load before you lift a shelf.</h2>
+      <p>Put each piece on a kiln shelf by its height, check the clearance, and keep the firing schedule beside the load it belongs to. When the kiln is unloaded, the people whose pots were inside hear about it.</p>
+    </div>
+
+    <div class="kiln-plan">
+      <div class="kiln-toolbar">
+        <div class="seg" role="group" aria-label="Choose a firing">
+          <button type="button" class="seg-btn" aria-pressed="true" data-firing="bisque">Bisque · Kiln 1</button>
+          <button type="button" class="seg-btn" aria-pressed="false" data-firing="glaze">Glaze · Kiln 2</button>
+        </div>
+        <span class="sample">Sample data</span>
+      </div>
+
+      <div class="kiln-grid">
+        <div class="kiln" aria-live="polite">
+          <p class="kiln-caption" id="kiln-caption">Kiln 1, Tuesday 16:00 · three shelves, loaded top to bottom</p>
+          <div class="kiln-shelves" id="kiln-shelves"><!-- rendered by script; static fallback below --></div>
+        </div>
+
+        <div class="schedule">
+          <h3 class="schedule-title" id="schedule-title">Bisque to cone 04</h3>
+          <table class="sched-table">
+            <caption class="vh">Firing schedule segments</caption>
+            <thead><tr><th scope="col">Segment</th><th scope="col">Rate</th><th scope="col">To</th><th scope="col">Hold</th></tr></thead>
+            <tbody id="schedule-body"></tbody>
+          </table>
+          <dl class="sched-notes" id="schedule-notes"></dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEMBER SHELVES -->
+  <section class="section wrap" id="shelves" aria-labelledby="shelves-title">
+    <div class="shelves-grid">
+      <figure class="mid-figure">
+        <img class="slot slot-landscape" data-slot="Hands trimming a leather-hard pot on a potter's wheel" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="1200" height="800" alt="Two hands trimming the foot of a leather-hard pot on a wheel.">
+      </figure>
+      <div class="shelves-copy">
+        <h2 id="shelves-title" class="h2">Every member’s shelf, without the masking tape.</h2>
+        <p>Each piece is tracked from wet to finished: drying, bisqued, waiting for glaze, in the kiln, ready to collect. Members see their own shelf. You see whose work has been sitting there since August.</p>
+      </div>
+    </div>
+
+    <div class="members" role="region" aria-label="Sample member shelves">
+      <div class="week-meta">
+        <p class="week-name">Rack B, four of thirty-one members</p>
+        <span class="sample">Sample data · fictional members</span>
+      </div>
+
+      <div class="member">
+        <div class="member-who"><h3 class="member-name">Ruth Okafor</h3><p class="member-spot">Shelf B2 · 5 pieces</p></div>
+        <ul class="shelf shelf-member" role="list">
+          <li class="ware" style="--h:7"><span class="w-name">Tall vase</span><span class="w-state"><i class="mk mk-kiln" aria-hidden="true"></i>In Kiln 1</span></li>
+          <li class="ware" style="--h:4"><span class="w-name">Mug ×3</span><span class="w-state"><i class="mk mk-glaze" aria-hidden="true"></i>Needs glaze</span></li>
+          <li class="ware" style="--h:3"><span class="w-name">Bowl</span><span class="w-state"><i class="mk mk-dry" aria-hidden="true"></i>Drying</span></li>
+        </ul>
+      </div>
+      <div class="member">
+        <div class="member-who"><h3 class="member-name">Mattias Lindqvist</h3><p class="member-spot">Shelf B3 · 3 pieces</p></div>
+        <ul class="shelf shelf-member" role="list">
+          <li class="ware" style="--h:6"><span class="w-name">Jug</span><span class="w-state"><i class="mk mk-ready" aria-hidden="true"></i>Ready to collect</span></li>
+          <li class="ware" style="--h:5"><span class="w-name">Planter ×2</span><span class="w-state"><i class="mk mk-glaze" aria-hidden="true"></i>Needs glaze</span></li>
+        </ul>
+      </div>
+      <div class="member">
+        <div class="member-who"><h3 class="member-name">Priya Nandakumar</h3><p class="member-spot">Shelf B4 · 2 pieces</p></div>
+        <ul class="shelf shelf-member" role="list">
+          <li class="ware ware-flag" style="--h:3"><span class="w-name">Plate ×2</span><span class="w-state"><i class="mk mk-ready" aria-hidden="true"></i>Ready since 4 Aug</span></li>
+        </ul>
+      </div>
+      <div class="member">
+        <div class="member-who"><h3 class="member-name">Joe Ashworth</h3><p class="member-spot">Shelf B5 · 4 pieces</p></div>
+        <ul class="shelf shelf-member" role="list">
+          <li class="ware" style="--h:5"><span class="w-name">Teapot</span><span class="w-state"><i class="mk mk-kiln" aria-hidden="true"></i>In Kiln 1</span></li>
+          <li class="ware" style="--h:4"><span class="w-name">Cup ×3</span><span class="w-state"><i class="mk mk-dry" aria-hidden="true"></i>Drying</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT IT REPLACES -->
+  <section class="section wrap" aria-labelledby="replaces-title">
+    <h2 id="replaces-title" class="h2 narrow">What it takes off your plate.</h2>
+    <dl class="replaces">
+      <div class="rep">
+        <dt>The booking spreadsheet</dt>
+        <dd>Members book open-studio benches and class places themselves. Full classes keep a waitlist, and a cancelled place goes to the next person on it.</dd>
+      </div>
+      <div class="rep">
+        <dt>The group chat</dt>
+        <dd>When a firing is unloaded, everyone with work inside gets a note saying which pieces came out and which shelf they’re on. Nobody has to ask.</dd>
+      </div>
+      <div class="rep">
+        <dt>The whiteboard by the kiln</dt>
+        <dd>Loads, schedules and cones live with each firing, so whoever is on kiln duty this week can see what goes in, in what order, and when it can be opened.</dd>
+      </div>
+    </dl>
+  </section>
+
+  <!-- CLOSE -->
+  <section class="close" id="trial" aria-labelledby="close-title">
+    <div class="wrap close-inner">
+      <h2 id="close-title" class="display display-close">Wipe the whiteboard.</h2>
+      <p class="lede">Set up your kilns, your classes and your members’ shelves, then run next week from Kilnward.</p>
+      <div class="cta-row">
+        <a class="btn" href="#trial">Start free trial</a>
+        <a class="text-link" href="#top">Back to the top</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap foot-row">
+    <p class="wordmark wordmark-foot">Kilnward</p>
+    <p class="foot-note">Kilnward is a fictional product made for a design study. Every studio, member, booking and firing on this page is sample data.</p>
+  </div>
+</footer>
+
+<script src="kiln.js" defer></script>
+</body>
+</html>
