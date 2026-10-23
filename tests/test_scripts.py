@@ -15,6 +15,7 @@ def load(name):
     return mod
 
 
+publish = load('publish')
 scaffold = load('scaffold')
 manifest = load('manifest')
 check_deps = load('check_deps')
@@ -180,6 +181,58 @@ class CheckDepsTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as p, tempfile.TemporaryDirectory() as h:
             found = check_deps.find_skill('impeccable', pathlib.Path(p), pathlib.Path(h))
             self.assertEqual(found, {'name': 'impeccable', 'found': False, 'where': None, 'version': None})
+
+
+class PublishTests(unittest.TestCase):
+    def make_project(self, root):
+        design = root / 'design'
+        refs = design / 'references'
+        refs.mkdir(parents=True)
+        (refs / 'shot-1.png').write_bytes(b'\x89PNG')
+        (refs / 'shot-2.webp').write_bytes(b'RIFF')
+        (refs / 'gallery.html').write_text('<!doctype html>')
+        (refs / 'SOURCES.md').write_text('| file |')
+        (refs / 'gallery-data.js').write_text('window.DS_GALLERY = ' + json.dumps({'title': 't', 'groups': [
+            {'name': 'A', 'images': [{'file': 'shot-1.png', 'source': 'https://example.com/1', 'note': 'one'}]}]}) + ';\n')
+        make_build(design / 'stage-2' / '01-a-impeccable', {'title': 'A'})
+        (design / 'stage-2' / '01-a-impeccable' / 'style.css').write_text('body{}')
+        (design / '.impeccable').mkdir()
+        (design / '.impeccable' / 'config.json').write_text('{}')
+        (design / 'brief.md').write_text('brief')
+        return design
+
+    def test_publish_drops_reference_images_and_keeps_builds(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = pathlib.Path(d)
+            self.make_project(root)
+            out = root / 'site'
+            publish.publish(root, out)
+            self.assertFalse((out / 'references' / 'shot-1.png').exists())
+            self.assertFalse((out / 'references' / 'shot-2.webp').exists())
+            self.assertFalse((out / '.impeccable').exists())
+            self.assertTrue((out / 'stage-2' / '01-a-impeccable' / 'style.css').is_file())
+            self.assertTrue((out / 'references' / 'gallery.html').is_file())
+            self.assertTrue((out / 'brief.md').is_file())
+
+    def test_publish_rewrites_gallery_to_links_only(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = pathlib.Path(d)
+            self.make_project(root)
+            out = root / 'site'
+            publish.publish(root, out)
+            text = (out / 'references' / 'gallery-data.js').read_text()
+            data = json.loads(text[len('window.DS_GALLERY = '):].rstrip().rstrip(';'))
+            image = data['groups'][0]['images'][0]
+            self.assertNotIn('file', image)
+            self.assertEqual(image['source'], 'https://example.com/1')
+            self.assertTrue(data['linksOnly'])
+
+    def test_publish_refuses_output_inside_design(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = pathlib.Path(d)
+            design = self.make_project(root)
+            with self.assertRaises(ValueError):
+                publish.publish(root, design / 'site')
 
 
 class ServeTests(unittest.TestCase):

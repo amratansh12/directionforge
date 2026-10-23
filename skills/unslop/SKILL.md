@@ -55,6 +55,7 @@ is dispatched with `reference/build-prompt.md` and obeys `reference/constants.md
 | `python3 -I <skill-dir>/scripts/check_deps.py --project .` | finds impeccable, tasteskill, node, python3, a Chromium browser; prints install commands for missing skills |
 | `python3 -I <skill-dir>/scripts/scaffold.py .` | creates `design/` (brief, decisions, switcher, gallery); never overwrites |
 | `python3 -I <skill-dir>/scripts/manifest.py .` | rebuilds `design/manifest.js` from build folders + `meta.json` |
+| `python3 -I <skill-dir>/scripts/publish.py . <out-dir>` | copies `design/` for sharing without reference screenshots (gallery links to sources instead) or skill working files |
 | `python3 -I <skill-dir>/scripts/serve.py . --port 8000` | serves `design/` on the first free port ≥ 8000 (run in background); give the user the address it prints |
 
 ## Output layout

@@ -46,6 +46,10 @@
   .chips li { padding: 2px 8px; border-radius: 4px; background: var(--chip); font-size: 12px; color: var(--muted); }
   .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
   .thumb { display: block; padding: 0; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); overflow: hidden; aspect-ratio: 4 / 3; width: 100%; }
+  .ref-link { display: flex; flex-direction: column; justify-content: space-between; gap: 12px; min-height: 120px; padding: 14px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); color: var(--ink); text-decoration: none; }
+  a.ref-link:hover { border-color: var(--accent); }
+  .ref-note { font-size: 14px; }
+  .ref-host { font: 12px ui-monospace, Menlo, monospace; color: var(--muted); }
   .thumb img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; }
   .missing { display: grid; place-items: center; height: 100%; padding: 12px; font: 12px ui-monospace, Menlo, monospace; color: var(--muted); text-align: center; word-break: break-all; }
   .empty { margin: 64px auto; max-width: 60ch; color: var(--muted); text-align: center; }
@@ -127,8 +131,17 @@
   const target = data.pick || 5;
   if (data.title) { document.getElementById('title').textContent = data.title; document.title = data.title; }
   const flat = [];
-  main.innerHTML = (data.intro ? `<p class="intro">${esc(data.intro)}</p>` : '') + data.groups.map((g, gi) => {
+  const linksNote = data.linksOnly ? '<p class="intro">Published copy: reference screenshots are not reproduced here. Each card links to the original on its source site.</p>' : '';
+  main.innerHTML = (data.intro ? `<p class="intro">${esc(data.intro)}</p>` : '') + linksNote + data.groups.map((g, gi) => {
     const imgs = (g.images || []).map((im) => {
+      if (!im.file) {
+        // Links-only (published) gallery: the screenshot belongs to its author, so link to it.
+        const href = /^https?:\/\//.test(im.source || '') ? im.source : '';
+        let host = '';
+        try { host = href ? new URL(href).hostname.replace(/^www\./, '') : ''; } catch (e) {}
+        const inner = `<span class="ref-note">${esc(im.note || 'Reference')}</span><span class="ref-host">${esc(host || im.source || '')}${href ? ' ↗' : ''}</span>`;
+        return href ? `<a class="ref-link" href="${esc(href)}" target="_blank" rel="noopener">${inner}</a>` : `<span class="ref-link">${inner}</span>`;
+      }
       const i = flat.push({ ...im, group: g.name }) - 1;
       return `<button class="thumb" type="button" data-i="${i}" aria-label="Open ${esc(im.note || im.file)} (${esc(g.name)})"><img src="${esc(url(im.file))}" data-file="${esc(im.file)}" alt="" loading="lazy"></button>`;
     }).join('');

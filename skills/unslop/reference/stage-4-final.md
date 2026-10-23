@@ -23,3 +23,6 @@
 Give the final URL (`<server>/#final/0`, the address serve.py printed), the paths to `design/DESIGN.md` and `design/decisions.md`, and a
 list of every file or folder written outside `design/` by the skills (e.g. `.taste-skill/`,
 `.impeccable/`) so the user can keep or remove them.
+
+If the user wants to share or host the work, use `publish.py . <out-dir>`, never a plain copy of
+`design/`: reference screenshots belong to their authors and must not be republished.

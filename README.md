@@ -69,6 +69,9 @@ design/
   DESIGN.md
 ```
 
+To share the result, ask Claude to publish it: unslop's `publish.py` copies `design/` without the reference screenshots, which belong to their authors; the
+published gallery links to each source instead.
+
 `design/decisions.md` records the current stage and what you still need to answer, so a new session
 carries on where the last one stopped.
 

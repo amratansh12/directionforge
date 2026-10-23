@@ -19,7 +19,14 @@ SKILL: Read {skill path}/SKILL.md and follow it for craft, inspection and finish
 - Skip the direction roll, concept seed and decision page: the DIRECTION below is the chosen world.}
 {tasteskill only:
 - Do not deal or draw a direction from the skill's library: the DIRECTION below is the chosen one.
-- Do not run assets.mjs or fetch any pictures. Its working files in .taste-skill/ are fine.}
+- Do not run assets.mjs or fetch any pictures. Its working files in .taste-skill/ are fine.
+- Its inspector will report too few pictures and no video: expected under the IMAGERY rule below; leave them.}
+- Where the skill's own house rules conflict with the DIRECTION (e.g. a cap on display size, bans on
+  mono labels, eyebrow labels, hairlines, section numbers or a cream ground), the DIRECTION wins.
+  Do not silence a check without listing it under DEVIATIONS in your report.
+{parallel builds: other builds run at the same time. Do not use shared browser-automation tools
+(e.g. Playwright/DevTools MCP); take screenshots with the skill's own scripts or headless Chrome,
+and keep screenshot files under names unique to this build.}
 
 PROJECT: {What, from brief.md}
 SURFACE: {marketing | app-screen}
@@ -43,6 +50,11 @@ BRAND: {path to tokens/spec and how to use them, or "none: use the palette and t
 
 Commit fully to this one direction. Do NOT blend in other directions.
 The UI must match the feel and intent of the references, not their content.
+
+COPY: write headlines in this direction's own voice. Do not lift phrases from the brief into
+headlines (parallel builds all read the same brief and converge on its wording). {Stage 3/4: list
+headlines already used by earlier builds that must not be reused.} Keep all sample data internally
+consistent, and label approximate domain figures as approximate.
 
 IMAGERY: Do NOT generate or source any imagery. Reserve each image slot exactly where the placement
 note says (<img> or background, correct aspect ratio and position) and fill it with a flat CSS
