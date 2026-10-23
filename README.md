@@ -2,6 +2,11 @@
 
 **UI that doesn't look AI-made.** A Claude Code plugin that makes AI-generated UI look designed.
 
+![Plain Claude from a one-line prompt, next to the unslop result for the same product](docs/before-after.png)
+
+**[See a full run](https://amratansh12.github.io/unslop/)**: one brief for a fictional ceramic-studio app, built
+three ways (a one-line prompt, the full brief, and unslop), with every direction, iteration and decision.
+
 Ask an AI for a page and you get the usual: purple gradients, glossy blobs, rows of icons with three
 words each, rounded everything, Inter everywhere, every colour used at once. That's what happens when
 there's nothing to steer it.
