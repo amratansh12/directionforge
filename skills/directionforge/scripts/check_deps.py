@@ -1,4 +1,4 @@
-"""Report whether the skills and tools unslop needs are available.
+"""Report whether the skills and tools directionforge needs are available.
 
 Skill search order: <project>/.claude/skills/<name>, ~/.claude/skills/<name>,
 then any installed plugin under ~/.claude/plugins/cache whose SKILL.md declares that name.

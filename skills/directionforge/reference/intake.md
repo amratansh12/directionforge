@@ -27,7 +27,7 @@ After the yes:
 - Write `design/PRODUCT.md` from `templates/PRODUCT.md`, filled only from the approved brief. This is
   where impeccable reads product context during builds; it stops impeccable interviewing the user
   or writing PRODUCT.md at the project root.
-- Write `design/.impeccable/config.json` as `{"buildPath": "code"}` (unslop builds are code-led: no
+- Write `design/.impeccable/config.json` as `{"buildPath": "code"}` (directionforge builds are code-led: no
   image comps). If the file exists, merge the key.
 - Update `decisions.md`: `stage: 1 · references`, `waiting on: nothing (collecting references)`.
 

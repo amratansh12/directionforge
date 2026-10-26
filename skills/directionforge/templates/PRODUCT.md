@@ -2,7 +2,7 @@
 
 <!-- impeccable:product-schema 1 -->
 
-<!-- Written by unslop at intake from the approved design/brief.md, so impeccable reads product
+<!-- Written by directionforge at intake from the approved design/brief.md, so impeccable reads product
      context from design/ instead of interviewing the user or writing PRODUCT.md at the project
      root. Facts only; nothing visual (looks live in the direction blocks). Keep in sync with the brief. -->
 

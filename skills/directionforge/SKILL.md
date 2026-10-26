@@ -1,9 +1,9 @@
 ---
-name: unslop
-description: Make UI that does not look AI-made. Reference-led design process for a new or redesigned UI (marketing/landing pages or app screens) - gathers references into a gallery grouped by design style, builds shortlisted directions with impeccable and tasteskill under the user's Always/Never guardrails, iterates on the user's winner, and finishes with a final build, DESIGN.md and a decision log. Use when the user wants distinct, non-generic design directions to choose from, complains that AI UI looks like slop or templated, says "unslop", or wants to run the reference, directions, iterations, final process. Not for small tweaks to an existing design.
+name: directionforge
+description: Make UI that does not look AI-made. Reference-led design process for a new or redesigned UI (marketing/landing pages or app screens) - gathers references into a gallery grouped by design style, builds shortlisted directions with impeccable and tasteskill under the user's Always/Never guardrails, iterates on the user's winner, and finishes with a final build, DESIGN.md and a decision log. Use when the user wants distinct, non-generic design directions to choose from, complains that AI UI looks like slop or templated, says "directionforge", or wants to run the reference, directions, iterations, final process. Not for small tweaks to an existing design.
 ---
 
-# unslop
+# directionforge
 
 A staged process for UI that does not look AI-made: no generic defaults, no blended directions,
 no invented imagery. Distinctiveness comes from real references and the user's own picks.

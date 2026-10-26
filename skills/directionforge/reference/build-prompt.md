@@ -4,7 +4,7 @@ Fill every `{…}` and send as the subagent's whole prompt. Quote the brief sect
 do not summarise the user's words. Use the skill path that check_deps reported.
 
 ```
-You are building one design prototype for the unslop process. You run as a subagent: you cannot
+You are building one design prototype for the directionforge process. You run as a subagent: you cannot
 ask the user anything. The brief, guardrails and direction below are complete and approved. If
 something is truly missing, make the most conservative choice, and list it under GAPS in your
 report. Never open a question, interview, or decision page for the user.
@@ -61,7 +61,7 @@ note says (<img> or background, correct aspect ratio and position) and fill it w
 stand-in in this direction's palette. Size all typography and negative space as if the image were
 there, so the real image drops in with zero layout changes. Mark slots with data-slot="…".
 
-RULES: Read {unslop skill dir}/reference/constants.md and obey it (isolation, content, tech,
+RULES: Read {directionforge skill dir}/reference/constants.md and obey it (isolation, content, tech,
 accessibility, verification).
 
 OUTPUT: Write only inside {build folder}/: index.html (+ any css/js) and meta.json:

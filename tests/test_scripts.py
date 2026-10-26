@@ -5,7 +5,7 @@ import socket
 import tempfile
 import unittest
 
-SCRIPTS = pathlib.Path(__file__).resolve().parent.parent / 'skills' / 'unslop' / 'scripts'
+SCRIPTS = pathlib.Path(__file__).resolve().parent.parent / 'skills' / 'directionforge' / 'scripts'
 
 
 def load(name):

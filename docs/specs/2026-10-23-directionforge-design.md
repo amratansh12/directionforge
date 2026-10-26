@@ -1,4 +1,4 @@
-# unslop: design document
+# directionforge: design document
 
 Date: 2026-10-23 · Status: approved · Author: amratansh12, with Claude
 
@@ -8,7 +8,7 @@ Date: 2026-10-23 · Status: approved · Author: amratansh12, with Claude
 gradients, icon-grid feature rows, rounded-everything, Inter-only type, evenly spread colourful
 palettes). A staged, reference-led process produces UI that does not look like generic AI-generated design: a
 gallery of references grouped by style, two builds per style (impeccable and tasteskill), a
-narrowing pick, iterations on the winner, and a final build. `unslop` packages that process
+narrowing pick, iterations on the winner, and a final build. `directionforge` packages that process
 as an open-source Claude Code plugin, so anyone can run it in any project and get the same rigour.
 
 The core idea: **the UI should match the feel and intent of the references, not their content.**
@@ -46,8 +46,8 @@ The plugin relies on two skills:
 
 | Skill | Source | Install |
 |---|---|---|
-| impeccable | https://impeccable.style/tutorials/getting-started/ (repo github.com/pbakaus/impeccable) | `npx impeccable install` from the project folder (Node ≥ 18.19); unslop runs the non-interactive form `npx -y impeccable install --project --providers=claude -y`. Team option: `git submodule add https://github.com/pbakaus/impeccable vendor/impeccable` then `npx impeccable link --source=vendor/impeccable --providers=claude` |
-| tasteskill (`design-taste-frontend`) | github.com/Leonxlnx/taste-skill, path `skills/taste-skill/` (MIT) | Per its README (checked 2026-10-23): `npx skills add https://github.com/Leonxlnx/taste-skill --skill "design-taste-frontend"` (unslop adds `--agent claude-code --copy -y` to run without prompts), or inside Claude Code `/plugin marketplace add Leonxlnx/taste-skill` then `/plugin install taste-skill@taste-skill` |
+| impeccable | https://impeccable.style/tutorials/getting-started/ (repo github.com/pbakaus/impeccable) | `npx impeccable install` from the project folder (Node ≥ 18.19); directionforge runs the non-interactive form `npx -y impeccable install --project --providers=claude -y`. Team option: `git submodule add https://github.com/pbakaus/impeccable vendor/impeccable` then `npx impeccable link --source=vendor/impeccable --providers=claude` |
+| tasteskill (`design-taste-frontend`) | github.com/Leonxlnx/taste-skill, path `skills/taste-skill/` (MIT) | Per its README (checked 2026-10-23): `npx skills add https://github.com/Leonxlnx/taste-skill --skill "design-taste-frontend"` (directionforge adds `--agent claude-code --copy -y` to run without prompts), or inside Claude Code `/plugin marketplace add Leonxlnx/taste-skill` then `/plugin install taste-skill@taste-skill` |
 
 Setup behaviour:
 1. Check whether the needed skills are available (project `.claude/skills/`, user `~/.claude/skills/`, or
@@ -141,7 +141,7 @@ clear question. Nothing advances without the user's answer.
   never create or overwrite files at the project root. Skill working folders (e.g. `.taste-skill/`)
   are allowed and listed in the final summary.
   impeccable reads product context from a PRODUCT.md and sends new builds through an interview
-  (`init`) when there is none. So at intake unslop writes `design/PRODUCT.md` from the approved brief
+  (`init`) when there is none. So at intake directionforge writes `design/PRODUCT.md` from the approved brief
   and every impeccable build runs its context step with `--target` inside `design/`, which resolves
   to that file (verified with impeccable 4.7.0). Builds are code-led (`buildPath: code`, no image
   comps), and build subagents never ask the user anything; they report gaps. `design/DESIGN.md` uses the format of impeccable's
@@ -170,7 +170,7 @@ Served locally with a static server on port 8000 (e.g. `python3 -m http.server 8
 
 ## 9. Repository
 
-Public GitHub repo `amratansh12/unslop`, MIT licence. Structured as a Claude Code plugin
+Public GitHub repo `amratansh12/directionforge`, MIT licence. Structured as a Claude Code plugin
 (manifest + skills). The builder must check
 the current Claude Code plugin manifest format in the docs rather than assume it.
 [Claude's call] The repo also carries marketplace metadata so anyone can add the GitHub repo as a

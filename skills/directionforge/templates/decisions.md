@@ -1,6 +1,6 @@
 # Decision log
 
-<!-- unslop keeps this file current. A new session reads "Current stage" first to resume.
+<!-- directionforge keeps this file current. A new session reads "Current stage" first to resume.
      Rules: the stage only advances after the user's answer is logged below. "waiting on" names
      exactly what the user owes, or "nothing" while Claude is working. Record picks in the user's
      own words where possible. -->

@@ -1,14 +1,14 @@
-# unslop Implementation Plan
+# directionforge Implementation Plan
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** A Claude Code plugin that runs the four-stage reference → directions → iterations → final design process in any project.
 
-**Architecture:** One orchestrator skill (`skills/unslop/SKILL.md`) with one reference file per stage, prompt/brief templates, two static HTML viewers (reference gallery, prototype switcher) that read generated `*.js` data files so they work over `file://` and `localhost`, and small Python stdlib scripts for dependency checks, scaffolding the `design/` tree and building the switcher manifest.
+**Architecture:** One orchestrator skill (`skills/directionforge/SKILL.md`) with one reference file per stage, prompt/brief templates, two static HTML viewers (reference gallery, prototype switcher) that read generated `*.js` data files so they work over `file://` and `localhost`, and small Python stdlib scripts for dependency checks, scaffolding the `design/` tree and building the switcher manifest.
 
 **Tech Stack:** Markdown skills; Python 3.9+ stdlib (scripts, `unittest`); plain HTML/CSS/JS (no build); `claude plugin validate`.
 
-**Spec:** `docs/specs/2026-10-23-unslop-design.md`
+**Spec:** `docs/specs/2026-10-23-directionforge-design.md`
 
 ## Global Constraints
 
@@ -33,13 +33,13 @@
 
 **Files:** Create `.claude-plugin/plugin.json`, `.claude-plugin/marketplace.json`, `README.md`, `.gitignore`.
 
-- [ ] `git init`; plugin.json `{name:"unslop", version:"0.1.0", description, author:{name:"amratansh12"}}`; marketplace.json `{name:"unslop", owner, plugins:[{name:"unslop", source:"./", version:"0.1.0"}]}` (shape copied from the installed superpowers plugin).
+- [ ] `git init`; plugin.json `{name:"directionforge", version:"0.1.0", description, author:{name:"amratansh12"}}`; marketplace.json `{name:"directionforge", owner, plugins:[{name:"directionforge", source:"./", version:"0.1.0"}]}` (shape copied from the installed superpowers plugin).
 - [ ] Run `claude plugin validate .` → expect success (after Task 4 adds the skill, re-run).
 - [ ] Commit.
 
 ### Task 2: Scripts
 
-**Files:** `skills/unslop/scripts/{check_deps.py, scaffold.py, manifest.py, serve.py}`, `tests/test_scripts.py`.
+**Files:** `skills/directionforge/scripts/{check_deps.py, scaffold.py, manifest.py, serve.py}`, `tests/test_scripts.py`.
 
 **Interfaces (Produces):**
 - `check_deps.py [--project DIR] [--json]` → prints per dependency `{name, found:bool, where:str|None, version:str|None}` for `impeccable`, `design-taste-frontend`, `node`, `python3`, `chrome`. Skill search order: `DIR/.claude/skills/<n>`, `~/.claude/skills/<n>`, `~/.claude/plugins/cache/**/skills/<n>`. Version from SKILL.md frontmatter `version:` when present.
@@ -53,7 +53,7 @@
 
 ### Task 3: Viewers
 
-**Files:** `skills/unslop/assets/gallery.html`, `skills/unslop/assets/index.html`, `tests/fixtures/` (sample data + tiny images).
+**Files:** `skills/directionforge/assets/gallery.html`, `skills/directionforge/assets/index.html`, `tests/fixtures/` (sample data + tiny images).
 
 - gallery.html loads `gallery-data.js` (`window.DS_GALLERY = {title, groups:[{id, name, feel, vocabulary:[str], images:[{file, source, note}]}]}`), shows groups by design style (no feature tags), click-to-enlarge lightbox (Esc closes, arrows navigate), checkbox per group, counter "n of N picked" (N = `DS_GALLERY.pick || 5`), "Copy my picks" → clipboard text `Picks: <name>, <name>…` with fallback textarea.
 - index.html loads `manifest.js`; tabs for stage → build; iframe preview; "open in new tab"; build thesis shown; links to references gallery; empty state when no builds.
@@ -62,7 +62,7 @@
 
 ### Task 4: Orchestrator skill and stage references
 
-**Files:** `skills/unslop/SKILL.md`, `reference/{setup, intake, stage-1-references, stage-2-directions, stage-3-iterations, stage-4-final, build-prompt, constants}.md`, `templates/{brief, decisions, direction-block, meta.json}`.
+**Files:** `skills/directionforge/SKILL.md`, `reference/{setup, intake, stage-1-references, stage-2-directions, stage-3-iterations, stage-4-final, build-prompt, constants}.md`, `templates/{brief, decisions, direction-block, meta.json}`.
 
 - SKILL.md: when to use, the gates (stop after every stage; never advance without user's pick), resume from `design/decisions.md`, pointers to reference files, script commands.
 - build-prompt.md: the verbatim template every build subagent receives (brief, intent, Always/Never, direction block, imagery rule, isolation rule, "skip the skill's own direction pick", output folder + meta.json, verification).

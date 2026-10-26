@@ -1,17 +1,17 @@
-# unslop
+# directionforge
 
 **UI that doesn't look AI-made.** A Claude Code plugin that makes AI-generated UI look designed.
 
-![Plain Claude from a one-line prompt, next to the unslop result for the same product](docs/before-after.png)
+![Plain Claude from a one-line prompt, next to the directionforge result for the same product](docs/before-after.png)
 
-**[See a full run](https://amratansh12.github.io/unslop/)**: one brief for a fictional ceramic-studio app, built
-three ways (a one-line prompt, the full brief, and unslop), with every direction, iteration and decision.
+**[See a full run](https://amratansh12.github.io/directionforge/)**: one brief for a fictional ceramic-studio app, built
+three ways (a one-line prompt, the full brief, and directionforge), with every direction, iteration and decision.
 
 Ask an AI for a page and you get the usual: purple gradients, glossy blobs, rows of icons with three
 words each, rounded everything, Inter everywhere, every colour used at once. That's what happens when
 there's nothing to steer it.
 
-unslop gives it something to steer by:
+directionforge gives it something to steer by:
 
 - **Real references.** Every direction comes from screenshots you or Claude collect, grouped by visual
   style.
@@ -40,19 +40,19 @@ with the right size and position, so the real image can be dropped in later with
 ## Install
 
 ```sh
-claude plugin marketplace add amratansh12/unslop
-claude plugin install unslop@unslop
+claude plugin marketplace add amratansh12/directionforge
+claude plugin install directionforge@directionforge
 ```
 
-Restart Claude Code after installing. To update, run `claude plugin marketplace update unslop`
-and then `claude plugin update unslop@unslop`.
+Restart Claude Code after installing. To update, run `claude plugin marketplace update directionforge`
+and then `claude plugin update directionforge@directionforge`.
 
-To install from a local clone instead, run `claude plugin marketplace add /path/to/unslop` and then
-`claude plugin install unslop@unslop`.
+To install from a local clone instead, run `claude plugin marketplace add /path/to/directionforge` and then
+`claude plugin install directionforge@directionforge`.
 
 ## Use
 
-In any project, ask Claude to "run unslop" or describe the page you want designed. On first run the
+In any project, ask Claude to "run directionforge" or describe the page you want designed. On first run the
 plugin checks for impeccable and tasteskill. If one is missing, it shows you the install command and
 asks before running it:
 
@@ -74,7 +74,7 @@ design/
   DESIGN.md
 ```
 
-To share the result, ask Claude to publish it: unslop's `publish.py` copies `design/` without the reference screenshots, which belong to their authors; the
+To share the result, ask Claude to publish it: directionforge's `publish.py` copies `design/` without the reference screenshots, which belong to their authors; the
 published gallery links to each source instead.
 
 `design/decisions.md` records the current stage and what you still need to answer, so a new session
@@ -89,7 +89,7 @@ carries on where the last one stopped.
 
 ## Credits
 
-unslop orchestrates two independent skills, which you install separately:
+directionforge orchestrates two independent skills, which you install separately:
 [impeccable](https://impeccable.style) ([pbakaus/impeccable](https://github.com/pbakaus/impeccable)) and
 [tasteskill](https://github.com/Leonxlnx/taste-skill) (MIT). It does not bundle either one.
 
