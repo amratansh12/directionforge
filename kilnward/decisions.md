@@ -1,6 +1,6 @@
 # Decision log
 
-<!-- unslop keeps this file current after every stage. A new session reads "Current stage"
+<!-- directionforge keeps this file current after every stage. A new session reads "Current stage"
      first to resume. Record the user's picks in their own words where possible. -->
 
 ## Current stage

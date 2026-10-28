@@ -2,7 +2,7 @@
 
 <!-- impeccable:product-schema 1 -->
 
-<!-- Written by unslop at intake from the approved design/brief.md. Demo run: brief authored by Claude. -->
+<!-- Written by directionforge at intake from the approved design/brief.md. Demo run: brief authored by Claude. -->
 
 ## Platform
 

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="data:,">
-<title>unslop</title>
+<title>directionforge</title>
 <style>
   :root {
     --bg: #f6f6f4; --surface: #ffffff; --ink: #18181b; --muted: #5f5f66; --line: #e2e2de;
@@ -51,7 +51,7 @@
 </head>
 <body>
 <header>
-  <h1 id="title">unslop</h1>
+  <h1 id="title">directionforge</h1>
   <a class="btn" href="references/gallery.html">Reference gallery</a>
   <span class="spacer"></span>
   <a class="btn" id="open" href="#" target="_blank" rel="noopener" hidden>Open in new tab</a>
@@ -84,7 +84,7 @@
 
   if (!total) {
     document.getElementById('row-builds').hidden = true;
-    stageEl.innerHTML = '<div class="empty"><p>No builds yet.<br>After a stage, unslop runs <code>scripts/manifest.py</code> and they appear here.</p></div>';
+    stageEl.innerHTML = '<div class="empty"><p>No builds yet.<br>After a stage, directionforge runs <code>scripts/manifest.py</code> and they appear here.</p></div>';
   }
 
   // State lives in the URL hash (#stage-2/3) so a link opens the same build.
