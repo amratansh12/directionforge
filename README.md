@@ -57,8 +57,8 @@ plugin checks for impeccable and tasteskill. If one is missing, it shows you the
 asks before running it:
 
 ```sh
-npx -y impeccable install --project --providers=claude -y
-npx -y skills add https://github.com/Leonxlnx/taste-skill --skill design-taste-frontend --agent claude-code --copy -y
+npx -y impeccable@4.8.0 install --project --providers=claude -y
+npx -y skills@1.7.4 add https://github.com/Leonxlnx/taste-skill --skill design-taste-frontend --agent claude-code --copy -y
 ```
 
 All output goes into `design/` in that project. Nothing is written at the project root except what the
@@ -79,6 +79,24 @@ published gallery links to each source instead.
 
 `design/decisions.md` records the current stage and what you still need to answer, so a new session
 carries on where the last one stopped.
+
+## What this plugin runs
+
+directionforge is one skill with a few Python scripts. It has no hooks and no MCP servers, and it
+sends nothing anywhere on its own.
+
+- **`check_deps.py`** looks for impeccable and tasteskill in the project, in `~/.claude/skills` and in installed
+  plugins, runs
+  `python3 --version` and `node --version`, and checks for a local Chrome, Edge or Chromium.
+- **The two skill installers** (the `npx` commands above) download from npm and GitHub. They run only
+  if a skill is missing, and only after you agree.
+- **`scaffold.py`** creates `design/` and its template files in your project.
+- **`serve.py`** serves `design/` on `127.0.0.1` so you can view the gallery and builds in your browser.
+  It is not reachable from other machines.
+- **`manifest.py`** writes `design/manifest.js`, the list of builds the switcher shows.
+- **`publish.py`** copies `design/` to a folder you choose, leaving out reference screenshots.
+- **Reference collection** in Stage 1 uses whichever browser or web tools your Claude session already
+  has to visit design sites and save screenshots into `design/references/`.
 
 ## Requirements
 

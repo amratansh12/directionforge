@@ -19,8 +19,8 @@ BROWSERS = (
     '/Applications/Chromium.app/Contents/MacOS/Chromium',
 )
 INSTALL = {
-    'impeccable': 'npx -y impeccable install --project --providers=claude -y   (from the project folder; Node >= 18.19)',
-    'design-taste-frontend': 'npx -y skills add https://github.com/Leonxlnx/taste-skill --skill design-taste-frontend --agent claude-code --copy -y',
+    'impeccable': 'npx -y impeccable@4.8.0 install --project --providers=claude -y   (from the project folder; Node >= 18.19)',
+    'design-taste-frontend': 'npx -y skills@1.7.4 add https://github.com/Leonxlnx/taste-skill --skill design-taste-frontend --agent claude-code --copy -y',
 }
 
 

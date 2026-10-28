@@ -10,10 +10,10 @@
    installing**: these write into the project. Use the non-interactive forms (the plain commands
    stop at prompts Claude cannot answer from a shell):
 
-   | Skill | Command (run from the project folder; verified 2026-10-23, re-check upstream if it fails) |
+   | Skill | Command (run from the project folder; verified 2026-10-23, versions pinned 2026-10-28; re-check upstream if it fails) |
    |---|---|
-   | impeccable | `npx -y impeccable install --project --providers=claude -y` (Node ≥ 18.19) |
-   | tasteskill | `npx -y skills add https://github.com/Leonxlnx/taste-skill --skill design-taste-frontend --agent claude-code --copy -y` |
+   | impeccable | `npx -y impeccable@4.8.0 install --project --providers=claude -y` (Node ≥ 18.19) |
+   | tasteskill | `npx -y skills@1.7.4 add https://github.com/Leonxlnx/taste-skill --skill design-taste-frontend --agent claude-code --copy -y` |
 
    Both install into `.claude/` in the project (impeccable also adds agents and hooks there;
    tasteskill adds `skills-lock.json` at the root). If the user prefers a global install, impeccable
